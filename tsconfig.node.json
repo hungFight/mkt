@@ -1,6 +1,6 @@
 {
   "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
-  "include": ["electron.vite.config.*", "src/main/*", "src/main/**/*", "src/system/*", "src/system/**/*", "src/preload/*"],
+  "include": ["electron.vite.config.*", "src/main/*", "src/main/**/*", "src/system/*", "src/system/**/*", "src/preload/*", "src/preload/**/*", "types/*", "types/**/*"],
   "compilerOptions": {
     "composite": true,
     "emitDecoratorMetadata": true,

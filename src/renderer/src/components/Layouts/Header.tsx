@@ -5,10 +5,13 @@ import userProfile from '@renderer/assets/images/user-profile.png'
 import Dropdown from '@renderer/components/Dropdown'
 import { IRootState } from '@renderer/store'
 import { toggleSidebar, toggleTheme } from '@renderer/store/themeConfigSlice'
+import { CirclePlay } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import ReactJoyride from 'react-joyride'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import ToolTips from '../Tooltips'
 
 const Header = (): JSX.Element => {
   const location = useLocation()
@@ -45,7 +48,24 @@ const Header = (): JSX.Element => {
   const [isHovered, setIsHovered] = useState(false)
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-
+  const [start, setStart] = useState(true)
+  const steps = [
+    {
+      target: '.add-account',
+      content: 'Hướng dẫn 1',
+      placements: 'center'
+    },
+    {
+      target: '.step-2',
+      content: <p>Hướng dẫn 2</p>,
+      placements: 'center'
+    },
+    {
+      target: '.table-account',
+      content: <p>Bảng quản lý tài khoản</p>,
+      placements: 'center'
+    }
+  ]
   const handleOpenSettings = () => {
     const element = document.querySelector('.tab-setting')
     const bgElement = document.querySelector('.bg-setting')
@@ -257,6 +277,14 @@ const Header = (): JSX.Element => {
                 </button>
               )}
             </div>
+            <ToolTips content="Hướng dẫn sử dụng">
+              <button
+                onClick={() => setStart(!start)}
+                className="bg-[#E3E8EF] p-[4px] rounded-full"
+              >
+                <CirclePlay size={25} className="hover:text-primary" />
+              </button>
+            </ToolTips>
             <div className="dropdown shrink-0 flex">
               <Dropdown
                 offset={[0, 8]}
@@ -423,6 +451,23 @@ const Header = (): JSX.Element => {
           </li>
         </ul>
       </div>
+      <ReactJoyride
+        locale={{
+          back: 'Quay lại',
+          close: 'Đóng',
+          next: 'Trang tiếp theo',
+          skip: 'Bỏ qua',
+          last: 'Đóng'
+        }}
+        steps={steps}
+        run={start}
+        showProgress
+        showSkipButton
+        continuous
+        scrollToFirstStep
+        disableCloseOnEsc
+        disableOverlayClose
+      />
     </header>
   )
 }

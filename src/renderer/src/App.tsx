@@ -1,17 +1,16 @@
 import { PropsWithChildren, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from './store'
+import store, { IRootState } from './store'
 import {
-  toggleRTL,
-  toggleTheme,
+  toggleAnimation,
+  toggleLayout,
   toggleLocale,
   toggleMenu,
-  toggleLayout,
-  toggleAnimation,
   toggleNavbar,
-  toggleSemidark
+  toggleRTL,
+  toggleSemidark,
+  toggleTheme
 } from './store/themeConfigSlice'
-import store from './store'
 
 function App({ children }: PropsWithChildren): JSX.Element {
   const themeConfig = useSelector((state: IRootState) => state.themeConfig)

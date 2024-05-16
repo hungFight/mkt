@@ -5,7 +5,9 @@
     "src/renderer/src/**/*",
     "src/renderer/src/**/*.tsx",
     "src/preload/*.d.ts",
-    "system/db/entity/*.ts"
+    "system/db/entity/*.ts",
+    "types/*.ts",
+    "common/*.ts",
   ],
   "compilerOptions": {
     "composite": true,
@@ -17,7 +19,14 @@
     "paths": {
       "@renderer/*": [
         "src/renderer/src/*"
-      ]
+      ],
+      "@system/*": [
+        "src/system/*"
+      ],
+      "@/*": [
+        "@/*"
+      ],
+
     }
   }
 }

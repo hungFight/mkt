@@ -5,7 +5,6 @@ import { IRootState } from '@renderer/store'
 import { toggleSidebar } from '@renderer/store/themeConfigSlice'
 import { PropsWithChildren, Suspense, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Footer from './Footer'
 import Header from './Header'
 import Setting from './Setting'
 import Sidebar from './Sidebar'
@@ -123,16 +122,18 @@ const DefaultLayout = ({ children }: PropsWithChildren): JSX.Element => {
           {/* END SIDEBAR */}
 
           {/* BEGIN CONTENT AREA */}
-          <div className="main-content">
+          <div className="main-content flex flex-col flex-1">
             {/* BEGIN TOP NAVBAR */}
             <Header />
             {/* END TOP NAVBAR */}
             <Suspense>
-              <div className={`${themeConfig.animation} p-6 animate__animated`}>
+              <div
+                className={`${themeConfig.animation} p-6 animate__animated flex flex-col flex-1`}
+              >
                 {children}
 
                 {/* BEGIN FOOTER */}
-                <Footer />
+                {/* <Footer /> */}
                 {/* END FOOTER */}
               </div>
             </Suspense>

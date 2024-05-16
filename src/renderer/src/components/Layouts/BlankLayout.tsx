@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react'
 import App from '@renderer/App'
+import { PropsWithChildren } from 'react'
 
 const BlankLayout = ({ children }: PropsWithChildren): JSX.Element => {
   return (

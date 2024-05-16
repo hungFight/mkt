@@ -14,6 +14,9 @@ declare global {
     masp: string
     hash?: string
   }
+
+  type ILoginForm = Pick<ILogin, 'email' | 'password' | 'remember'>
+
   interface IRegister {
     email: string
     password: string
@@ -24,7 +27,17 @@ declare global {
     masp?: string
     his?: string
   }
-  type IAuth = User
+  type IAuth = Pick<
+    User,
+    | 'apiToken'
+    | 'tokenType'
+    | 'expiresIn'
+    | 'userId'
+    | 'his'
+    | 'hash'
+    | 'remainingDay'
+    | 'isVinhVien'
+  >
   interface IPermission {
     id: number
     name: string
@@ -86,5 +99,13 @@ declare global {
     proxy?: string
     mobile?: string
     res?: string
+  }
+
+  interface ModalDefaultProps {
+    isShow?: boolean
+    setIsShow?: Dispatch<SetStateAction<boolean>>
+    selectedKpiId?: string
+    kpiId?: string
+    selectedPlansId?: string
   }
 }

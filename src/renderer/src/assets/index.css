@@ -75,6 +75,7 @@
 
   body {
     @apply bg-[#fafafa] font-googleSans;
+    user-select: none;
   }
 
   body.dark {
@@ -752,4 +753,34 @@ a.link-hv:hover {
 }
 .table-hover {
   min-height: 195px;
+}
+.modal > div{
+  background: #0000005e;
+  display: flex;
+}
+.modal > div > div{
+  max-width: 1800px;
+  width: 40%;
+  margin: auto;
+}
+@media only screen and (max-width: 1500px) {
+  .modal > div > div{
+    width: 60% !important;
+  }
+}
+.modal-acc > div > div{
+  width: 50% !important;
+}
+.custom-table th{
+  background: #fff !important;
+}
+.custom-shadow{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+button{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.shadow-menu{
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
 }

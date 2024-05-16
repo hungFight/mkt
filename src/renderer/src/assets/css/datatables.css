@@ -13,13 +13,16 @@ table > thead > tr > th.mantine-187dsit {
   @apply bg-transparent;
 }
 .datatables table tbody tr td {
-  @apply !border-0 !border-none;
+  /* @apply !border-0 !border-none; */
+  background: #fff !important;
+  border: 1px solid #f0f0f0;
 }
 table tr .mantine-Checkbox-root {
   @apply flex;
 }
 .datatables table thead tr th {
-  @apply !border-b-0 !bg-white-light/30  text-black dark:!bg-[#1a2941] dark:!text-white-dark;
+  @apply !bg-white  text-black dark:!bg-[#1a2941] dark:!text-white-dark;
+  border: 1px solid #f0f0f0;
 }
 
 .datatables .table-bordered table thead tr th,
@@ -116,4 +119,17 @@ table tr .mantine-Checkbox-root {
 }
 .mantine-ScrollArea-viewport > div:first-child > div {
   @apply bg-none;
+}
+.mantine-ScrollArea-viewport{
+  max-height: 72vh;
+}
+@media (max-height: 900px) {
+  .mantine-ScrollArea-viewport{
+    max-height: 70vh;
+  }
+}
+@media (max-height: 800px) {
+  .mantine-ScrollArea-viewport{
+    max-height: 67vh;
+  }
 }

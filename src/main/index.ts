@@ -1,17 +1,19 @@
-import { app, shell, BrowserWindow } from 'electron'
+import { electronApp, is, optimizer } from '@electron-toolkit/utils'
+import { BrowserWindow, app, shell } from 'electron'
 import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { AppDataSource } from '../system/db/data-source'
 import { User, localUser } from '../system/db/entity'
-import { verifyToken } from '../system/http'
 import { APP_ID, APP_TITLE } from '../system/helper'
+import { verifyToken } from '../system/http'
 
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
+    minHeight: 720,
+    minWidth: 1280,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -73,20 +75,6 @@ app.whenReady().then(() => {
 
   createWindow()
 
-  // Verify Token per 10 min
-  // const verifyUser = setInterval(() => {
-  //   localUser().then((user: User) => {
-  //     if (user?.apiToken) {
-  //       verifyToken({ token: user.apiToken })
-  //     }
-  //     if (!user?.apiToken) {
-  //       clearInterval(verifyUser)
-  //       app.relaunch()
-  //       app.quit()
-  //     }
-  //   })
-  // }, 600000)
-
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
@@ -94,9 +82,6 @@ app.whenReady().then(() => {
   })
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()

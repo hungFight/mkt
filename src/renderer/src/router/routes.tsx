@@ -1,76 +1,53 @@
-import { lazy } from 'react'
-const Index = lazy(() => import('@renderer/pages/Index'))
-const Analytics = lazy(() => import('@renderer/pages/Analytics'))
-const Finance = lazy(() => import('@renderer/pages/Finance'))
-const Crypto = lazy(() => import('@renderer/pages/Crypto'))
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
+import configStatic from '@renderer/config'
+import Login from '@renderer/pages/auth/Login'
+import Home from '@renderer/pages/Pages/Home'
+import { IRootState, useAppSelector } from '@renderer/store'
+// import { lazy } from 'react'
+import { IndexRouteObject, Navigate, NonIndexRouteObject } from 'react-router-dom'
 
-const List = lazy(() => import('@renderer/pages/Apps/Invoice/List'))
-const Preview = lazy(() => import('@renderer/pages/Apps/Invoice/Preview'))
-const Add = lazy(() => import('@renderer/pages/Apps/Invoice/Add'))
-const Edit = lazy(() => import('@renderer/pages/Apps/Invoice/Edit'))
-const Error = lazy(() => import('@renderer/components/Error'))
+export enum layoutType {
+  auth = 'auth',
+  blank = 'blank'
+}
+type CustomRouteObjectParams = {
+  layout?: layoutType | ''
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  reducers?: ActionCreatorWithPayload<any, string>
+}
 
-const Tabs = lazy(() => import('../pages/Components/Table'))
-const Faq = lazy(() => import('../pages/Pages/Faq'))
-const KnowledgeBase = lazy(() => import('../pages/Pages/KnowledgeBase'))
+export type CustomIndexRouteObject = IndexRouteObject & CustomRouteObjectParams
+
+export type CustomNonIndexRouteObject = Omit<NonIndexRouteObject, 'children'> &
+  CustomRouteObjectParams & {
+    children?: (CustomIndexRouteObject | CustomNonIndexRouteObject)[]
+  }
+
+export type CustomRouteConfig = CustomIndexRouteObject | CustomNonIndexRouteObject
+
+const AuthContainer = (): JSX.Element => {
+  const { user, isLogged } = useAppSelector((state: IRootState) => state.auth)
+  if (user?.apiToken && isLogged) {
+    return <Navigate to={configStatic.router.home} replace={true} />
+  } else {
+    return <Navigate to={configStatic.router.login} replace={true} />
+  }
+}
 
 const routes = [
-  // dashboard
   {
-    index: true,
     path: '/',
-    element: <Index />
-  },
-  // analytics page
-  {
-    path: '/analytics',
-    element: <Analytics />
-  },
-  // finance page
-  {
-    path: '/finance',
-    element: <Finance />
-  },
-  // crypto page
-  {
-    path: '/crypto',
-    element: <Crypto />
+    element: <AuthContainer />
   },
   {
-    path: '/apps/invoice/list',
-    element: <List />
-  },
-
-  // preview page
-  {
-    path: '/apps/invoice/preview',
-    element: <Preview />
+    path: configStatic.router.login,
+    element: <Login />,
+    layout: layoutType.auth
   },
   {
-    path: '/apps/invoice/add',
-    element: <Add />
-  },
-  {
-    path: '/apps/invoice/edit',
-    element: <Edit />
-  },
-  {
-    path: '/components/tabs',
-    element: <Tabs />
-  },
-  {
-    path: '/pages/knowledge-base',
-    element: <KnowledgeBase />
-  },
-  {
-    path: '/pages/faq',
-    element: <Faq />
-  },
-
-  {
-    path: '*',
-    element: <Error />,
-    layout: ''
+    path: configStatic.router.home,
+    element: <Home />,
+    layout: layoutType.blank
   }
 ]
 

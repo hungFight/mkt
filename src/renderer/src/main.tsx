@@ -14,12 +14,12 @@ import '@renderer/assets/index.css'
 import '@renderer/i18n'
 
 // Router
-import { RouterProvider } from 'react-router-dom'
 import router from '@renderer/router/index'
+import { RouterProvider } from 'react-router-dom'
 
 // Redux
-import { Provider } from 'react-redux'
 import store from '@renderer/store/index'
+import { Provider } from 'react-redux'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

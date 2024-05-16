@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import 'highlight.js/styles/monokai-sublime.css'
 import hightlight from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css'
 import { PropsWithChildren, useEffect, useRef } from 'react'
 
 const CodeHighlight = ({ children }: PropsWithChildren): JSX.Element => {
