@@ -120,16 +120,16 @@ table tr .mantine-Checkbox-root {
 .mantine-ScrollArea-viewport > div:first-child > div {
   @apply bg-none;
 }
-.mantine-ScrollArea-viewport{
+.mantine-ScrollArea-viewport {
   max-height: 72vh;
 }
 @media (max-height: 900px) {
-  .mantine-ScrollArea-viewport{
+  .mantine-ScrollArea-viewport {
     max-height: 70vh;
   }
 }
 @media (max-height: 800px) {
-  .mantine-ScrollArea-viewport{
+  .mantine-ScrollArea-viewport {
     max-height: 67vh;
   }
 }
