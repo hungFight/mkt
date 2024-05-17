@@ -197,7 +197,6 @@ const Sidebar = (): JSX.Element => {
                 )
               })}
             </ul>
-            {/* {isShowModal && <ModalAddAccount isShow={isShowModal} setIsShow={setIsShowModal} />} */}
           </PerfectScrollbar>
         </div>
       </nav>

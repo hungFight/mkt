@@ -1,6 +1,7 @@
 export const router = {
   home: '/home',
-  login: '/login'
+  login: '/login',
+  InteractionAcc: '/interactionAcc'
 }
 
 export const configHidden = [

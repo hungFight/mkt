@@ -1,12 +1,11 @@
 import { BiSolidDashboard } from 'react-icons/bi'
-import { IconType } from 'react-icons/lib'
-import { router } from './site'
+import configStatic from '.'
 export interface configItemSidebar {
   path?: string
   title?: string
   isHeader?: boolean
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon?: IconType
+  icon?: (prop?) => JSX.Element
 }
 
 export interface configSidebarType extends configItemSidebar {
@@ -15,13 +14,14 @@ export interface configSidebarType extends configItemSidebar {
 
 export const configSidebar: configSidebarType[] = [
   {
-    path: router.home,
+    path: configStatic.router.home,
     title: 'Quản lý tài khoản',
     icon: BiSolidDashboard
   },
   {
     title: 'Tương tác tài khoản',
-    icon: BiSolidDashboard
+    icon: BiSolidDashboard,
+    path: configStatic.router.InteractionAcc
   },
   {
     title: 'Viral Marketing',

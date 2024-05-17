@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC } from 'react'
+import { FC, ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react'
 import { useTranslation } from 'react-i18next'
-import { IconType } from 'react-icons/lib'
+
+export type IconType = ForwardRefExoticComponent<
+  Omit<SVGProps<SVGSVGElement>, 'ref'> & RefAttributes<SVGSVGElement>
+>
 
 export type configContextMenuType = {
   Icon: IconType

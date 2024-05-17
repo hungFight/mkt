@@ -36,7 +36,7 @@ const InputField: FC<InputFieldPops> = ({
         </label>
       )}
       <input
-        className={`border outline-none  px-5 py-[10px] text-[#505050] ${
+        className={`border outline-none  px-5 py-[8px] text-[#505050] ${
           round ? round : 'rounded-md'
         } w-full bg-transparent`}
         autoComplete="off"

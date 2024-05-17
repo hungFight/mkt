@@ -1,9 +1,9 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import configStatic from '@renderer/config'
 import Login from '@renderer/pages/auth/Login'
-import Home from '@renderer/pages/Pages/Home'
+import InteractionAcc from '@renderer/pages/Pages/InteractionAcc'
+import ManagerAccount from '@renderer/pages/Pages/ManagerAccount'
 import { IRootState, useAppSelector } from '@renderer/store'
-// import { lazy } from 'react'
 import { IndexRouteObject, Navigate, NonIndexRouteObject } from 'react-router-dom'
 
 export enum layoutType {
@@ -34,7 +34,7 @@ const AuthContainer = (): JSX.Element => {
   }
 }
 
-const routes = [
+const routes: CustomRouteConfig[] = [
   {
     path: '/',
     element: <AuthContainer />
@@ -46,7 +46,12 @@ const routes = [
   },
   {
     path: configStatic.router.home,
-    element: <Home />,
+    element: <ManagerAccount />,
+    layout: layoutType.blank
+  },
+  {
+    path: configStatic.router.InteractionAcc,
+    element: <InteractionAcc />,
     layout: layoutType.blank
   }
 ]

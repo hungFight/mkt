@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import App from '@renderer/App'
-import Portals from '@renderer/components/Portals'
 import { IRootState } from '@renderer/store'
 import { toggleSidebar } from '@renderer/store/themeConfigSlice'
-import { PropsWithChildren, Suspense, useEffect, useState } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Header from './Header'
 import Setting from './Setting'
@@ -126,18 +125,16 @@ const DefaultLayout = ({ children }: PropsWithChildren): JSX.Element => {
             {/* BEGIN TOP NAVBAR */}
             <Header />
             {/* END TOP NAVBAR */}
-            <Suspense>
-              <div
-                className={`${themeConfig.animation} p-6 animate__animated flex flex-col flex-1`}
-              >
-                {children}
+            {/* <Suspense fallback="loading..."> */}
+            <div className={`${themeConfig.animation} p-6 animate__animated flex flex-col flex-1`}>
+              {children}
 
-                {/* BEGIN FOOTER */}
-                {/* <Footer /> */}
-                {/* END FOOTER */}
-              </div>
-            </Suspense>
-            <Portals />
+              {/* BEGIN FOOTER */}
+              {/* <Footer /> */}
+              {/* END FOOTER */}
+            </div>
+            {/* </Suspense> */}
+            {/* <Portals /> */}
           </div>
           {/* END CONTENT AREA */}
         </div>

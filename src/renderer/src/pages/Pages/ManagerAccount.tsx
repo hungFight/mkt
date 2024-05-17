@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import ButtonFlowbite from '@renderer/components/ButtonFlowbite'
 import ContextMenu from '@renderer/components/ContextMenu'
+import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import InputFilter from '@renderer/components/CustomField/InputFilter'
 import ModalAddAccount from '@renderer/components/Modal/ModalAddAccount'
 import ModalAddCategory from '@renderer/components/Modal/ModalAddCategory'
@@ -12,11 +13,11 @@ import ToolTips from '@renderer/components/Tooltips'
 import { configMenuActionAccount } from '@renderer/config/configContextMenu'
 import { setPageTitle } from '@renderer/store/themeConfigSlice'
 import { Button } from 'flowbite-react'
-import { CircleFadingPlus, CircleX, EyeOff, RotateCcw, Trash } from 'lucide-react'
+import { CircleFadingPlus, CircleX, EyeOff, RotateCcw, Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-const Home = () => {
+const ManagerAccount = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(setPageTitle('Quản lý tài khoản'))
@@ -62,7 +63,7 @@ const Home = () => {
           </Button>
         </div>
         <div className="">
-          <InputFilter />
+          <InputFilter button />
         </div>
       </div>
       <div className="flex gap-3">
@@ -81,7 +82,22 @@ const Home = () => {
               </ButtonFlowbite>
             </ToolTips>
           </div>
-          <div className="mt-5"></div>
+          <div className="mt-5 flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <CheckboxField
+                name="all"
+                title={'Tất cả'}
+                classInputContainer="w-1/4 !mt-0 white-space-nowrap"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckboxField
+                name="category"
+                title={'Danh mục 1'}
+                classInputContainer="w-1/4 !mt-0 white-space-nowrap"
+              />
+            </div>
+          </div>
         </div>
         <div className="2xl:w-[80%] w-[70%] rounded-lg border-dashed border border-gray-300 h-[85vh] px-2 py-3 justify-between">
           <div className="gap-2 flex mb-3 h-fit">
@@ -89,8 +105,12 @@ const Home = () => {
               <CircleX size={20} className="mr-2" />
               Đóng chrome
             </Button>
+            <Button className="bg-red-700 rounded-xl" size="sm">
+              <CircleX size={20} className="mr-2" />
+              Xóa toàn bộ
+            </Button>
             <Button className="bg-white rounded-xl text-red-500 border-red-500" size="sm">
-              <Trash size={20} className="mr-2" color="red" />
+              <Trash2 size={20} className="mr-2" color="red" />
               Thùng rác
             </Button>
           </div>
@@ -123,4 +143,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default ManagerAccount
