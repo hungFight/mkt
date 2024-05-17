@@ -2,7 +2,7 @@ import { FC, InputHTMLAttributes } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-export interface InputNumberFieldProps extends InputHTMLAttributes<HTMLElement> {
+export interface InputNumberDistanceFielddPops extends InputHTMLAttributes<HTMLElement> {
   title?: string
   name: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,7 +20,7 @@ export interface InputNumberFieldProps extends InputHTMLAttributes<HTMLElement> 
   checkbox?: boolean
 }
 
-const InputNumberField: FC<InputNumberFieldProps> = ({
+const InputNumberDistanceField: FC<InputNumberDistanceFielddPops> = ({
   title,
   name,
   register,
@@ -33,8 +33,8 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
   classSpan,
   span,
   checkbox,
-  clsTitle,
   value,
+  clsTitle,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -62,7 +62,21 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
       </div>
       <div className="flex gap-2 items-center">
         <input
-          className={`border outline-none px-5 py-[8px] text-[#505050] ${
+          className={`border outline-none  px-5 py-[8px] text-[#505050] ${
+            round ? round : 'rounded-md'
+          } ${classInput} w-full bg-transparent`}
+          autoComplete="off"
+          style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
+          id={name}
+          {...register?.(name)}
+          type="number"
+          value={value === undefined || value === null ? 0 : value}
+          {...rest}
+        />
+      </div>
+      <div className="flex gap-2 items-center">
+        <input
+          className={`border outline-none  px-5 py-[8px] text-[#505050] ${
             round ? round : 'rounded-md'
           } ${classInput} w-full bg-transparent`}
           autoComplete="off"
@@ -84,4 +98,4 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
   )
 }
 
-export default InputNumberField
+export default InputNumberDistanceField

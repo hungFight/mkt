@@ -5,6 +5,7 @@ import ContextMenu from '@renderer/components/ContextMenu'
 import InputFilter from '@renderer/components/CustomField/InputFilter'
 import SelectField from '@renderer/components/CustomField/SelectField'
 import FormInteraction from '@renderer/components/Form/FormInteraction'
+import ModalScript from '@renderer/components/Modal/ModalScript'
 import RenderContextMenu from '@renderer/components/RenderContextMenu'
 import TableInteractionAcc from '@renderer/components/Table/TableAccount/TableInteractionAcc'
 import { configMenuActionAccount } from '@renderer/config/configContextMenu'
@@ -21,6 +22,7 @@ const InteractionAcc = () => {
   })
   const [selectedRecords, setSelectedRecords] = useState<any[]>([])
   const [isScriptDropdownVisible, setIsScriptDropdownVisible] = useState(false)
+  const [isShowModalScript, setIsShowModalScript] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleScriptDropdown = () => {
     setIsScriptDropdownVisible(!isScriptDropdownVisible)
@@ -29,6 +31,10 @@ const InteractionAcc = () => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setIsScriptDropdownVisible(false)
     }
+  }
+
+  const openModalScript = (): void => {
+    setIsShowModalScript(true)
   }
 
   useEffect(() => {
@@ -43,32 +49,35 @@ const InteractionAcc = () => {
       <div className="flex gap-3">
         <div className="gap-2 flex mb-3 h-fit 2xl:w-[65%] w-[60%] px-2 py-5 pt-0">
           <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" />
-          <Button className="bg-green-700 rounded-xl" size="sm">
+          <Button className="bg-green-700 rounded-xl h-max" size="sm">
             <CirclePlay size={20} className="mr-2" />
             Start
           </Button>
-          <Button className="bg-red-700 rounded-xl" size="sm">
+          <Button className="bg-red-700 rounded-xl h-max" size="sm">
             <CircleX size={20} className="mr-2" />
             Stop
           </Button>
         </div>
         <div className="2xl:w-[35%] w-[40%] px-2 py-5 pt-0 relative" ref={dropdownRef}>
           <p
-            className="border border-[#dedede] w-[30%] px-4 py-1 rounded-[5px] flex justify-between items-center hover:border-[#000] cursor-pointer"
+            className="border border-[#dedede] whitespace-nowrap w-[30%] px-4 py-1 rounded-[5px] flex justify-between items-center hover:border-[#000] cursor-pointer"
             onClick={toggleScriptDropdown}
           >
             Kịch bản <ChevronDown />
           </p>
           {isScriptDropdownVisible && (
-            <div className="absolute z-[99] top-[29px] mt-1 w-[80%] bg-white border border-gray-300 rounded shadow-md">
-              {/* Content of the popup */}
+            <div className="absolute z-[9] top-[29px] mt-1 w-[80%] bg-white border border-gray-300 rounded shadow-md">
               <div className="flex items-center justify-between px-[10px] py-[5px]">
-                <InputFilter onChangeValue={() => {}} />
-                <ButtonFlowbite color="warning" className="h-max bg-[#F9C047] py-[3px] border-0">
+                <InputFilter onChangeValue={() => {}} className="w-[60%] border p-2 rounded" />
+                <ButtonFlowbite
+                  color="warning"
+                  className="h-max bg-[#F9C047] py-[0px] border-0 whitespace-nowrap"
+                  onClick={openModalScript}
+                >
                   Thêm kịch bản
                 </ButtonFlowbite>
               </div>
-              <ul className="py-2">
+              <ul className="py-2 pt-0">
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Kịch bản 1</li>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Kịch bản 2</li>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Kịch bản 3</li>
@@ -108,6 +117,9 @@ const InteractionAcc = () => {
           </div>
         </div>
       </div>
+      {isShowModalScript && (
+        <ModalScript isShow={isShowModalScript} setIsShow={setIsShowModalScript} />
+      )}
     </>
   )
 }

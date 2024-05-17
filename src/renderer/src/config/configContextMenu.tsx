@@ -1,35 +1,43 @@
 import { configContextMenuType } from '@renderer/components/RenderContextMenu'
-import { LayoutPanelLeftIcon, Loader2 } from 'lucide-react'
+import {
+  BadgeCheck,
+  Chrome,
+  CircleX,
+  Facebook,
+  LayoutPanelLeftIcon,
+  ListChecks,
+  Mail,
+  MousePointer2
+} from 'lucide-react'
 
 export const configMenuActionAccount: configContextMenuType[] = [
   {
-    Icon: Loader2,
+    Icon: MousePointer2,
     action: 'Chọn'
   },
-
   {
-    Icon: Loader2,
+    Icon: CircleX,
     action: 'Bỏ chọn'
   },
 
   {
-    Icon: LayoutPanelLeftIcon,
+    Icon: Facebook,
     action: 'Đăng nhập Facebook'
   },
   {
-    Icon: LayoutPanelLeftIcon,
+    Icon: Mail,
     action: 'Đăng nhập Hotmail'
   },
   {
-    Icon: LayoutPanelLeftIcon,
+    Icon: Chrome,
     action: 'Tạo Chorme Profile'
   },
   {
-    Icon: LayoutPanelLeftIcon,
+    Icon: BadgeCheck,
     action: 'Kiểm tra tài khoản '
   },
   {
-    Icon: LayoutPanelLeftIcon,
+    Icon: ListChecks,
     action: 'Kiểm tra năm tạo tài khoản'
   }
 ]
