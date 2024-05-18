@@ -5,6 +5,7 @@ interface TabConfig {
   id: string
   title: string
   content: ReactNode
+  disabled?: boolean
 }
 
 interface TabsProps {
@@ -33,13 +34,14 @@ const Tabs = ({ tabs }: TabsProps) => {
                   activeTab === tab.id
                     ? 'border-blue-500 text-blue-600'
                     : 'hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300'
-                }`}
+                } ${tab.disabled ? 'cursor-not-allowed opacity-50' : ''}`}
                 id={`${tab.id}-tab`}
                 type="button"
                 role="tab"
                 aria-controls={tab.id}
                 aria-selected={activeTab === tab.id}
-                onClick={() => handleTabClick(tab.id)}
+                onClick={() => !tab.disabled && handleTabClick(tab.id)}
+                disabled={tab.disabled} // Disable the button if the tab is disabled
               >
                 {tab.title}
               </button>

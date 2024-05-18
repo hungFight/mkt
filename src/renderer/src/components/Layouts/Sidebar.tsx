@@ -9,7 +9,7 @@ import AnimateHeight from 'react-animate-height'
 import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 const Sidebar = (): JSX.Element => {
   const [currentMenu, setCurrentMenu] = useState<string>('')
@@ -184,7 +184,7 @@ const Sidebar = (): JSX.Element => {
                               {item?.children?.map((child, indexChild) => {
                                 return (
                                   <li key={indexChild}>
-                                    <NavLink to={child?.path ?? ''}>{t(`${child?.title}`)}</NavLink>
+                                    <Link to={child?.path ?? ''}>{t(`${child?.title}`)}</Link>
                                   </li>
                                 )
                               })}

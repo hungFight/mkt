@@ -16,16 +16,19 @@ export const configInteraction = [
   {
     id: 'group',
     title: 'Tương tác nhóm',
-    content: '65'
+    content: '65',
+    disabled: true
   },
   {
     id: 'page',
     title: 'Tương tác Page',
-    content: <FormConfigInteraction />
+    content: <FormConfigInteraction />,
+    disabled: true
   },
   {
     id: 'info',
     title: 'Cập nhật thông tin tài khoản',
-    content: <FormConfigInteraction />
+    content: <FormConfigInteraction />,
+    disabled: true
   }
 ]

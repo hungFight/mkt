@@ -75,7 +75,7 @@ const FormInteractionFriend = (): JSX.Element => {
         </div>
         <div className="w-1/2">
           <InputNumberDistanceField
-            clsTitle="w-[200px]"
+            clsTitle="w-[220px]"
             name="video"
             title="Bình luận bài viết bạn bè"
             classInputContainer="flex mt-4 items-center gap-2"
@@ -84,7 +84,7 @@ const FormInteractionFriend = (): JSX.Element => {
             classSpan="w-[40px] whitespace-nowrap"
           />
           <InputNumberDistanceField
-            clsTitle="w-[200px]"
+            clsTitle="w-[220px]"
             name="message"
             title="Nhắn tin ngẫu nhiên cho bạn bè"
             classInputContainer="flex mt-4 items-center gap-2"
@@ -97,7 +97,7 @@ const FormInteractionFriend = (): JSX.Element => {
           </Link>
           <InputNumberDistanceField
             checkbox
-            clsTitle="w-[200px]"
+            clsTitle="w-[220px]"
             name="videoWatch"
             title="Chúc mừng sinh nhật bạn bè"
             classInputContainer="flex mt-4 items-center gap-2"
