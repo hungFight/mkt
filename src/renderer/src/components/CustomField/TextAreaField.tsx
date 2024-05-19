@@ -13,6 +13,7 @@ export interface TextAreaFieldPops extends InputHTMLAttributes<HTMLElement> {
   isRequire?: boolean
   isShadow?: boolean
   round?: string
+  clsTextArea?: string
 }
 
 const TextAreaField: FC<TextAreaFieldPops> = ({
@@ -24,6 +25,7 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
   isRequire,
   isShadow,
   round,
+  clsTextArea,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -38,7 +40,7 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
       <textarea
         className={`border outline-none max-h-[250px] overflow-hidden resize-none  px-5 py-[10px] text-[#505050] ${
           round ? round : 'rounded-md'
-        } w-full bg-transparent`}
+        } ${clsTextArea} w-full bg-transparent`}
         autoComplete="off"
         style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
         id={name}

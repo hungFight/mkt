@@ -798,3 +798,7 @@ button {
 .shadow-menu {
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
 }
+.sidebar ul.sub-menu li a.active::before,
+.sidebar ul.sub-menu li a::before {
+  display: none;
+}

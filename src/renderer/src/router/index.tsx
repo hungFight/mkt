@@ -1,5 +1,5 @@
 import LayoutAuth from '@renderer/components/Layouts/LayoutAuth'
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import DefaultLayout from '../components/Layouts/DefaultLayout'
 import { CustomRouteConfig, layoutType, routes } from './routes'
 
@@ -23,6 +23,6 @@ const finalRoutes = routes.map((route) => {
   }
 })
 
-const router = createBrowserRouter(finalRoutes)
+const router = createHashRouter(finalRoutes)
 
 export default router

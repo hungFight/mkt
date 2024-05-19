@@ -1,7 +1,8 @@
 import CheckboxField from '../CustomField/CheckboxField'
 import InputNumberField from '../CustomField/InputNumberField'
+import TextAreaField from '../CustomField/TextAreaField'
 
-const FormInteraction = (): JSX.Element => {
+const FormSharePost = (): JSX.Element => {
   const handleSubmit = (): void => {
     console.log(123)
   }
@@ -24,7 +25,7 @@ const FormInteraction = (): JSX.Element => {
         />
         <CheckboxField
           title={'Tự động lấy danh sách nhóm hiện tại của tài khoản'}
-          name={'groupAuto'}
+          name={'group'}
           classInputContainer="w-1/4 mt-[15px]"
           classLabel="text-sm font-medium"
         />
@@ -45,9 +46,15 @@ const FormInteraction = (): JSX.Element => {
           span="Phút"
           classSpan="w-[40px]"
         />
+        <TextAreaField
+          placeholder="Nội dung bài viết"
+          name="accountHolder"
+          classInputContainer="mt-3"
+          clsTextArea=" h-[150px]"
+        />
       </div>
     </form>
   )
 }
 
-export default FormInteraction
+export default FormSharePost

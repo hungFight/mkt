@@ -29,7 +29,8 @@ export const configSidebar: configSidebarType[] = [
     children: [
       {
         title: 'Share bài viết',
-        icon: BiSolidDashboard
+        icon: BiSolidDashboard,
+        path: configStatic.router.ShareViralMarketing
       },
       {
         title: 'Đồng ý - Hủy kết bạn',
