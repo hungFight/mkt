@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Tab } from '@headlessui/react'
 import { Fragment } from 'react'
+import SettingProxy from './Layouts/Setting/SettingProxy'
 import SettingSystem from './Layouts/Setting/SettingSystem'
-import SettingTheme from './Layouts/Setting/SettingTheme'
 
 const TabsSetting = (): JSX.Element => {
   return (
@@ -22,7 +22,7 @@ const TabsSetting = (): JSX.Element => {
                                                     before:inline-block' -mb-[1px] block rounded p-3.5 py-2 hover:bg-info hover:text-white`}
                           style={{ width: '100%' }}
                         >
-                          Setting Theme
+                          Setting System
                         </button>
                       </div>
                     )}
@@ -35,7 +35,7 @@ const TabsSetting = (): JSX.Element => {
                                                     before:inline-block' -mb-[1px] block rounded p-3.5 py-2 hover:bg-info hover:text-white`}
                           style={{ width: '100%' }}
                         >
-                          Setting System
+                          Setting Proxy
                         </button>
                       </div>
                     )}
@@ -44,12 +44,13 @@ const TabsSetting = (): JSX.Element => {
                 <Tab.Panels>
                   <Tab.Panel>
                     <div className="active pt-5">
-                      <SettingTheme />
+                      {/* <SettingTheme /> */}
+                      <SettingSystem />
                     </div>
                   </Tab.Panel>
                   <Tab.Panel>
                     <div className="pt-5">
-                      <SettingSystem />
+                      <SettingProxy />
                     </div>
                   </Tab.Panel>
                 </Tab.Panels>

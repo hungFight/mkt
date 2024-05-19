@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 const SettingSystem = () => {
-  return <button>123</button>
+  return (
+    <>
+      <div>123</div>
+    </>
+  )
 }
 
 export default SettingSystem
