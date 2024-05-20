@@ -803,7 +803,7 @@ button {
   display: none;
 }
 @media screen and (max-width: 1500px) {
-  .cs-setting{
+  .cs-setting {
     /* !2xl:ltr:-right-[70%] !2xl:rtl:-left-[70%] !2xl:max-w-[70%] */
     /* right: -70% !important; */
     /* left: unset !important; */
