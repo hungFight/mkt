@@ -771,6 +771,20 @@ a.link-hv:hover {
 .modal-acc > div > div {
   width: 50% !important;
 }
+.modal-config > div > div {
+  width: 70% !important;
+}
+@media (max-width: 1600px) {
+  .modal-config > div > div {
+    width: 95% !important;
+  }
+}
+@media (max-height: 1600px) {
+  #default-tab-content {
+    overflow-y: scroll;
+    height: 30vh;
+  }
+}
 .custom-table th {
   background: #fff !important;
 }
@@ -783,4 +797,8 @@ button {
 }
 .shadow-menu {
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
+}
+.sidebar ul.sub-menu li a.active::before,
+.sidebar ul.sub-menu li a::before {
+  display: none;
 }

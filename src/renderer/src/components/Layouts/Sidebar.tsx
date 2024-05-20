@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { Button } from '@mantine/core'
 import logo from '@renderer/assets/images/logo-mkt.png'
 import configSidebar from '@renderer/config/configSidebar'
 import { IRootState } from '@renderer/store'
 import { toggleSidebar } from '@renderer/store/themeConfigSlice'
-import { Button } from 'flowbite-react'
-import { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import AnimateHeight from 'react-animate-height'
 import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -18,20 +18,13 @@ const Sidebar = (): JSX.Element => {
   const location = useLocation()
   const dispatch = useDispatch()
   const { t } = useTranslation()
-  // const [isShowModal, setIsShowModal] = useState(false)
+
   const toggleMenu = (value: string): void => {
-    setCurrentMenu((oldValue) => {
-      return oldValue === value ? '' : value
-    })
+    setCurrentMenu((oldValue) => (oldValue === value ? '' : value))
   }
-  // const openModal = (): void => {
-  //   setIsShowModal(true)
-  // }
 
   useEffect(() => {
-    const selector = document.querySelector(
-      '.sidebar ul a[href="' + window.location.pathname + '"]'
-    )
+    const selector = document.querySelector(`.sidebar ul a[href="${window.location.pathname}"]`)
     if (selector) {
       selector.classList.add('active')
       const ul = selector.closest('ul.sub-menu')
@@ -129,28 +122,39 @@ const Sidebar = (): JSX.Element => {
 
                     {!item?.isHeader && (
                       <li className="menu nav-item">
-                        <Button
-                          href={item?.children ? '' : item?.path}
-                          className="border-0 !py-0 !mb-1"
-                          onClick={(e) => {
-                            if (item?.children) {
-                              e.preventDefault()
-                            }
-                            toggleMenu(item?.title ?? '')
-                          }}
-                        >
-                          <div className="flex items-center">
+                        {!item?.children ? (
+                          <NavLink
+                            to={item?.path || ''}
+                            className="border-0 !py-0 !mb-1 flex items-center h-[36px] !justify-start"
+                          >
                             {Icon ? (
-                              <Icon className="group-hover:!text-primary shrink-0" />
+                              <Icon className="group-hover:!text-primary shrink-0" size={20} />
                             ) : (
                               <Fragment />
                             )}
                             <span className="ltr:pl-2 rtl:pr-2 text-black dark:text-[#506690] dark:group-hover:text-white-dark">
                               {t(`${item?.title}`)}
                             </span>
-                          </div>
+                          </NavLink>
+                        ) : (
+                          <Button
+                            className="border-0 !py-0 !mb-1 bg-transparent custom-button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              toggleMenu(item?.title ?? '')
+                            }}
+                          >
+                            <div className="flex items-center">
+                              {Icon ? (
+                                <Icon className="group-hover:!text-primary shrink-0" />
+                              ) : (
+                                <Fragment />
+                              )}
+                              <span className="ltr:pl-2 rtl:pr-2 text-black dark:text-[#506690] dark:group-hover:text-white-dark">
+                                {t(`${item?.title}`)}
+                              </span>
+                            </div>
 
-                          {item?.children && (
                             <div
                               className={
                                 currentMenu === item?.title ? 'rotate-90' : 'rtl:rotate-180'
@@ -172,8 +176,8 @@ const Sidebar = (): JSX.Element => {
                                 />
                               </svg>
                             </div>
-                          )}
-                        </Button>
+                          </Button>
+                        )}
 
                         {item?.children && (
                           <AnimateHeight
@@ -181,13 +185,23 @@ const Sidebar = (): JSX.Element => {
                             height={currentMenu === item?.title ? 'auto' : 0}
                           >
                             <ul className="sub-menu text-gray-500">
-                              {item?.children?.map((child, indexChild) => {
-                                return (
-                                  <li key={indexChild}>
-                                    <NavLink to={child?.path ?? ''}>{t(`${child?.title}`)}</NavLink>
-                                  </li>
-                                )
-                              })}
+                              {item?.children?.map((child, indexChild) => (
+                                <li key={indexChild}>
+                                  <NavLink
+                                    to={child?.path ?? ''}
+                                    className="flex items-center !pl-[25px]"
+                                  >
+                                    {child.icon && (
+                                      <span className="mr-2 text-[20px]">
+                                        {React.createElement(child.icon)}
+                                      </span>
+                                    )}
+                                    <span className="text-black dark:text-[#506690] dark:group-hover:text-white-dark whitespace-nowrap">
+                                      {t(`${child?.title}`)}
+                                    </span>
+                                  </NavLink>
+                                </li>
+                              ))}
                             </ul>
                           </AnimateHeight>
                         )}
@@ -197,7 +211,6 @@ const Sidebar = (): JSX.Element => {
                 )
               })}
             </ul>
-            {/* {isShowModal && <ModalAddAccount isShow={isShowModal} setIsShow={setIsShowModal} />} */}
           </PerfectScrollbar>
         </div>
       </nav>

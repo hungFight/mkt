@@ -10,6 +10,7 @@ export interface CheckboxFieldProps extends InputHTMLAttributes<HTMLElement> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   classInputContainer?: string
   isRequire?: boolean
+  classLabel?: string
 }
 
 const CheckboxField: FC<CheckboxFieldProps> = ({
@@ -17,6 +18,7 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
   name,
   register,
   classInputContainer,
+  classLabel,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -32,7 +34,10 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
           {...rest}
         />
         {title && (
-          <label className="ml-2 mb-0 text-base font-medium text-gray-900" htmlFor={name}>
+          <label
+            className={`ml-2 mb-0 text-base whitespace-nowrap font-medium text-gray-900  ${classLabel}`}
+            htmlFor={name}
+          >
             {t(title)}
           </label>
         )}

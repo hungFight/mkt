@@ -5,9 +5,10 @@ import InputField from './InputField'
 
 interface InputFilterProps extends InputHTMLAttributes<HTMLElement> {
   onChangeValue?: (value: string) => void
+  button?: boolean
 }
 
-const InputFilter: FC<InputFilterProps> = ({ onChangeValue, ...spread }) => {
+const InputFilter: FC<InputFilterProps> = ({ onChangeValue, button, ...spread }) => {
   const [value, setValue] = useState('')
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const InputFilter: FC<InputFilterProps> = ({ onChangeValue, ...spread }) => {
   }
 
   return (
-    <div className="flex items-center gap-1 lg:!w-[17.7rem]">
+    <div className="flex items-center gap-1 lg:w-[17.7rem]">
       <div className="flex-1 relative">
         <InputField
           value={value}
@@ -53,13 +54,15 @@ const InputFilter: FC<InputFilterProps> = ({ onChangeValue, ...spread }) => {
         )}
       </div>
 
-      <ButtonFlowbite
-        color="blue"
-        className="p-1 [&>*]:p-0 h-full w-[38px]"
-        onClick={(): void => onChangeValue && onChangeValue((value ?? '').trim())}
-      >
-        <IoSearch size={20} />
-      </ButtonFlowbite>
+      {button && (
+        <ButtonFlowbite
+          color="blue"
+          className="p-1 [&>*]:p-0 h-full w-[38px]"
+          onClick={(): void => onChangeValue && onChangeValue((value ?? '').trim())}
+        >
+          <IoSearch size={20} />
+        </ButtonFlowbite>
+      )}
     </div>
   )
 }

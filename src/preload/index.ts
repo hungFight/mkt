@@ -2,9 +2,17 @@ import { electronAPI } from '@electron-toolkit/preload'
 import { contextBridge } from 'electron'
 import { ipcRendererAuth } from './ipc/auth'
 
+const system = {
+  openSpecificBrowser: (url: string): void => {
+    typeof url === 'string' && url !== ''
+      ? window.open && window.open(url)
+      : console.error('Invalid URL')
+  }
+}
 // Custom APIs for renderer
 const api = {
-  auth: ipcRendererAuth
+  auth: ipcRendererAuth,
+  system: system
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

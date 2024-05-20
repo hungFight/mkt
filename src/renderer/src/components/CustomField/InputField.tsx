@@ -13,6 +13,7 @@ export interface InputFieldPops extends InputHTMLAttributes<HTMLElement> {
   isRequire?: boolean
   isShadow?: boolean
   round?: string
+  inputClassName?: string
 }
 
 const InputField: FC<InputFieldPops> = ({
@@ -24,6 +25,7 @@ const InputField: FC<InputFieldPops> = ({
   isRequire,
   isShadow,
   round,
+  inputClassName,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -36,9 +38,9 @@ const InputField: FC<InputFieldPops> = ({
         </label>
       )}
       <input
-        className={`border outline-none  px-5 py-[10px] text-[#505050] ${
+        className={`border outline-none  px-5 py-[8px] text-[#505050] ${
           round ? round : 'rounded-md'
-        } w-full bg-transparent`}
+        } ${inputClassName} w-full bg-transparent`}
         autoComplete="off"
         style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
         id={name}

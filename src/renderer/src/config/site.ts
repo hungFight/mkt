@@ -1,6 +1,8 @@
 export const router = {
   home: '/home',
-  login: '/login'
+  login: '/login',
+  InteractionAcc: '/interactionAcc',
+  ShareViralMarketing: '/ShareViralMarketing'
 }
 
 export const configHidden = [
