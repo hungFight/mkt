@@ -12,6 +12,11 @@ import { AiOutlineCluster } from 'react-icons/ai'
 const SettingSystem = () => {
   return (
     <>
+      <GroupTitle title={t('Cài đặt số luồng ')} icon={<Database />} />
+      <div className="px-6 my-2">
+        <InputNumberField name="luong" title="Số luồng mở đồng thời khi đăng nhặp Facebook" />
+      </div>
+      <hr className="my-3" />
       <GroupTitle title={t('Cài đặt dữ liệu')} icon={<Database />} />
       <div className="px-6 my-2">
         <div className="my-4 flex items-center justify-center gap-3">
