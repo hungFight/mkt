@@ -28,7 +28,7 @@ const Setting = () => {
       <nav
         className={`${
           (showCustomizer && 'ltr:!right-0 rtl:!left-0') || ''
-        } bg-white fixed ltr:-right-[50%] rtl:-left-[50%] tab-setting top-0 bottom-0 w-full max-w-[50%] cs-setting shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-[right] duration-300 z-[51] dark:bg-black p-4`}
+        } bg-white fixed ltr:-right-[60%] rtl:-left-[60%] tab-setting top-0 bottom-0 w-full max-w-[60%] cs-setting shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-[right] duration-300 z-[51] dark:bg-black p-4`}
       >
         <div className="overflow-y-auto overflow-x-hidden perfect-scrollbar h-full">
           <div className="text-center relative pb-5">

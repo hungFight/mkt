@@ -100,19 +100,32 @@ const ManagerAccount = () => {
           </div>
         </div>
         <div className="2xl:w-[80%] w-[70%] rounded-lg border-dashed border border-gray-300 h-[85vh] px-2 py-3 justify-between">
-          <div className="gap-2 flex mb-3 h-fit">
-            <Button className="bg-red-700 rounded-xl" size="sm">
-              <CircleX size={20} className="mr-2" />
-              Đóng chrome
-            </Button>
-            <Button className="bg-red-700 rounded-xl" size="sm">
-              <CircleX size={20} className="mr-2" />
-              Xóa toàn bộ
-            </Button>
-            <Button className="bg-white rounded-xl text-red-500 border-red-500" size="sm">
-              <Trash2 size={20} className="mr-2" color="red" />
-              Thùng rác
-            </Button>
+          <div className="flex justify-between items-center">
+            <div className="gap-2 flex mb-3 h-fit">
+              <Button className="bg-red-700 rounded-xl" size="sm">
+                <CircleX size={20} className="mr-2" />
+                Đóng chrome
+              </Button>
+              <Button className="bg-red-700 rounded-xl" size="sm">
+                <CircleX size={20} className="mr-2" />
+                Xóa toàn bộ
+              </Button>
+              <Button className="bg-white rounded-xl text-red-500 border-red-500" size="sm">
+                <Trash2 size={20} className="mr-2" color="red" />
+                Thùng rác
+              </Button>
+            </div>
+            <div className="flex items-center gap-5">
+              <p className="text-base">
+                Tổng: <span className="text-blue-700 text-base">0</span>
+              </p>
+              <p className="text-base">
+                Live: <span className="text-green-700 text-base">0</span>
+              </p>
+              <p className="text-base">
+                Die: <span className="text-red-500 text-base">0</span>
+              </p>
+            </div>
           </div>
           <ContextMenu
             selector="#wapper_menu_context .mantine-ScrollArea-viewport"

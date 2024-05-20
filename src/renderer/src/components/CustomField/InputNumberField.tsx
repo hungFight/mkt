@@ -17,6 +17,7 @@ export interface InputNumberFieldProps extends InputHTMLAttributes<HTMLElement> 
   span?: string
   classSpan?: string
   clsTitle?: string
+  clsLabel?: string
   checkbox?: boolean
 }
 
@@ -35,6 +36,7 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
   checkbox,
   clsTitle,
   value,
+  clsLabel,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -53,7 +55,7 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
         )}
         {title && (
           <label
-            className="block mb-0 text-sm font-medium text-gray-900 whitespace-nowrap"
+            className={`block mb-0 text-sm font-medium text-gray-900 whitespace-nowrap ${clsLabel}`}
             htmlFor={name}
           >
             {t(title)} {isRequire && <span className="text-red-500">*</span>}

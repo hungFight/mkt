@@ -47,16 +47,29 @@ const InteractionAcc = () => {
   return (
     <>
       <div className="flex gap-3">
-        <div className="gap-2 flex mb-3 h-fit 2xl:w-[65%] w-[60%] px-2 py-5 pt-0">
-          <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" />
-          <Button className="bg-green-700 rounded-xl h-max btn-start" size="sm">
-            <CirclePlay size={20} className="mr-2" />
-            Start
-          </Button>
-          <Button className="bg-red-700 rounded-xl h-max" size="sm">
-            <CircleX size={20} className="mr-2" />
-            Stop
-          </Button>
+        <div className="flex items-start justify-between 2xl:w-[65%] w-[60%] px-2 py-5 pt-0">
+          <div className="gap-2 flex mb-3 h-fit">
+            <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" />
+            <Button className="bg-green-700 rounded-xl h-max btn-start" size="sm">
+              <CirclePlay size={20} className="mr-2" />
+              Start
+            </Button>
+            <Button className="bg-red-700 rounded-xl h-max" size="sm">
+              <CircleX size={20} className="mr-2" />
+              Stop
+            </Button>
+          </div>
+          <div className="flex items-center gap-5">
+            <p className="text-base">
+              Tổng: <span className="text-blue-700 text-base">0</span>
+            </p>
+            <p className="text-base">
+              Live: <span className="text-green-700 text-base">0</span>
+            </p>
+            <p className="text-base">
+              Die: <span className="text-red-500 text-base">0</span>
+            </p>
+          </div>
         </div>
         <div className="2xl:w-[35%] w-[40%] px-2 py-5 pt-0 relative" ref={dropdownRef}>
           <p

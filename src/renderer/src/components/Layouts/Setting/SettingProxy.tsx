@@ -37,6 +37,14 @@ const SettingProxy = () => {
   return (
     <>
       <div className="flex flex-col gap-2">
+        <InputNumberField
+          name="luong"
+          title="Số luồng chạy đồng thời "
+          classInputContainer="flex gap-2 my-3"
+          span="Luồng"
+          clsTitle="  justify-end"
+          classInput="w-[80px]"
+        />
         <div id="nochange" className="grid grid-cols-8 items-center my-3">
           <div className="flex items-center space-x-2 col-span-2">
             <div className="bg-blue-200 p-2 rounded-xl">
@@ -69,7 +77,7 @@ const SettingProxy = () => {
           </div>
 
           <div className="text-sm ml-3 col-span-2">
-            <InputNumberField name="port" span="luồng/IP" classInput="!w-[80px]" />
+            {/* <InputNumberField name="port" span="Luồng/IP" classInput="!w-[80px]" /> */}
           </div>
 
           <div className="flex items-center space-x-2">
@@ -128,7 +136,7 @@ const SettingProxy = () => {
             </div>
           </div>
           <div className="text-sm ml-3 col-span-2">
-            <InputNumberField name="port" span="luồng/IP" classInput="!w-[80px]" />
+            <InputNumberField name="port" span="Luồng/IP" classInput="!w-[80px]" />
           </div>
           <div className="flex items-center space-x-4 col-span-3">
             <div>
@@ -273,7 +281,7 @@ const SettingProxy = () => {
           </div>
 
           <div className="text-sm ml-3 col-span-2">
-            <InputNumberField name="port" span="luồng/IP" classInput="!w-[80px]" />
+            <InputNumberField name="port" span="Luồng/IP" classInput="!w-[80px]" />
           </div>
 
           <div className="flex items-center space-x-4 col-span-3">

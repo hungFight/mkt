@@ -22,7 +22,7 @@ const TabsSetting = (): JSX.Element => {
                                                     before:inline-block' -mb-[1px] block rounded p-3.5 py-2 hover:bg-info hover:text-white`}
                           style={{ width: '100%' }}
                         >
-                          Setting System
+                          Cài đặt hệ thống
                         </button>
                       </div>
                     )}
@@ -35,7 +35,7 @@ const TabsSetting = (): JSX.Element => {
                                                     before:inline-block' -mb-[1px] block rounded p-3.5 py-2 hover:bg-info hover:text-white`}
                           style={{ width: '100%' }}
                         >
-                          Setting Proxy
+                          Cài đặt Proxy
                         </button>
                       </div>
                     )}
