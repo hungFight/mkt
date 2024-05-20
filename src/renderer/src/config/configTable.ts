@@ -127,3 +127,26 @@ export const configTableInteractionAccount: MantineTableCustomProps['column'] = 
     title: 'Tiến trình đã chạy'
   }
 ]
+
+export const configTableSettingSystem: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'name',
+    title: 'Họ và tên',
+    sortable: true
+  },
+
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+
+  {
+    accessor: 'proxy',
+    title: 'Proxy'
+  },
+
+  {
+    accessor: 'act',
+    title: 'Lần tương tác cuối cùng'
+  }
+]

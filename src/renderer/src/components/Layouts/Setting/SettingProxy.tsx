@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import ButtonFlowbite from '@renderer/components/ButtonFlowbite'
+import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import InputField from '@renderer/components/CustomField/InputField'
+import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import TextAreaField from '@renderer/components/CustomField/TextAreaField'
 import ToggleSwitch from '@renderer/components/ToggleSwitch'
 import { t } from 'i18next'
@@ -55,13 +57,20 @@ const SettingProxy = () => {
               </svg>
             </div>
             <div>
-              <div>
+              <div className="text-left">
                 <span className="text-sm font-semibold ml-3">No Change IP</span>
+              </div>
+              <div>
+                <button type="button" className="text-sm ml-3 text-blue-500 pl-0 whitespace-nowrap">
+                  {t(`Use LAN or Wifi Network`)}
+                </button>
               </div>
             </div>
           </div>
 
-          <div className="text-sm ml-3 col-span-2">Use LAN or Wifi Network</div>
+          <div className="text-sm ml-3 col-span-2">
+            <InputNumberField name="port" span="luồng/IP" classInput="!w-[80px]" />
+          </div>
 
           <div className="flex items-center space-x-2">
             <ToggleSwitch
@@ -89,7 +98,7 @@ const SettingProxy = () => {
         </div>
 
         <div id="tinsoft" className="grid grid-cols-8 items-center my-3" aria-disabled>
-          <div className="flex items-center space-x-2 mb-6 col-span-4">
+          <div className="flex items-center space-x-2 mb-6 col-span-2">
             <div className="bg-blue-200 p-2 rounded-xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +127,9 @@ const SettingProxy = () => {
               </div>
             </div>
           </div>
-
+          <div className="text-sm ml-3 col-span-2">
+            <InputNumberField name="port" span="luồng/IP" classInput="!w-[80px]" />
+          </div>
           <div className="flex items-center space-x-4 col-span-3">
             <div>
               <ToggleSwitch
@@ -132,9 +143,7 @@ const SettingProxy = () => {
             </div>
           </div>
           <div className="justify-self-end">
-            <ButtonFlowbite size="sm" className="bg-[#2196f3] whitespace-nowrap w-[120px]">
-              Check Server
-            </ButtonFlowbite>
+            <CheckboxField title="Đợi hoàn thành hết" name="useProxy" />
           </div>
 
           <div className="font-medium text-slate-500 text-sm ml-3 col-span-4 self-start text-left mr-4 leading-6">
@@ -205,9 +214,7 @@ const SettingProxy = () => {
             </div>
           </div>
           <div className="justify-self-end">
-            <ButtonFlowbite size="sm" className="bg-[#2196f3] whitespace-nowrap w-[120px]">
-              Check Server
-            </ButtonFlowbite>
+            <CheckboxField title="Đợi hoàn thành hết" name="useTmProxy" />
           </div>
 
           <div className="font-medium text-slate-500 text-sm ml-3 col-span-4 self-start text-left mr-4 leading-6">
@@ -236,7 +243,7 @@ const SettingProxy = () => {
         </div>
 
         <div id="v6proxy" className="grid grid-cols-8 items-center my-3">
-          <div className="flex items-center space-x-2 mb-6 col-span-4">
+          <div className="flex items-center space-x-2 mb-6 col-span-2">
             <div className="bg-blue-200 p-2 rounded-xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -265,6 +272,10 @@ const SettingProxy = () => {
             </div>
           </div>
 
+          <div className="text-sm ml-3 col-span-2">
+            <InputNumberField name="port" span="luồng/IP" classInput="!w-[80px]" />
+          </div>
+
           <div className="flex items-center space-x-4 col-span-3">
             <div>
               <ToggleSwitch
@@ -278,9 +289,7 @@ const SettingProxy = () => {
             </div>
           </div>
           <div className="justify-self-end">
-            <ButtonFlowbite size="sm" className="bg-[#2196f3] whitespace-nowrap w-[120px]">
-              Check Server
-            </ButtonFlowbite>
+            <CheckboxField title="Đợi hoàn thành hết" name="useV6Proxy" />
           </div>
 
           <div className="font-medium text-slate-500 text-sm ml-3 col-span-4 self-start text-left mr-4 leading-6">

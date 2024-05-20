@@ -49,7 +49,7 @@ const InteractionAcc = () => {
       <div className="flex gap-3">
         <div className="gap-2 flex mb-3 h-fit 2xl:w-[65%] w-[60%] px-2 py-5 pt-0">
           <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" />
-          <Button className="bg-green-700 rounded-xl h-max" size="sm">
+          <Button className="bg-green-700 rounded-xl h-max btn-start" size="sm">
             <CirclePlay size={20} className="mr-2" />
             Start
           </Button>

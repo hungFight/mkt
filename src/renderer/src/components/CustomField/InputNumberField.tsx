@@ -60,7 +60,7 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
           </label>
         )}
       </div>
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center justify-center">
         <input
           className={`border outline-none px-5 py-[8px] text-[#505050] ${
             round ? round : 'rounded-md'

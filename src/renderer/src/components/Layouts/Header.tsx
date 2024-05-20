@@ -64,6 +64,11 @@ const Header = (): JSX.Element => {
       target: '.table-account',
       content: <p>Bảng quản lý tài khoản</p>,
       placements: 'center'
+    },
+    {
+      target: '.btn-start',
+      content: <p>test</p>,
+      placements: 'center'
     }
   ]
   const handleOpenSettings = () => {
