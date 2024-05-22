@@ -50,7 +50,7 @@ export const configTableManagerAccount: MantineTableCustomProps['column'] = [
     title: 'Hành động cuối'
   },
   {
-    accessor: 'open-chrome',
+    accessor: 'open',
     title: 'Mở Chrome'
   }
 ]

@@ -1,4 +1,5 @@
 import { Accounts } from '@renderer/apis'
+import logoTable from '@renderer/assets/images/Table-Logo.png'
 import sortBy from 'lodash/sortBy'
 import { DataTable, DataTableSortStatus } from 'mantine-datatable'
 import { useEffect, useState } from 'react'
@@ -77,6 +78,12 @@ const Table = (): JSX.Element => {
     setRecords(sortStatus.direction === 'desc' ? sortedRecords.reverse() : sortedRecords)
     setPage(1)
   }, [sortStatus, initialRecords])
+
+  const EmptyState = (): JSX.Element => (
+    <div className="flex flex-col justify-center">
+      <img src={logoTable} alt="" />
+    </div>
+  )
 
   return (
     <div className="panel px-0 border-white-light dark:border-[#1b2e4b]">
@@ -179,6 +186,7 @@ const Table = (): JSX.Element => {
             }): string => {
               return `Showing ${from} to ${to} of ${totalRecords} entries`
             }}
+            noRecordsIcon={<EmptyState />}
           />
         </div>
       </div>

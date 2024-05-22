@@ -29,7 +29,7 @@ const SettingSystem = () => {
           classInputContainer="flex gap-2"
           span="Luồng"
           clsTitle="w-[40%] justify-end"
-          classInput="w-[150px]"
+          classInput="w-[100px]"
         />
         <InputNumberField
           name="luong"
@@ -37,7 +37,7 @@ const SettingSystem = () => {
           classInputContainer="flex gap-2 my-3"
           span="Luồng"
           clsTitle="w-[40%]  justify-end"
-          classInput="w-[150px]"
+          classInput="w-[100px]"
         />
       </div>
       <hr className="my-3" />
@@ -46,6 +46,22 @@ const SettingSystem = () => {
         <div className="my-4 flex items-center justify-center gap-3">
           <label className="block text-gray-700 !pb-0 !mb-0 text-sm text-right whitespace-nowrap font-medium w-[30%]">
             {t('Đường dẫn thư mục Profile:')}
+          </label>
+          <div className="flex items-center w-[70%]">
+            <UploadFileField
+              afterInput
+              beforeInput
+              buttonText="Chọn"
+              clsBtn="text-[#000] rounded-[0]"
+              clsInput="w-full h-[38px]"
+              clsContainer="w-full"
+            />
+          </div>
+        </div>
+
+        <div className="my-4 flex items-center justify-center gap-3">
+          <label className="block text-gray-700 !pb-0 !mb-0 text-sm text-right whitespace-nowrap font-medium w-[30%]">
+            {t('Đường dẫn thư mục Chrome:')}
           </label>
           <div className="flex items-center w-[70%]">
             <UploadFileField
@@ -99,7 +115,7 @@ const SettingSystem = () => {
             title="Số chrome hiển thị trên 1 hàng"
             name="chrome"
             classInputContainer="w-1/2 flex items-center gap-2"
-            classInput="w-[150px]"
+            classInput="w-[100px]"
             clsLabel="text-[16px]"
           />
         </div>
@@ -136,7 +152,6 @@ const SettingSystem = () => {
             classInputContainer="w-1/2"
           />
         </div>
-        {/* <RangeSlider /> */}
 
         <div className="flex items-center mb-2">
           <CheckboxField

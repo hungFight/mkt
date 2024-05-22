@@ -802,11 +802,7 @@ button {
 .sidebar ul.sub-menu li a::before {
   display: none;
 }
-@media screen and (max-width: 1500px) {
-  .cs-setting {
-    /* !2xl:ltr:-right-[70%] !2xl:rtl:-left-[70%] !2xl:max-w-[70%] */
-    /* right: -70% !important; */
-    /* left: unset !important; */
-    /* max-width: 70% !important; */
-  }
+.modal-notifi > div > div {
+  width: 30% !important;
+  min-height: 550px;
 }

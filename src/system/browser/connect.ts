@@ -1,11 +1,16 @@
 import axios from 'axios'
 import fs from 'fs'
-import { connect, Browser } from 'puppeteer-core'
-import { IProxy, IBrowserLauncher, ILaunchOption, IResolution } from './browser'
 import { join } from 'path'
-import { delay, getMinResScale65, getUnitRes } from '../utils'
+import { Browser, connect } from 'puppeteer-core'
 import { execFileProcess } from '../helper/browser'
-import { getPositionByIndex, getResolutionScreen } from '../utils'
+import {
+  delay,
+  getMinResScale65,
+  getPositionByIndex,
+  getResolutionScreen,
+  getUnitRes
+} from '../utils'
+import { IBrowserLauncher, ILaunchOption, IProxy, IResolution } from './browser'
 
 const getWSEndPoint = async (port: number): Promise<string | undefined> => {
   const response = await axios.get(`http://127.0.0.1:${port}/json/version`)
@@ -212,10 +217,9 @@ const launchBrowserArgs = async (
     '--force-device-scale-factor=0.65',
     `--remote-debugging-port=${port}`,
     `--user-data-dir=${join(options.profileDir, nameProfile)}`,
-    // `--user-data-dir=C:\\Users\\HUNGTRINH\\AppData\\Local\\Temp\\gologin_profile_64bf52582f68b631a3ce38e7`,
     '--password-store=basic',
     // '--tz=Asia/Bangkok',
-    `--lang=en-US`,
+    `--lang=vi-VN`,
     `--font-masking-mode=2`
     // `--gologin-profile=${nameProfile}`,
     // `--disable-encryption`,
@@ -270,7 +274,6 @@ const launchBrowserArgs = async (
 }
 
 const getBrowserExec = (browserDir: string): string => {
-  // return 'C:\\Users\\HUNGTRINH\\.gologin\\browser\\orbita-browser\\chrome.exe'
   if (process.platform === 'darwin') {
     return join(browserDir, 'Orbita-Browser.app', 'Contents', 'MacOS', 'Orbita')
   }

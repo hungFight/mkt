@@ -24,7 +24,12 @@ const ModalAddAccount: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
       <Modal.Header className="px-5 py-3">Thêm tài khoản</Modal.Header>
       <Modal.Body>
         <form className="space-y-3 mb-3" onSubmit={handleSubmit}>
-          <TextAreaField title="Thêm tài khoản" placeholder="Nhập tài khoản" name="accountHolder" />
+          <TextAreaField
+            title="Thêm tài khoản"
+            placeholder="Nhập tài khoản"
+            name="accountHolder"
+            clsTextArea="!max-h-[200px] h-[200px]"
+          />
           <div className="flex gap-3 items-end">
             <SelectField name="accountType" title="Chọn danh mục" />
             <SelectField name="accountType" title="Chọn định dạng" />
@@ -37,7 +42,7 @@ const ModalAddAccount: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
             </ButtonFlowbite>
           </div>
         </form>
-        <MantineTableCustom column={configTableAddAccount} data={[]} />
+        <MantineTableCustom column={configTableAddAccount} data={[]} clsTable="h-[35vh]" />
       </Modal.Body>
       <Modal.Footer className="flex justify-end gap-3 px-5 py-3">
         <ButtonFlowbite type="submit" color="blue">

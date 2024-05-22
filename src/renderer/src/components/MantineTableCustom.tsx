@@ -1,3 +1,4 @@
+import logo from '@renderer/assets/images/Table-Logo.png'
 import useTranslationTable from '@renderer/hook/useTranslationTable'
 import sortBy from 'lodash/sortBy'
 import { DataTable, DataTableColumn, DataTableProps, DataTableSortStatus } from 'mantine-datatable'
@@ -29,6 +30,7 @@ export type MantineTableCustomProps = {
   funcSearchSuccess?: (filteData?: unknown) => void
   pase_size_active?: 'first_child' | 'last_child' | ((data: number[]) => number)
   dependencyPageSize?: unknown[]
+  clsTable?: string
   fucPageSizeChange?: (
     setPageSize: React.Dispatch<React.SetStateAction<number>>,
     PAGE_SIZES: number[]
@@ -48,6 +50,7 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
   dependency = [],
   pase_size_active = 'first_child',
   funcSearch,
+  clsTable,
   funcSearchSuccess,
   ...rest
 }): JSX.Element => {
@@ -99,11 +102,17 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
 
   const columnTranslation = useTranslationTable(column)
 
+  const EmptyState = (): JSX.Element => (
+    <div className="flex flex-col justify-center">
+      <img src={logo} alt="" />
+    </div>
+  )
+
   return (
     <div className="custom-table">
       <div className="datatables pagination-padding">
         <DataTable
-          className="whitespace-nowrap table-hover rounded-[10px]"
+          className={`whitespace-nowrap table-hover rounded-[10px] ${clsTable}`}
           noRecordsText={t('Không tìm thấy dữ liệu')}
           paginationText={({ from, to, totalRecords }): string =>
             `Hiển thị ${from} đến ${to} trong ${totalRecords} dữ liệu`
@@ -135,6 +144,7 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
           onSortStatusChange={setSortStatus}
           selectedRecords={selectedRecords}
           onSelectedRecordsChange={setSelectedRecords}
+          noRecordsIcon={<EmptyState />}
         />
       </div>
     </div>

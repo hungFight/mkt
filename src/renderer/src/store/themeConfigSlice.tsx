@@ -11,14 +11,13 @@ const defaultState = {
   rtlClass: 'ltr',
   animation: '',
   navbar: 'navbar-sticky',
-  locale: 'en',
+  locale: 'vi',
   sidebar: false,
   pageTitle: '',
   languageList: [
     { code: 'zh', name: 'Chinese' },
     { code: 'en', name: 'English' },
-    { code: 'fr', name: 'French' },
-    { code: 'de', name: 'German' }
+    { code: 'vi', name: 'Viet Nam' }
   ],
   semidark: false
 }
@@ -37,8 +36,7 @@ const initialState = {
   languageList: [
     { code: 'zh', name: 'Chinese' },
     { code: 'en', name: 'English' },
-    { code: 'fr', name: 'French' },
-    { code: 'de', name: 'German' }
+    { code: 'vi', name: 'Viet Nam' }
   ]
 }
 
