@@ -198,7 +198,6 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
           {title} {isRequire && <span className="text-red-500">*</span>}
         </label>
       )}
-
       <Select
         id={name}
         name={name}

@@ -1,9 +1,20 @@
-import React, { FC, HTMLAttributes, ReactElement, useId, useRef, useState } from 'react'
+import React, {
+  Dispatch,
+  FC,
+  HTMLAttributes,
+  ReactElement,
+  SetStateAction,
+  useId,
+  useRef,
+  useState
+} from 'react'
 import { FcOpenedFolder } from 'react-icons/fc'
 import ButtonFlowbite from '../ButtonFlowbite'
+import ButtonC from './ButtonC'
+import { useTranslation } from 'react-i18next'
 
 export type paramsChangeFile = {
-  files: File[]
+  files: File[] | []
 }
 
 export interface FileListProps {
@@ -14,7 +25,7 @@ export interface FileListProps {
 
 interface UploadFileFieldProps {
   name?: string
-  changeFile?: (obj: paramsChangeFile) => void
+  changeFile?: Dispatch<SetStateAction<paramsChangeFile>>
   inputAttribute?: HTMLAttributes<HTMLInputElement>
   maxFile?: number
   multiple?: boolean
@@ -32,6 +43,7 @@ interface UploadFileFieldProps {
   max: number
   clsLabelRoot?: string
   clsLabel?: string
+  setError: Dispatch<SetStateAction<boolean>>
 }
 
 const UploadFileField: FC<UploadFileFieldProps> = ({
@@ -49,25 +61,23 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   moreTag,
   max,
   clsLabelRoot,
-  clsLabel
+  clsLabel,
+  setError
 }): JSX.Element => {
+  const { t } = useTranslation()
   const idInput = useId()
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [filePaths, setFilePaths] = useState<string[]>([])
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const files = event.target.files
-    if (files) {
+    if (files)
       if (files.length <= max) {
+        setError(false)
         const newFilePaths = Array.from(files).map((file) => file.webkitRelativePath || file.name)
-        console.log(newFilePaths, 'file55!!')
         setFilePaths(newFilePaths)
-        if (changeFile) {
-          changeFile({ files: Array.from(files) })
-        }
-      } else {
-      }
-    }
+        if (changeFile) changeFile({ files: Array.from(files) })
+      } else setError(true)
   }
   const handleProxyClick = (): void => {
     if (fileInputRef.current) {
@@ -86,6 +96,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
         {...inputAttribute}
         accept={accept}
         onChange={handleFileChange}
+        // {...({ webkitdirectory: '' } as React.InputHTMLAttributes<HTMLInputElement>)}
       />
       <div className={clsLabelRoot}>
         {afterInput && (
@@ -96,11 +107,23 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
             <FcOpenedFolder size={24} />
           </label>
         )}
-        {moreTag && (
+        <div className="flex items-center w-max">
           <label htmlFor={idInput} className={clsLabel}>
-            {moreTag}
+            <ButtonC
+              className="text-sm font-light  bg-blue-500 text-nowrap mr-1"
+              title={t('add_image')}
+            />
           </label>
-        )}
+
+          <ButtonC
+            className="text-sm font-light  bg-red-500 text-nowrap"
+            onClick={(e) => {
+              e.stopPropagation()
+              if (changeFile) changeFile({ files: [] })
+            }}
+            title={t('Xoá toàn bộ')}
+          />
+        </div>
       </div>
       <div onClick={handleProxyClick} className="cursor-pointer w-full">
         <input

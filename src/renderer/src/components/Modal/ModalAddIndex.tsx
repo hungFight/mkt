@@ -224,7 +224,11 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
             />
           </div>
           <div className="rounded-xl border mt-1">
-            <MantineTableCustom column={configTableAddInAddIndex} data={data} clsTable="h-[60vh]" />
+            <MantineTableCustom
+              column={configTableAddInAddIndex}
+              data={data}
+              clsTable="h-[60vh]"
+            />
           </div>
         </div>
       </Modal.Body>{' '}

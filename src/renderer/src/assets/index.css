@@ -762,20 +762,24 @@ a.link-hv:hover {
   max-width: 1800px;
   width: 40%;
   margin: auto;
+  max-height: 100%;
+  overflow: overlay;
 }
 @media only screen and (max-width: 1500px) {
   .modal > div > div {
     width: 60% !important;
   }
   .modal-post > div > div {
-    width: 70% !important;
+    width: 80% !important;
   }
 }
 .modal-acc > div > div {
   width: 50% !important;
+}.modal-AI>div>div {
+  width: 50% !important;
 }
 .modal-post > div > div {
-  width: 60% !important;
+  width: 80% !important;
 }
 .modal-config > div > div {
   width: 70% !important;
@@ -811,4 +815,7 @@ button {
 .modal-notifi > div > div {
   width: 30% !important;
   min-height: 550px;
+}
+.css-277gst-control{
+  border-color: #00a6ff !important;
 }

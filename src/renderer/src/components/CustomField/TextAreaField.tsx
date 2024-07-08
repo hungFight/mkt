@@ -40,7 +40,7 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
       <textarea
         className={`border outline-none max-h-[250px] overflow-hidden resize-none  px-5 py-[10px] text-[#505050] ${
           round ? round : 'rounded-md'
-        } ${clsTextArea} w-full bg-transparent`}
+        } ${clsTextArea} w-full bg-transparent border-[#3b82f6] focus:shadow-[0_0_3px_#3b82f6] `}
         autoComplete="off"
         style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
         id={name}
