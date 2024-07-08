@@ -92,7 +92,57 @@ export const configTableAddAccount: MantineTableCustomProps['column'] = [
     title: 'Proxy'
   }
 ]
+export const configTableTrashAccount: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
 
+  {
+    accessor: 'password',
+    title: 'pass'
+  },
+
+  {
+    accessor: 'Da',
+    title: 'category'
+  },
+  {
+    accessor: 'privateKey',
+    title: 'Private Key'
+  },
+  {
+    accessor: 'recoveryEmail',
+    title: 'auth_status'
+  },
+  {
+    accessor: 'recoveryEmail',
+    title: 'Mail khôi phục'
+  },
+  {
+    accessor: 'cookie',
+    title: 'Cookies'
+  },
+  {
+    accessor: 'token',
+    title: 'Token'
+  },
+  {
+    accessor: 'proxy',
+    title: 'Proxy'
+  }
+]
+export const configTableAddInAddIndex: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'indexName',
+    title: 'Tên danh mục'
+  },
+  {
+    accessor: 'action',
+    title: 'Phương thức'
+  }
+]
 export const configTableInteractionAccount: MantineTableCustomProps['column'] = [
   {
     accessor: 'uid',
@@ -125,6 +175,29 @@ export const configTableInteractionAccount: MantineTableCustomProps['column'] = 
   {
     accessor: 'cookie',
     title: 'Tiến trình đã chạy'
+  }
+]
+export const configTableAddIndex: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'title',
+    title: 'Tiều đề'
+  },
+  {
+    accessor: 'content',
+    title: 'Nội dung'
+  },
+
+  {
+    accessor: 'image',
+    title: 'Kèm ảnh'
+  },
+  {
+    accessor: 'type',
+    title: 'Kiểu bài'
+  },
+  {
+    accessor: 'time',
+    title: 'Thời gian'
   }
 ]
 

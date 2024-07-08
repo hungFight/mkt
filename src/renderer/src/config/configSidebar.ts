@@ -1,5 +1,20 @@
 import { BiSolidDashboard } from 'react-icons/bi'
 import configStatic from '.'
+import {
+  MdAccountCircle,
+  MdFactCheck,
+  MdInsertPageBreak,
+  MdOutlineContentPaste
+} from 'react-icons/md'
+import { IoIosMenu } from 'react-icons/io'
+import { FaAddressCard, FaPeopleGroup } from 'react-icons/fa6'
+import { BsFeather } from 'react-icons/bs'
+import { AiOutlineMenuFold } from 'react-icons/ai'
+import { RiAccountPinCircleFill, RiMenuAddFill, RiPagesFill } from 'react-icons/ri'
+import { SlNote } from 'react-icons/sl'
+import { CiCirclePlus } from 'react-icons/ci'
+import { LiaNotesMedicalSolid } from 'react-icons/lia'
+import { PiNotebookFill } from 'react-icons/pi'
 export interface configItemSidebar {
   path?: string
   title?: string
@@ -15,17 +30,29 @@ export interface configSidebarType extends configItemSidebar {
 export const configSidebar: configSidebarType[] = [
   {
     path: configStatic.router.home,
-    title: 'Quản lý tài khoản',
-    icon: BiSolidDashboard
+    title: 'account_management',
+    icon: FaAddressCard
   },
   {
-    title: 'Tương tác tài khoản',
-    icon: BiSolidDashboard,
-    path: configStatic.router.InteractionAcc
+    title: 'Quản lý nội dung',
+    icon: AiOutlineMenuFold,
+    path: configStatic.router.contentAcc
+  },
+  {
+    title: 'Tương tác',
+    icon: MdOutlineContentPaste,
+    path: configStatic.router.contentAcc,
+    children: [
+      {
+        title: 'Tương tác bằng PageProfile',
+        icon: SlNote,
+        path: configStatic.router.ShareViralMarketing
+      }
+    ]
   },
   {
     title: 'Viral Marketing',
-    icon: BiSolidDashboard,
+    icon: FaPeopleGroup,
     children: [
       {
         title: 'Share bài viết',
@@ -75,6 +102,50 @@ export const configSidebar: configSidebarType[] = [
       {
         title: 'Đăng Reel Page Profile',
         icon: BiSolidDashboard
+      }
+    ]
+  },
+  {
+    title: 'Cập nhật thông tin',
+    icon: BsFeather,
+    path: configStatic.router.contentAcc,
+    children: [
+      {
+        title: 'Cập nhật thông tin tài khoản',
+        icon: MdAccountCircle,
+        path: configStatic.router.ShareViralMarketing
+      },
+      {
+        title: 'Cập nhật thông tin Page',
+        icon: MdInsertPageBreak,
+        path: configStatic.router.ShareViralMarketing
+      }
+    ]
+  },
+  {
+    title: 'Quản Trị Page',
+    icon: RiPagesFill,
+    path: configStatic.router.contentAcc,
+    children: [
+      {
+        title: 'Tạo Page Profile',
+        icon: LiaNotesMedicalSolid,
+        path: configStatic.router.ShareViralMarketing
+      },
+      {
+        title: 'Quản Trị Page Profile',
+        icon: PiNotebookFill,
+        path: configStatic.router.ShareViralMarketing
+      },
+      {
+        title: 'Chấp Nhận Lời Mời Quản Trị',
+        icon: MdFactCheck,
+        path: configStatic.router.ShareViralMarketing
+      },
+      {
+        title: 'Mời Người Theo Dõi',
+        icon: BiSolidDashboard,
+        path: configStatic.router.ShareViralMarketing
       }
     ]
   }

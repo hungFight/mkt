@@ -1,6 +1,7 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import configStatic from '@renderer/config'
 import Login from '@renderer/pages/auth/Login'
+import ContentAcc from '@renderer/pages/Pages/ContentAcc'
 import InteractionAcc from '@renderer/pages/Pages/InteractionAcc'
 import ManagerAccount from '@renderer/pages/Pages/ManagerAccount'
 import ShareViralMarketing from '@renderer/pages/Pages/ShareViralMarketing'
@@ -51,8 +52,8 @@ const routes: CustomRouteConfig[] = [
     layout: layoutType.blank
   },
   {
-    path: configStatic.router.InteractionAcc,
-    element: <InteractionAcc />,
+    path: configStatic.router.contentAcc,
+    element: <ContentAcc />,
     layout: layoutType.blank
   },
   {

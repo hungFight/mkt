@@ -767,9 +767,15 @@ a.link-hv:hover {
   .modal > div > div {
     width: 60% !important;
   }
+  .modal-post > div > div {
+    width: 70% !important;
+  }
 }
 .modal-acc > div > div {
   width: 50% !important;
+}
+.modal-post > div > div {
+  width: 60% !important;
 }
 .modal-config > div > div {
   width: 70% !important;

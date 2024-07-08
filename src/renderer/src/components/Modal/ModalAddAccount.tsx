@@ -8,12 +8,12 @@ import SelectField from '../CustomField/SelectField'
 import TextAreaField from '../CustomField/TextAreaField'
 import MantineTableCustom from '../MantineTableCustom'
 
-interface ModalAddAccountProps {
+interface ModalTrashAccountProps {
   isShow: boolean
   setIsShow?: Dispatch<SetStateAction<boolean>>
 }
 
-const ModalAddAccount: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
+const ModalAddAccount: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
   const handleClose = (): void => setIsShow && setIsShow(false)
   const handleSubmit = (): void => {
     setIsShow && setIsShow(false)

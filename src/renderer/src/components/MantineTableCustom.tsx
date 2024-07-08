@@ -55,6 +55,7 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
   ...rest
 }): JSX.Element => {
   const { t } = useTranslation()
+  const columnTranslation = useTranslationTable(column)
   const [selectedRecords, setSelectedRecords] = useState<unknown[]>([])
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(() => {
@@ -100,20 +101,19 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
     setPage(1)
   }, [pageSize])
 
-  const columnTranslation = useTranslationTable(column)
-
   const EmptyState = (): JSX.Element => (
     <div className="flex flex-col justify-center">
       <img src={logo} alt="" />
     </div>
   )
+  console.log(selectedRecords, 'selectedRecords', paginatedData, 'paginatedData')
 
   return (
     <div className="custom-table">
       <div className="datatables pagination-padding">
         <DataTable
           className={`whitespace-nowrap table-hover rounded-[10px] ${clsTable}`}
-          noRecordsText={t('Không tìm thấy dữ liệu')}
+          noRecordsText={t('empty')}
           paginationText={({ from, to, totalRecords }): string =>
             `Hiển thị ${from} đến ${to} trong ${totalRecords} dữ liệu`
           }

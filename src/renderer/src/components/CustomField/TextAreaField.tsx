@@ -6,7 +6,7 @@ export interface TextAreaFieldPops extends InputHTMLAttributes<HTMLElement> {
   title?: string
   name: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>
+  register?: any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any
   classInputContainer?: string
@@ -33,7 +33,7 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
   return (
     <div className={` ${classInputContainer ?? ''}`}>
       {title && (
-        <label className="block mb-2 text-base font-semibold text-gray-900 " htmlFor={name}>
+        <label className="block mb-1 text-base font-semibold text-gray-900 " htmlFor={name}>
           {t(title)} {isRequire && <span className="text-red-500">*</span>}
         </label>
       )}
@@ -44,7 +44,7 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
         autoComplete="off"
         style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
         id={name}
-        {...register?.(name)}
+        {...register}
         type="text"
         {...rest}
       />

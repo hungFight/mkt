@@ -13,12 +13,14 @@ import { setPageTitle } from '@renderer/store/themeConfigSlice'
 import { Button } from 'flowbite-react'
 import { ChevronDown, CirclePlay, CircleX } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 
 const InteractionAcc = () => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setPageTitle('Tương tác tài khoản'))
+    dispatch(setPageTitle(t('account_integration')))
   })
   const [selectedRecords, setSelectedRecords] = useState<any[]>([])
   const [isScriptDropdownVisible, setIsScriptDropdownVisible] = useState(false)

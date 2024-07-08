@@ -39,7 +39,6 @@ const Sidebar = (): JSX.Element => {
       }
     }
   }, [])
-
   useEffect(() => {
     if (window.innerWidth < 1024 && themeConfig.sidebar) {
       dispatch(toggleSidebar())
@@ -100,6 +99,7 @@ const Sidebar = (): JSX.Element => {
             <ul className="relative font-semibold space-y-0.5 p-2 py-0">
               {configSidebar?.map((item, index) => {
                 const Icon = item?.icon
+                console.log(item, 'item')
 
                 return (
                   <Fragment key={index}>

@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, useId, useRef, useState } from 'react'
+import React, { FC, HTMLAttributes, ReactElement, useId, useRef, useState } from 'react'
 import { FcOpenedFolder } from 'react-icons/fc'
 import ButtonFlowbite from '../ButtonFlowbite'
 
@@ -28,6 +28,10 @@ interface UploadFileFieldProps {
   beforeInput?: boolean
   afterInput?: boolean
   clsContainer
+  moreTag?: ReactElement
+  max: number
+  clsLabelRoot?: string
+  clsLabel?: string
 }
 
 const UploadFileField: FC<UploadFileFieldProps> = ({
@@ -41,7 +45,11 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   beforeInput,
   afterInput,
   clsInput,
-  clsContainer
+  clsContainer,
+  moreTag,
+  max,
+  clsLabelRoot,
+  clsLabel
 }): JSX.Element => {
   const idInput = useId()
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -50,20 +58,22 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const files = event.target.files
     if (files) {
-      const newFilePaths = Array.from(files).map((file) => file.webkitRelativePath || file.name)
-      setFilePaths(newFilePaths)
-      if (changeFile) {
-        changeFile({ files: Array.from(files) })
+      if (files.length <= max) {
+        const newFilePaths = Array.from(files).map((file) => file.webkitRelativePath || file.name)
+        console.log(newFilePaths, 'file55!!')
+        setFilePaths(newFilePaths)
+        if (changeFile) {
+          changeFile({ files: Array.from(files) })
+        }
+      } else {
       }
     }
   }
-
   const handleProxyClick = (): void => {
     if (fileInputRef.current) {
       fileInputRef.current.click()
     }
   }
-
   return (
     <div className={`flex cursor-pointer items-center ${clsContainer}`}>
       <input
@@ -76,16 +86,22 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
         {...inputAttribute}
         accept={accept}
         onChange={handleFileChange}
-        {...({ webkitdirectory: '' } as React.InputHTMLAttributes<HTMLInputElement>)}
       />
-      {afterInput && (
-        <label
-          htmlFor={idInput}
-          className="cursor-pointer mb-0 border border-[#dedede] border-r-0 py-[6px] px-[8px]"
-        >
-          <FcOpenedFolder size={24} />
-        </label>
-      )}
+      <div className={clsLabelRoot}>
+        {afterInput && (
+          <label
+            htmlFor={idInput}
+            className="cursor-pointer mb-0 border border-[#dedede] border-r-0 py-[6px] px-[8px] "
+          >
+            <FcOpenedFolder size={24} />
+          </label>
+        )}
+        {moreTag && (
+          <label htmlFor={idInput} className={clsLabel}>
+            {moreTag}
+          </label>
+        )}
+      </div>
       <div onClick={handleProxyClick} className="cursor-pointer w-full">
         <input
           type="text"

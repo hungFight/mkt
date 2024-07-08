@@ -7,6 +7,7 @@ import InputFilter from '@renderer/components/CustomField/InputFilter'
 import ModalAddAccount from '@renderer/components/Modal/ModalAddAccount'
 import ModalAddCategory from '@renderer/components/Modal/ModalAddCategory'
 import ModalHiddenRow from '@renderer/components/Modal/ModalHiddenRow'
+import ModalTrashAccount from '@renderer/components/Modal/ModalTrashAccount'
 import RenderContextMenu from '@renderer/components/RenderContextMenu'
 import TableManagerAccount from '@renderer/components/Table/TableAccount/TableManagerAccount'
 import ToolTips from '@renderer/components/Tooltips'
@@ -23,6 +24,7 @@ const ManagerAccount = () => {
     dispatch(setPageTitle('Quản lý tài khoản'))
   })
   const [isShowModal, setIsShowModal] = useState(false)
+  const [isShowModalAccountTrash, setIsShowModalAccountTrash] = useState(false)
   const [isShowModalAccount, setIsShowModalAccount] = useState(false)
   const [isShowModalHiddenRow, setIsShowModalHiddenRow] = useState(false)
   const [selectedRecords, setSelectedRecords] = useState<any[]>([])
@@ -36,6 +38,9 @@ const ManagerAccount = () => {
 
   const openModalHiddenRow = (): void => {
     setIsShowModalHiddenRow(true)
+  }
+  const openModalAccountTrash = (): void => {
+    setIsShowModalAccountTrash(true)
   }
 
   return (
@@ -110,7 +115,11 @@ const ManagerAccount = () => {
                 <CircleX size={20} className="mr-2" />
                 Xóa toàn bộ
               </Button>
-              <Button className="bg-white rounded-xl text-red-500 border-red-500" size="sm">
+              <Button
+                className="bg-white rounded-xl text-red-500 border-red-500"
+                size="sm"
+                onClick={openModalAccountTrash}
+              >
                 <Trash2 size={20} className="mr-2" color="red" />
                 Thùng rác
               </Button>
@@ -145,6 +154,12 @@ const ManagerAccount = () => {
           </div>
         </div>
         {isShowModal && <ModalAddCategory isShow={isShowModal} setIsShow={setIsShowModal} />}
+        {isShowModalAccountTrash && (
+          <ModalTrashAccount
+            isShow={isShowModalAccountTrash}
+            setIsShow={setIsShowModalAccountTrash}
+          />
+        )}
         {isShowModalAccount && (
           <ModalAddAccount isShow={isShowModalAccount} setIsShow={setIsShowModalAccount} />
         )}

@@ -1,7 +1,11 @@
 {
   "account_management": "Quản lý tài khoản",
+  "content_management": "Quản lý nội dung",
+  "post_management": "QUẢN LÝ BÀI VIẾT",
   "account_integration": "Tương tác tài khoản",
   "add_account": "Thêm tài khoản",
+  "add_category": "Thêm danh mục",
+  "add_post": "Thêm bài viết",
   "reload": "Tải lại",
   "hide_show": "Ẩn hiển cột",
   "search": "Tìm kiếm",
@@ -48,5 +52,19 @@
   "language": "Ngôn ngữ",
   "rules": "Điều khoản sử dụng",
   "sign_out": "Đăng xuất",
-  "list_account": "Danh sách tài khoản"
+  "list_account": "Danh sách tài khoản",
+  "account_recovery": "Khôi phục tài khoản",
+  "folder_recovery": "Khôi phục tài khoản theo thư mục",
+  "home": "Trang chu",
+  "delete_all": "Xoá toàn bộ",
+  "deleted_list": "Danh sách tài khoản đã xoá",
+  "empty": "Không có dữ liệu",
+  "private": "Key riêng tư",
+  "auth_status": "Tình trạng đăng nhập",
+  "withTotal_image": "Kèm ảnh Tổng",
+  "withoutTotal_image": "Không Kèm ảnh Tổng",
+  "update": "Cập nhật",
+  "edit": "Chỉnh sửa",
+  "add_new": "Thêm mới",
+  "add_image": "Thêm mới"
 }
