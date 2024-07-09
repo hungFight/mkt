@@ -11,3 +11,57 @@
     background-position: 0 0;
   }
 }
+
+@keyframes dot_one {
+  0% {
+    bottom: 0px
+  }
+
+  30% {
+    bottom: 12px
+  }
+
+  70% {
+    bottom: 0px
+  }
+
+  100% {
+    bottom: 0px
+  }
+}
+
+@keyframes dot_two {
+  0% {
+    bottom: 0px
+  }
+
+  40% {
+    bottom: 12px
+  }
+
+  80% {
+    bottom: 0px
+  }
+
+  100% {
+    bottom: 0px
+  }
+}
+
+@keyframes dot_three {
+  0% {
+    bottom: 0px
+  }
+
+  50% {
+    bottom: 12px
+  }
+
+  90% {
+    bottom: 0px
+  }
+
+  100% {
+    bottom: 0px
+  }
+}

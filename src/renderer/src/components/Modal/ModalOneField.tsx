@@ -14,13 +14,16 @@ const ModalOneField: FC<{
 }> = ({ submit, onChange, value, icon, error, rootClick, titleB, title }) => {
   return (
     <div
-      className="fixed top-0 left-0 z-50 w-full h-full bg-[rgb(0_0_0_/_66%)] flex items-center justify-center"
+      className="fixed top-0 left-0 z-50 w-full h-full bg-[rgb(0_0_0_/_66%)] flex items-center justify-center "
       onClick={rootClick}
     >
-      <div className="w-1/3 h-1/3 bg-white" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="w-1/3  bg-white rounded-[10px] border border-blue-400"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="w-full  text-center">
-          <h3 className="w-full p-2 bg-[#cdcdcd] flex items-center justify-center">
-            <div className="mr-2">{icon}</div>
+          <h3 className="w-full p-2 bg-[#cdcdcd] flex items-center justify-center rounded-t-[10px]">
+            <div className="mr-2 text-[20px]">{icon}</div>
             {title}
           </h3>
           <InputField
@@ -34,7 +37,7 @@ const ModalOneField: FC<{
             onChange={onChange}
           />
         </div>
-        <div className="flex w-full justify-center mt-10">
+        <div className="flex w-full justify-center my-5">
           {' '}
           <ButtonFlowbite className="bg-blue-600" onClick={submit}>
             {titleB}

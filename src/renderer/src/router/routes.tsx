@@ -60,6 +60,11 @@ const routes: CustomRouteConfig[] = [
     path: configStatic.router.ShareViralMarketing,
     element: <ShareViralMarketing />,
     layout: layoutType.blank
+  },
+  {
+    path: configStatic.router.InteractionAcc,
+    element: <InteractionAcc />,
+    layout: layoutType.blank
   }
 ]
 

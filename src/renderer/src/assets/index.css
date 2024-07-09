@@ -775,7 +775,11 @@ a.link-hv:hover {
 }
 .modal-acc > div > div {
   width: 50% !important;
-}.modal-AI>div>div {
+}
+.modal-progress > div > div {
+  width: 60% !important;
+}
+.modal-AI>div>div {
   width: 50% !important;
 }
 .modal-post > div > div {

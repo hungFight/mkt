@@ -85,7 +85,7 @@ const ContentAcc = () => {
   return (
     <>
       <div className="flex justify-between">
-        <div className="bg-[rgb(255_255_255)] w-[83%] h-full border border-blue-500 rounded-xl relative">
+        <div className="bg-[rgb(255_255_255)] w-[82%] h-full border border-blue-500 rounded-xl relative">
           <h3
             className="absolute top-[-15px] left-5 px-2 py-1 [rgb(255_255_255)] text-blue-600 rounded-xl"
             style={{ backgroundImage: 'linear-gradient(183deg, #fafafa, rgb(255 255 255))' }}
@@ -118,7 +118,7 @@ const ContentAcc = () => {
             <MantineTableCustom column={configTableAddIndex} data={data} clsTable="!h-[70vh]" />
           </div>
         </div>
-        <div className="w-[15%] p-2 px-1 bg-[rgb(255_255_255)] rounded-xl border border-blue-400">
+        <div className="w-[17%] p-2 px-1 bg-[rgb(255_255_255)] rounded-xl border border-blue-400">
           <div className="w-full flex justify-start flex-wrap">
             <div
               className=" text-black  hover:bg-[#ebebeb] cursor-pointer h-max p-[6px] w-full !flex !justify-start text-sm font-light"

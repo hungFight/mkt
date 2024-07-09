@@ -41,12 +41,12 @@ export const configSidebar: configSidebarType[] = [
   {
     title: 'Tương tác',
     icon: MdOutlineContentPaste,
-    path: configStatic.router.contentAcc,
+    path: configStatic.router.InteractionAcc,
     children: [
       {
         title: 'Tương tác bằng PageProfile',
         icon: SlNote,
-        path: configStatic.router.ShareViralMarketing
+        path: configStatic.router.InteractionAcc
       }
     ]
   },

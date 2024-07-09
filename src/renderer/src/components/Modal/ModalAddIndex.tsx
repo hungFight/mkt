@@ -12,6 +12,7 @@ import { GoTrash } from 'react-icons/go'
 import ButtonC from '../CustomField/ButtonC'
 import 'react-toastify/dist/ReactToastify.css'
 import ModalOneField from './ModalOneField'
+import ModalProgress from './ModalProgress'
 interface ModalAddAccountProps {
   isShow: boolean
   setIsShow?: Dispatch<SetStateAction<boolean>>
@@ -90,6 +91,42 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
     },
     {
       id: 3,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 5,
       indexName: 'Hello 3',
       action: (
         <div className="flex gap-2 w-full">
@@ -216,18 +253,12 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
               classNameIcon="text-[20px]"
               onClick={() => setShowModalAdd('')}
             />{' '}
-            <ButtonC
-              title={t('reload')}
-              icon={<IoReloadCircleSharp />}
-              className="bg-purple-500"
-              classNameIcon="text-[20px]"
-            />
           </div>
-          <div className="rounded-xl border mt-1">
+          <div className="rounded-xl border mt-1 m">
             <MantineTableCustom
               column={configTableAddInAddIndex}
               data={data}
-              clsTable="h-[60vh]"
+              clsTable="max-h-[60vh]"
             />
           </div>
         </div>
