@@ -40,7 +40,6 @@ interface UploadFileFieldProps {
   afterInput?: boolean
   clsContainer
   moreTag?: ReactElement
-  max: number
   clsLabelRoot?: string
   clsLabel?: string
   setError: Dispatch<SetStateAction<boolean>>
@@ -59,7 +58,6 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   clsInput,
   clsContainer,
   moreTag,
-  max,
   clsLabelRoot,
   clsLabel,
   setError
@@ -71,13 +69,12 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const files = event.target.files
-    if (files)
-      if (files.length <= max) {
-        setError(false)
-        const newFilePaths = Array.from(files).map((file) => file.webkitRelativePath || file.name)
-        setFilePaths(newFilePaths)
-        if (changeFile) changeFile({ files: Array.from(files) })
-      } else setError(true)
+    if (files) {
+      setError(false)
+      const newFilePaths = Array.from(files).map((file) => file.webkitRelativePath || file.name)
+      setFilePaths(newFilePaths)
+      if (changeFile) changeFile({ files: Array.from(files) })
+    }
   }
   const handleProxyClick = (): void => {
     if (fileInputRef.current) {
@@ -110,13 +107,13 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
         <div className="flex items-center w-max">
           <label htmlFor={idInput} className={clsLabel}>
             <ButtonC
-              className="text-sm font-light  bg-blue-500 text-nowrap mr-1"
+              className="text-sm font-light  bg-blue-500 text-nowrap mr-1 p-2"
               title={t('add_image')}
             />
           </label>
 
           <ButtonC
-            className="text-sm font-light  bg-red-500 text-nowrap"
+            className="text-sm font-light  bg-red-500 text-nowrap p-2"
             onClick={(e) => {
               e.stopPropagation()
               if (changeFile) changeFile({ files: [] })

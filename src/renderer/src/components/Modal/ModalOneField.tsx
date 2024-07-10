@@ -10,8 +10,9 @@ const ModalOneField: FC<{
   icon: ReactElement
   error?: string
   titleB: string
+  titleC: string
   title: string
-}> = ({ submit, onChange, value, icon, error, rootClick, titleB, title }) => {
+}> = ({ submit, onChange, value, icon, error, rootClick, titleB, title, titleC }) => {
   return (
     <div
       className="fixed top-0 left-0 z-50 w-full h-full bg-[rgb(0_0_0_/_66%)] flex items-center justify-center "
@@ -37,8 +38,11 @@ const ModalOneField: FC<{
             onChange={onChange}
           />
         </div>
-        <div className="flex w-full justify-center my-5">
+        <div className="flex w-full justify-end my-5 pr-5">
           {' '}
+          <ButtonFlowbite className="bg-red-600 mr-2" onClick={rootClick}>
+            {titleC}
+          </ButtonFlowbite>{' '}
           <ButtonFlowbite className="bg-blue-600" onClick={submit}>
             {titleB}
           </ButtonFlowbite>

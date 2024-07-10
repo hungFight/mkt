@@ -823,3 +823,6 @@ button {
 .css-277gst-control{
   border-color: #00a6ff !important;
 }
+.hoverImage:hover .hoveredImage{
+  display: block;
+}

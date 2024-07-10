@@ -36,7 +36,7 @@ export const configSidebar: configSidebarType[] = [
   {
     title: 'Quản lý nội dung',
     icon: AiOutlineMenuFold,
-    path: configStatic.router.contentAcc
+    path: configStatic.router.contentManagement
   },
   {
     title: 'Tương tác',
@@ -108,7 +108,7 @@ export const configSidebar: configSidebarType[] = [
   {
     title: 'Cập nhật thông tin',
     icon: BsFeather,
-    path: configStatic.router.contentAcc,
+    path: configStatic.router.contentManagement,
     children: [
       {
         title: 'Cập nhật thông tin tài khoản',
@@ -125,7 +125,7 @@ export const configSidebar: configSidebarType[] = [
   {
     title: 'Quản Trị Page',
     icon: RiPagesFill,
-    path: configStatic.router.contentAcc,
+    path: configStatic.router.contentManagement,
     children: [
       {
         title: 'Tạo Page Profile',

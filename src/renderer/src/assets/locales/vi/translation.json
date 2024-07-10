@@ -1,6 +1,8 @@
 {
   "account_management": "Quản lý tài khoản",
   "content_management": "Quản lý nội dung",
+  "content": "Nội dung",
+  "require": "Trường bắt buộc nhập dữ liệu",
   "post_management": "QUẢN LÝ BÀI VIẾT",
   "account_integration": "Tương tác tài khoản",
   "add_account": "Thêm tài khoản",
@@ -53,6 +55,7 @@
   "rules": "Điều khoản sử dụng",
   "sign_out": "Đăng xuất",
   "list_account": "Danh sách tài khoản",
+  "list_image": "Danh sách ảnh",
   "account_recovery": "Khôi phục tài khoản",
   "folder_recovery": "Khôi phục tài khoản theo thư mục",
   "home": "Trang chu",
@@ -66,5 +69,20 @@
   "update": "Cập nhật",
   "edit": "Chỉnh sửa",
   "add_new": "Thêm mới",
-  "add_image": "Thêm mới"
+  "add_image": "Thêm mới",
+  "random_number": "random số",
+  "get_current_timespan": "lấy timespan hiện tại",
+  "get_current_time": "lấy thời gian hiện tại",
+  "get_random_code": "lấy đoạn mã ngãu nhiên",
+  "get_random_icon": "lấy icon ngẫu nhiên",
+  "valid_character": "Ký tự hợp lệ",
+  "inValid": "Dữ liệu không hợp lệ!",
+  "choice_account_index": "Chọn danh mục tài khoản",
+  "choice_index": "Chọn danh mục",
+  "add_success": "Thêm thành công!",
+  "get_current_date": "lấy ngày hiện tại",
+  "content_image": "Nội dung kèm ảnh",
+  "title_post": "Tiêu đề bài đăng",
+  "width_image": "Kèm ảnh",
+  "cancel": "Huỷ bỏ"
 }

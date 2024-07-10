@@ -2,7 +2,7 @@ export const router = {
   home: '/home',
   login: '/login',
   InteractionAcc: '/interactionAcc',
-  contentAcc: '/contentAcc',
+  contentManagement: '/contentManagement',
   ShareViralMarketing: '/ShareViralMarketing',
   addIndex: '/addIndex'
 }

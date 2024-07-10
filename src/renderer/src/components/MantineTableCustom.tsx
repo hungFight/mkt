@@ -20,6 +20,7 @@ type DataTablePropsNew = Omit<
 
 export type MantineTableCustomProps = {
   column: Array<DataTableColumn<unknown>>
+  height?: number | string
   data: unknown[]
   PAGE_SIZES?: number[]
   initSort?: DataTableSortStatus
@@ -52,6 +53,7 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
   funcSearch,
   clsTable,
   funcSearchSuccess,
+  height = 550,
   ...rest
 }): JSX.Element => {
   const { t } = useTranslation()
@@ -112,12 +114,13 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
     <div className="custom-table">
       <div className="datatables pagination-padding">
         <DataTable
+          // height={height}
           className={`whitespace-nowrap table-hover rounded-[10px] ${clsTable}`}
           noRecordsText={t('empty')}
           paginationText={({ from, to, totalRecords }): string =>
             `Hiển thị ${from} đến ${to} trong ${totalRecords} dữ liệu`
           }
-          highlightOnHover
+          // highlightOnHover
           {...rest}
           records={paginatedData}
           columns={

@@ -14,6 +14,7 @@ export interface TextAreaFieldPops extends InputHTMLAttributes<HTMLElement> {
   isShadow?: boolean
   round?: string
   clsTextArea?: string
+  clsTextLabel?: string
 }
 
 const TextAreaField: FC<TextAreaFieldPops> = ({
@@ -26,6 +27,7 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
   isShadow,
   round,
   clsTextArea,
+  clsTextLabel,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -33,12 +35,15 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
   return (
     <div className={` ${classInputContainer ?? ''}`}>
       {title && (
-        <label className="block mb-1 text-base font-semibold text-gray-900 " htmlFor={name}>
+        <label
+          className={`label_area block mb-1 text-base font-light text-gray-900 ${clsTextLabel}`}
+          htmlFor={name}
+        >
           {t(title)} {isRequire && <span className="text-red-500">*</span>}
         </label>
       )}
       <textarea
-        className={`border outline-none max-h-[250px] overflow-hidden resize-none  px-5 py-[10px] text-[#505050] ${
+        className={`border outline-none  overflow-hidden   px-5 py-[10px] text-[#505050] ${
           round ? round : 'rounded-md'
         } ${clsTextArea} w-full bg-transparent border-[#3b82f6] focus:shadow-[0_0_3px_#3b82f6] `}
         autoComplete="off"

@@ -65,3 +65,62 @@
     bottom: 0px
   }
 }
+
+/* /// */
+
+@keyframes dot_n_one {
+  0% {
+    opacity: 1;
+    font-size: 18px;
+    color: #858585
+  }
+
+  50% {
+    opacity: 0.8;
+    font-size: 8px
+  }
+
+  100% {
+    font-size: 18px;
+    opacity: 1;
+    color: #cbcbcb;
+  }
+}
+
+@keyframes dot_n_two {
+  0% {
+    font-size: 8px;
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+    font-size: 18px
+  }
+
+  100% {
+    opacity: 0.8;
+    font-size: 8px;
+    color: #858585
+  }
+}
+
+@keyframes dot_n_three {
+
+  0% {
+    font-size: 18px;
+    opacity: 1;
+    color: #858585
+  }
+
+  50% {
+    opacity: 0.8;
+    font-size: 8px
+  }
+
+  100% {
+    opacity: 1;
+    color: #cbcbcb;
+    font-size: 18px
+  }
+}

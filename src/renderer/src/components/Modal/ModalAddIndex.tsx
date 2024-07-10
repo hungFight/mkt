@@ -142,6 +142,78 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           ))}
         </div>
       )
+    },
+    {
+      id: 5,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 5,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 5,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 5,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
     }
   ])
   const handleUpdate = () => {
@@ -201,9 +273,9 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           }
         ]
       })
-      toast.success('Thêm mới thành công!')
+      toast.success(t('add_success'))
       setShowModalAdd(null)
-    } else setError('Invalid data!')
+    } else setError(t('inValid'))
   }
   return (
     <Modal show={isShow} onClose={handleClose} className="modal-acc modal">
@@ -213,6 +285,7 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           submit={handleUpdate}
           icon={<RiQuillPenFill />}
           titleB={t('update')}
+          titleC={t('cancel')}
           title={t('edit')}
           onChange={(e: any) => {
             if (isShowModalUpdate)
@@ -230,6 +303,7 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           icon={<CiCirclePlus />}
           title={t('add_new')}
           titleB={t('add')}
+          titleC={t('cancel')}
           onChange={(e: any) => {
             setShowModalAdd(e.target.value)
             if (error) setError('')
@@ -249,7 +323,7 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
             <ButtonC
               title={t('add_new')}
               icon={<CiCirclePlus />}
-              className="bg-blue-500"
+              className="bg-blue-500 p-1"
               classNameIcon="text-[20px]"
               onClick={() => setShowModalAdd('')}
             />{' '}

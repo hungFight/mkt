@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import ButtonC from '@renderer/components/CustomField/ButtonC'
 import SelectField from '@renderer/components/CustomField/SelectField'
 import MantineTableCustom from '@renderer/components/MantineTableCustom'
 import ModalAddIndex from '@renderer/components/Modal/ModalAddIndex'
@@ -64,12 +65,20 @@ const ContentAcc = () => {
       title: '1'
     },
     {
+      uid: '2',
       title: '1'
     },
     {
       title: '1'
     },
     {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      uid: '2',
       title: '1'
     },
     {
@@ -83,18 +92,37 @@ const ContentAcc = () => {
     }
   ]
   return (
-    <>
+    <div className="">
+      <div className="w-full mb-3 flex items-center rounded-[10px] pb-2">
+        <ButtonC
+          className="bg-blue-600 w-fit p-2 mr-[145px]"
+          icon={<CiCirclePlus size={20} className="mr-2" />}
+          title={t('add_category')}
+          onClick={() => setIsShowModalAddIndex(true)}
+          />
+        <ButtonC
+          title={t('add_post')}
+          onClick={() => setIsShowModalAddPost(true)}
+          classNameIcon="!mr-1"
+          className="bg-blue-600 w-fit  p-2"
+          icon={<RiMenuAddFill size={20} className="mr-2" />}
+        />{' '}
+      </div>
       <div className="flex justify-between">
-        <div className="bg-[rgb(255_255_255)] w-[82%] h-full border border-blue-500 rounded-xl relative">
-          <h3
-            className="absolute top-[-15px] left-5 px-2 py-1 [rgb(255_255_255)] text-blue-600 rounded-xl"
-            style={{ backgroundImage: 'linear-gradient(183deg, #fafafa, rgb(255 255 255))' }}
-          >
+        <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-blue-400 relative">
+          <h3 className="absolute top-[-15px] left-5 px-2 py-1 text-blue-600 rounded-xl z-10 ">
+            {t('category_management')}
+          </h3>
+          <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
+        </div>
+        <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-blue-500 rounded-xl relative">
+          <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
+          <h3 className="absolute top-[-15px] left-5 px-2 py-1 [rgb(255_255_255)] text-blue-600 rounded-xl z-10">
             {t('post_management')}
           </h3>
           <div className="flex items-center w-full justify-between p-5 ">
             <SelectField
-              placeholder="Chọn danh mục tài khoản"
+              placeholder={t('choice_account_index')}
               name="index"
               className="!shadow-none p-3"
             />
@@ -114,28 +142,8 @@ const ContentAcc = () => {
               </h3>
             </div>
           </div>
-          <div className=" rounded-xl border-t  border-black">
-            <MantineTableCustom column={configTableAddIndex} data={data} clsTable="!h-[70vh]" />
-          </div>
-        </div>
-        <div className="w-[17%] p-2 px-1 bg-[rgb(255_255_255)] rounded-xl border border-blue-400">
-          <div className="w-full flex justify-start flex-wrap">
-            <div
-              className=" text-black  hover:bg-[#ebebeb] cursor-pointer h-max p-[6px] w-full !flex !justify-start text-sm font-light"
-              style={{ justifyContent: 'start !important' }}
-              onClick={() => setIsShowModalAddIndex(true)}
-            >
-              <RiMenuAddFill size={20} className="mr-2" />
-              {t('add_category')}
-            </div>
-            <div
-              className=" text-black hover:bg-[#ebebeb] p-[6px] cursor-pointer h-max  w-full !flex !justify-start text-sm font-light"
-              style={{ justifyContent: 'start !important' }}
-              onClick={() => setIsShowModalAddPost(true)}
-            >
-              <CiCirclePlus size={20} className="mr-2" />
-              {t('add_post')}
-            </div>
+          <div className=" rounded-xl border-t  border-black ">
+            <MantineTableCustom column={configTableAddIndex} data={data} />
           </div>
         </div>
       </div>
@@ -148,7 +156,7 @@ const ContentAcc = () => {
       {isShowModalScript && (
         <ModalScript isShow={isShowModalScript} setIsShow={setIsShowModalScript} />
       )}
-    </>
+    </div>
   )
 }
 

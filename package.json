@@ -55,7 +55,6 @@
     "@electron-toolkit/tsconfig": "^1.0.1",
     "@electron/notarize": "^1.2.3",
     "@emotion/cache": "^11.11.0",
-    "@emotion/react": "^11.11.1",
     "@emotion/serialize": "^1.1.2",
     "@emotion/utils": "^1.2.1",
     "@headlessui/react": "^1.7.15",
