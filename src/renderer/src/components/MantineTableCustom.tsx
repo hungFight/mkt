@@ -104,7 +104,7 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
   }, [pageSize])
 
   const EmptyState = (): JSX.Element => (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center w-[50px]">
       <img src={logo} alt="" />
     </div>
   )

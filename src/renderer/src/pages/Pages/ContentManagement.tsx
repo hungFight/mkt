@@ -45,61 +45,61 @@ const ContentAcc = () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
-  const data = [
-    {
-      uid: '1',
-      title: '1',
-      content: 'Hello'
-    },
-    {
-      uid: '2',
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      uid: '2',
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      uid: '2',
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      title: '1'
-    },
-    {
-      title: '1'
-    }
-  ]
+ const data = [
+   {
+     uid: '1',
+     title: '1',
+     content: 'Hello'
+   },
+   {
+     uid: '2',
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     uid: '2',
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     uid: '2',
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     title: '1'
+   },
+   {
+     title: '1'
+   }
+ ]
   return (
     <div className="">
-      <div className="w-full mb-3 flex items-center rounded-[10px] pb-2">
+      <div className="w-full mb-3 flex items-center justify-between rounded-[10px] pb-2">
         <ButtonC
           className="bg-blue-600 w-fit p-2 mr-[145px]"
           icon={<CiCirclePlus size={20} className="mr-2" />}
           title={t('add_category')}
           onClick={() => setIsShowModalAddIndex(true)}
-          />
+        />
         <ButtonC
           title={t('add_post')}
           onClick={() => setIsShowModalAddPost(true)}
@@ -120,7 +120,7 @@ const ContentAcc = () => {
           <h3 className="absolute top-[-15px] left-5 px-2 py-1 [rgb(255_255_255)] text-blue-600 rounded-xl z-10">
             {t('post_management')}
           </h3>
-          <div className="flex items-center w-full justify-between p-5 ">
+          <div className="flex items-center w-full justify-between p-5 relative">
             <SelectField
               placeholder={t('choice_account_index')}
               name="index"
@@ -142,7 +142,8 @@ const ContentAcc = () => {
               </h3>
             </div>
           </div>
-          <div className=" rounded-xl border-t  border-black ">
+
+          <div className=" rounded-xl border-t  border-black w-[90%] m-auto shadow-[0_0_5px] shadow-[#9b9b9b] mb-5">
             <MantineTableCustom column={configTableAddIndex} data={data} />
           </div>
         </div>

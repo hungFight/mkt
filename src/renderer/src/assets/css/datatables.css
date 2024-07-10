@@ -24,7 +24,9 @@ table tr .mantine-Checkbox-root {
   @apply !bg-white  text-black dark:!bg-[#1a2941] dark:!text-white-dark;
   border: 1px solid #f0f0f0;
 }
-
+table .mantine-19icnej{
+  background-color: #cbcbcb !important
+}
 .datatables .table-bordered table thead tr th,
 .datatables .table-bordered table tbody tr td {
   @apply !border !border-solid !border-[#f6f7fa] dark:!border-[#191e3a];
@@ -133,3 +135,4 @@ table tr .mantine-Checkbox-root {
     max-height: 67vh;
   }
 }
+

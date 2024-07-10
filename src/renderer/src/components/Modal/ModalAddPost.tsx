@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import SelectField from '../CustomField/SelectField'
 import ButtonC from '../CustomField/ButtonC'
 import 'react-toastify/dist/ReactToastify.css'
+import logo from '@renderer/assets/images/Table-Logo.png'
 import { useForm } from 'react-hook-form'
 import TextAreaField from '../CustomField/TextAreaField'
 import { FaRobot } from 'react-icons/fa6'
@@ -44,7 +45,7 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
       onClose={handleClose}
       className="modal-post modal max-h-full overflow-auto "
     >
-      <div className="bg-[#f2f2f2] rounded-tr-[6px] rounded-tl-[6px]">
+      <div className="bg-[#d6d6d6] rounded-tr-[6px] rounded-tl-[6px]">
         <Modal.Header className="px-5 py-3 font-bold items-center">{t('add_post')}</Modal.Header>
       </div>
       <Modal.Body>
@@ -117,36 +118,45 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
                   </div>
                   <div className="w-full px-1 ">
                     <div className="w-full h-[200px] border border-blue-500 rounded-[10px] mb-2 p-4 overflow-auto relative">
-                      {files.files.map((f, index) => (
-                        <div className="flex items-center justify-between hover:bg-black-light cursor-pointer px-2 py-1">
-                          <div className="flex items-center">
-                            <h2 className="w-5 mr-2">{index + 1}:</h2>
-                            <p className="text-[13px]">{f.path}</p>
-                          </div>
-                          <div className="flex items-center  hoverImage">
-                            <img
-                              src={URL.createObjectURL(f)}
-                              alt={f.path}
-                              className="w-6 h-6 rounded-[5px] mr-3"
-                            />
-                            <img
-                              src={URL.createObjectURL(f)}
-                              alt={f.path}
-                              className="hidden max-w-[150px] h-[150px] absolute top-3 right-[100px] rounded-[5px] mr-3 hoveredImage"
-                            />
-                            <div
-                              className="text-[25px] flex items-center justify-center rounded-[50%] hover:bg-white"
-                              onClick={() =>
-                                setFiles((pre) => ({
-                                  files: pre.files.filter((_, indexF) => indexF !== index)
-                                }))
-                              }
-                            >
-                              <IoCloseOutline />
+                      {files.files?.length ? (
+                        files.files.map((f, index) => (
+                          <div className="flex items-center justify-between hover:bg-black-light cursor-pointer px-2 py-1">
+                            <div className="flex items-center">
+                              <h2 className="w-5 mr-2">{index + 1}:</h2>
+                              <p className="text-[13px]">{f.path}</p>
+                            </div>
+                            <div className="flex items-center  hoverImage">
+                              <img
+                                src={URL.createObjectURL(f)}
+                                alt={f.path}
+                                className="w-6 h-6 rounded-[5px] mr-3"
+                              />
+                              <img
+                                src={URL.createObjectURL(f)}
+                                alt={f.path}
+                                className="hidden max-w-[150px] h-[150px] absolute top-3 right-[100px] rounded-[5px] mr-3 hoveredImage"
+                              />
+                              <div
+                                className="text-[25px] flex items-center justify-center rounded-[50%] hover:bg-white"
+                                onClick={() =>
+                                  setFiles((pre) => ({
+                                    files: pre.files.filter((_, indexF) => indexF !== index)
+                                  }))
+                                }
+                              >
+                                <IoCloseOutline />
+                              </div>
                             </div>
                           </div>
+                        ))
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <p className="text-sm opacity-90 flex items-center">
+                            {t('empty')}
+                            <img src={logo} className='w-[30px]'/>
+                          </p>
                         </div>
-                      ))}
+                      )}
                     </div>
                     {/* <TextAreaField
                       register={{ ...register('images', { required: true }) }}

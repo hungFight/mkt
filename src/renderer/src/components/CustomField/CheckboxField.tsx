@@ -31,6 +31,7 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
           id={name}
           {...register?.(name)}
           type="checkbox"
+
           {...rest}
         />
         {title && (

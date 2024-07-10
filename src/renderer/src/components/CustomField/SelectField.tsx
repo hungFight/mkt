@@ -202,7 +202,8 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
         id={name}
         name={name}
         value={ValueSelectd && ValueSelectd?.length > 0 ? ValueSelectd : []}
-        className={className}
+        className="basic-single"
+        classNamePrefix="select"
         onChange={handleSelectedOptionChange}
         menuPortalTarget={document.body}
         filterOption={customFilter}

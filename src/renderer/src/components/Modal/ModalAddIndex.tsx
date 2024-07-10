@@ -124,96 +124,6 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           ))}
         </div>
       )
-    },
-    {
-      id: 5,
-      indexName: 'Hello 3',
-      action: (
-        <div className="flex gap-2 w-full">
-          {actionIcon.map((r) => (
-            <ToolTips key={r.uid} content={r.title}>
-              <ButtonC
-                icon={r.icon}
-                title={r.title}
-                onClick={() => r.onClick(3, 'Hello 3')}
-                className={r.bg}
-              />
-            </ToolTips>
-          ))}
-        </div>
-      )
-    },
-    {
-      id: 5,
-      indexName: 'Hello 3',
-      action: (
-        <div className="flex gap-2 w-full">
-          {actionIcon.map((r) => (
-            <ToolTips key={r.uid} content={r.title}>
-              <ButtonC
-                icon={r.icon}
-                title={r.title}
-                onClick={() => r.onClick(3, 'Hello 3')}
-                className={r.bg}
-              />
-            </ToolTips>
-          ))}
-        </div>
-      )
-    },
-    {
-      id: 5,
-      indexName: 'Hello 3',
-      action: (
-        <div className="flex gap-2 w-full">
-          {actionIcon.map((r) => (
-            <ToolTips key={r.uid} content={r.title}>
-              <ButtonC
-                icon={r.icon}
-                title={r.title}
-                onClick={() => r.onClick(3, 'Hello 3')}
-                className={r.bg}
-              />
-            </ToolTips>
-          ))}
-        </div>
-      )
-    },
-    {
-      id: 5,
-      indexName: 'Hello 3',
-      action: (
-        <div className="flex gap-2 w-full">
-          {actionIcon.map((r) => (
-            <ToolTips key={r.uid} content={r.title}>
-              <ButtonC
-                icon={r.icon}
-                title={r.title}
-                onClick={() => r.onClick(3, 'Hello 3')}
-                className={r.bg}
-              />
-            </ToolTips>
-          ))}
-        </div>
-      )
-    },
-    {
-      id: 5,
-      indexName: 'Hello 3',
-      action: (
-        <div className="flex gap-2 w-full">
-          {actionIcon.map((r) => (
-            <ToolTips key={r.uid} content={r.title}>
-              <ButtonC
-                icon={r.icon}
-                title={r.title}
-                onClick={() => r.onClick(3, 'Hello 3')}
-                className={r.bg}
-              />
-            </ToolTips>
-          ))}
-        </div>
-      )
     }
   ])
   const handleUpdate = () => {
@@ -318,7 +228,7 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
         </Modal.Header>
       </div>
       <Modal.Body>
-        <div className="px-2 py-2 pt-5  relative my-10 rounded-xl">
+        <div className="px-2 py-2   relative my-5 rounded-xl">
           <div className="flex  w-full justify-between">
             <ButtonC
               title={t('add_new')}

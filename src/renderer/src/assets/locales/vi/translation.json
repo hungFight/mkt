@@ -83,6 +83,8 @@
   "get_current_date": "lấy ngày hiện tại",
   "content_image": "Nội dung kèm ảnh",
   "title_post": "Tiêu đề bài đăng",
+  "title": "Tiêu đề",
   "width_image": "Kèm ảnh",
-  "cancel": "Huỷ bỏ"
+  "cancel": "Huỷ bỏ",
+  "keyword": "Từ khoá"
 }
