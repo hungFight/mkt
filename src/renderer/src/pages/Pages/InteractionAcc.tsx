@@ -76,7 +76,7 @@ const InteractionAcc = () => {
             </div>
           </div>
           <div className="flex items-center justify-between mt-5   ">
-            <div className="w-[64%] h-[75vh] border border-blue-500 rounded-[10px] bg-[rgb(255_255_255)] relative">
+            <div className="w-[64%] h-[75vh] border border-blue-200 rounded-[10px] bg-[rgb(255_255_255)] relative">
               {' '}
               <h2 className="text-sm absolute top-[-15px] left-1 px-3 py-1 z-10">
                 QUẢN LÝ TÀI KHOẢN
@@ -95,44 +95,76 @@ const InteractionAcc = () => {
                 </div>{' '}
               </div>
             </div>
-            <div className="w-[35%] h-[75vh] border border-blue-500 rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
+            <div className="w-[35%] h-[75vh] border border-blue-200 rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
               <h2 className="text-sm absolute top-[-15px] left-2 px-3 py-1 z-10">
                 CẤU HÌNH CHẠY TƯƠNG TÁC
               </h2>
               <div className="w-[210px] absolute top-[-1px] left-[15px] h-[1px] bg-white "></div>
-              <div className="w-full bg-white overflow-hidden pl-2">
-                <InputNumberField
-                  min={1}
-                  name="stream"
-                  max={100}
-                  title="Số luồng chạy đồng thời"
-                  onChange={(e: any) => setInNumber(e.target.value)}
-                  value={inNumber}
-                  classInput="ml-2 !w-[70px] !px-2 !py-1"
-                  span="Luồng"
-                  clsTitle="w-[58%]"
-                  clsLabel="whitespace-pre-wrap"
-                  classInputContainer="w-full flex items-center justify-start  mb-2"
-                />{' '}
-                <InputNumberField
-                  min={1}
-                  name="stream"
-                  max={100}
-                  title="Chuyễn PageProfile nếu lỗi liên tiếp"
-                  onChange={(e: any) => setInNumber(e.target.value)}
-                  span="Lần"
-                  value={inNumber}
-                  classInput="ml-2 !w-[70px] !px-2 !py-1"
-                  clsLabel="whitespace-pre-wrap"
-                  clsTitle="w-[58%]"
-                  classInputContainer="w-full flex items-center justify-start  mb-2"
-                />
+              <div className="w-full bg-white overflow-hidden pl-2 ">
+                <div className="pb-2 border-b mb-3">
+                  <InputNumberField
+                    min={1}
+                    name="stream"
+                    max={100}
+                    title="Số luồng chạy đồng thời"
+                    onChange={(e: any) => setInNumber(e.target.value)}
+                    value={inNumber}
+                    classInput="ml-2 !w-[70px] !px-2 !py-1"
+                    span="Luồng"
+                    clsTitle="w-[58%]"
+                    clsLabel="whitespace-pre-wrap"
+                    classInputContainer="w-full flex items-center justify-start  mb-2"
+                  />{' '}
+                  <InputNumberField
+                    min={1}
+                    name="stream"
+                    max={100}
+                    title="Chuyễn PageProfile nếu lỗi liên tiếp"
+                    onChange={(e: any) => setInNumber(e.target.value)}
+                    span="Lần"
+                    value={inNumber}
+                    classInput="ml-2 !w-[70px] !px-2 !py-1"
+                    clsLabel="whitespace-pre-wrap"
+                    clsTitle="w-[58%]"
+                    classInputContainer="w-full flex items-center justify-start  mb-2 "
+                  />
+                </div>
                 <div>
                   <CheckboxField
                     name="thread"
-                    title="Tự động lấy danh sách nhóm của PageProfile"
+                    title={t('auto_get_profile')}
                     classLabel="text-sm"
-                  />
+                    classInputContainer="mb-2  pb-2 border-b"
+                  />{' '}
+                  <div className="mb-2">
+                    <CheckboxField name="thread" title={t('get_rerun')} classLabel="text-sm " />
+                  </div>
+                  <div className="pb-2 border-b mb-3">
+                    <InputNumberField
+                      min={1}
+                      name="time"
+                      max={100}
+                      onChange={(e: any) => setInNumber(e.target.value)}
+                      value={inNumber}
+                      classInput="ml-2 !w-[70px] !px-2 !py-1"
+                      span={t('times')}
+                      clsTitle="w-[58%]"
+                      clsLabel="whitespace-pre-wrap"
+                      classInputContainer="w-full flex items-center justify-start mb-2"
+                    />{' '}
+                    <InputNumberField
+                      min={1}
+                      name="minute"
+                      max={100}
+                      onChange={(e: any) => setInNumber(e.target.value)}
+                      span={t('minute')}
+                      value={inNumber}
+                      classInput="ml-2 !w-[70px] !px-2 !py-1"
+                      clsLabel="whitespace-pre-wrap"
+                      clsTitle="w-[58%]"
+                      classInputContainer="w-full flex items-center justify-start  mb-2"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

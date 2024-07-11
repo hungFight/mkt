@@ -36,12 +36,14 @@ interface UploadFileFieldProps {
   buttonText?: string
   clsBtn?: string
   clsInput?: string
+  isShowImage?:boolean
   beforeInput?: boolean
   afterInput?: boolean
   clsContainer
   moreTag?: ReactElement
   clsLabelRoot?: string
   clsLabel?: string
+  clsButtons?: string
   setError: Dispatch<SetStateAction<boolean>>
 }
 
@@ -59,7 +61,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   clsContainer,
   moreTag,
   clsLabelRoot,
-  clsLabel,
+  clsLabel,clsButtons,isShowImage,
   setError
 }): JSX.Element => {
   const { t } = useTranslation()
@@ -82,7 +84,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
     }
   }
   return (
-    <div className={`flex cursor-pointer items-center ${clsContainer}`}>
+    <div className={`flex cursor-pointer items-center  ${clsContainer}`}>
       <input
         id={idInput}
         ref={fileInputRef}
@@ -105,15 +107,15 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
           </label>
         )}
         <div className="flex items-center w-max">
-          <label htmlFor={idInput} className={clsLabel}>
+          <label htmlFor={isShowImage ? idInput: ''} className={clsLabel}>
             <ButtonC
-              className="text-sm font-light  bg-blue-500 text-nowrap mr-1 p-2"
+              className={`text-sm font-light  bg-blue-500 text-nowrap mr-1 p-2 ${clsButtons}`}
               title={t('add_image')}
             />
           </label>
 
           <ButtonC
-            className="text-sm font-light  bg-red-500 text-nowrap p-2"
+            className={`text-sm font-light  bg-red-500 text-nowrap p-2 ${clsButtons}`}
             onClick={(e) => {
               e.stopPropagation()
               if (changeFile) changeFile({ files: [] })

@@ -90,5 +90,8 @@
   "keyword": "Từ khoá",
   "all": "Tất cả",
   "confirm_delete": "Bạn chắc chắn muốn xoá?",
-  "confirm": "Xác nhận"
+  "confirm": "Xác nhận",
+  "auto_get_profile": "Tự động lấy danh sách nhóm của PageProfile",
+  "get_rerun": "Chạy lại từ đầu mỗi lần dừng",
+  "times": "Lần"
 }

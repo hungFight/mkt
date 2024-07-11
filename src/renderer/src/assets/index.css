@@ -826,3 +826,6 @@ button {
 .hoverImage:hover .hoveredImage{
   display: block;
 }
+.disable_post:disabled{
+
+}
