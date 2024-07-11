@@ -38,6 +38,8 @@ export interface SelectFieldProps {
   rest?: {
     [key: string]: number | string | SelectDefault[] | SelectDefault | []
   }
+  borderColor?: string
+  boxShadow?: string
 }
 
 const filterMultipleSeletor = (options?: SelectDefault[], value?: any[]): SelectDefault[] => {
@@ -77,6 +79,8 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
     isShadow = true,
     styleControl,
     rest,
+    borderColor,
+    boxShadow,
     className
   } = prop
   // const [valueSearch, setValueSearch] = useState("");
@@ -102,7 +106,7 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
       borderColor: 'rgb(226 232 240 / 1)',
       textAlign: 'left',
 
-      boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '',
+      boxShadow: isShadow ? boxShadow ?? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '',
 
       // // Removes weird border around container
       // boxShadow: state.isFocused ? null : null,
@@ -117,9 +121,9 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
         // Overwrittes the different states of border
         color: '#495057',
         backgroundColor: 'transparent',
-        borderColor: '#80bdff',
+        borderColor: borderColor ?? '#80bdff',
         outline: 0,
-        boxShadow: '0 0 0 0.2rem rgb(0 123 255 / 25%)'
+        boxShadow: boxShadow ?? '0 0 0 0.2rem rgb(0 123 255 / 25%)'
       },
       ...styleControl
     }),
@@ -211,6 +215,7 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
         options={options}
         isMulti={isMultiple}
         placeholder={placeholder}
+        isSearchable
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         isOptionDisabled={() =>
           (maxLimit && ValueSelectd && ValueSelectd?.length >= maxLimit) || false

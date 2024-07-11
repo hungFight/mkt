@@ -4,7 +4,6 @@ import ButtonC from '@renderer/components/CustomField/ButtonC'
 import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import SelectField from '@renderer/components/CustomField/SelectField'
-
 import ModalProgress from '@renderer/components/Modal/ModalProgress'
 
 import { setPageTitle } from '@renderer/store/themeConfigSlice'
@@ -82,16 +81,23 @@ const InteractionAcc = () => {
                 QUẢN LÝ TÀI KHOẢN
               </h2>
               <div className="w-[150px] absolute top-[-1px] left-[10px] h-[1px] bg-white"></div>
-              <div className="mt-3 w-">
+              <div className="mt-7 px-5">
                 <div className="flex items-center justify-between">
-                  <SelectField name="script" placeholder={t('script')} />
+                  <SelectField
+                    name="script"
+                    placeholder="Chọn danh mục"
+                    parenSelect="w-[200px]"
+                    borderColor="#91bff0"
+                    boxShadow="0 0 1px"
+                    height="30px"
+                  />
                   <ButtonC
                     icon={<CiCirclePlus />}
                     title={t('add_script')}
                     classNameIcon="text-[20px]"
                     className="bg-blue-500 py-2"
                   />
-                  <SelectField name="script" placeholder="Chọn danh mục" parenSelect="w-[200px]" />
+                  <SelectField name="script" placeholder={t('script')} />
                 </div>{' '}
               </div>
             </div>
@@ -162,7 +168,7 @@ const InteractionAcc = () => {
                       classInput="ml-2 !w-[70px] !px-2 !py-1"
                       clsLabel="whitespace-pre-wrap"
                       clsTitle="w-[58%]"
-                      classInputContainer="w-full flex items-center justify-start  mb-2"
+                      classInputContainer="w-full flex items-center justify-start  mb-2 "
                     />
                   </div>
                 </div>

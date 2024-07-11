@@ -770,11 +770,14 @@ a.link-hv:hover {
     width: 60% !important;
   }
   .modal-post > div > div {
-    width: 80% !important;
+    width: 75% !important;
+  }
+  .modal-acc > div > div {
+    width: 75% !important;
   }
 }
 .modal-acc > div > div {
-  width: 50% !important;
+  width: 70% !important;
 }
 .modal-progress > div > div {
   width: 60% !important;
@@ -783,7 +786,7 @@ a.link-hv:hover {
   width: 50% !important;
 }
 .modal-post > div > div {
-  width: 80% !important;
+  width: 70% !important;
 }
 .modal-config > div > div {
   width: 70% !important;

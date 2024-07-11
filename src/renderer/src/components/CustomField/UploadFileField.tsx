@@ -36,7 +36,7 @@ interface UploadFileFieldProps {
   buttonText?: string
   clsBtn?: string
   clsInput?: string
-  isShowImage?:boolean
+  isShowImage?: boolean
   beforeInput?: boolean
   afterInput?: boolean
   clsContainer
@@ -61,7 +61,9 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   clsContainer,
   moreTag,
   clsLabelRoot,
-  clsLabel,clsButtons,isShowImage,
+  clsLabel,
+  clsButtons,
+  isShowImage,
   setError
 }): JSX.Element => {
   const { t } = useTranslation()
@@ -107,7 +109,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
           </label>
         )}
         <div className="flex items-center w-max">
-          <label htmlFor={isShowImage ? idInput: ''} className={clsLabel}>
+          <label htmlFor={isShowImage ? idInput : ''} className={clsLabel}>
             <ButtonC
               className={`text-sm font-light  bg-blue-500 text-nowrap mr-1 p-2 ${clsButtons}`}
               title={t('add_image')}
@@ -120,7 +122,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
               e.stopPropagation()
               if (changeFile) changeFile({ files: [] })
             }}
-            title={t('Xoá toàn bộ')}
+            title={t('delete_all')}
           />
         </div>
       </div>

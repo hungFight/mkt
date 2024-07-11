@@ -188,11 +188,11 @@ export const configTableAddIndex: MantineTableCustomProps['column'] = [
   },
 
   {
-    accessor: 'image',
+    accessor: 'with_image',
     title: 'Kèm ảnh'
   },
   {
-    accessor: 'type',
+    accessor: 'type_post',
     title: 'Kiểu bài'
   },
   {
