@@ -53,7 +53,7 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
   funcSearch,
   clsTable,
   funcSearchSuccess,
-  height = 550,
+  height,
   ...rest
 }): JSX.Element => {
   const { t } = useTranslation()
@@ -112,9 +112,10 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
 
   return (
     <div className="custom-table">
-      <div className="datatables pagination-padding">
+      <div className="datatables pagination-padding relative">
+        <div className="w-full h-[45px] bg-[rgb(196_200_200_/_22%)] shadow-[0_0_2px] shadow-[rgb(78_78_78)] absolute top-0 left-0 z-10 rounded-t-[10px] pointer-events-none"></div>
         <DataTable
-          // height={height}
+          height={height}
           className={`whitespace-nowrap table-hover rounded-[10px] ${clsTable}`}
           noRecordsText={t('empty')}
           paginationText={({ from, to, totalRecords }): string =>

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import ButtonC from '@renderer/components/CustomField/ButtonC'
+import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import SelectField from '@renderer/components/CustomField/SelectField'
 import MantineTableCustom from '@renderer/components/MantineTableCustom'
 import ModalAddIndex from '@renderer/components/Modal/ModalAddIndex'
@@ -45,54 +46,98 @@ const ContentAcc = () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
- const data = [
-   {
-     uid: '1',
-     title: '1',
-     content: 'Hello'
-   },
-   {
-     uid: '2',
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     uid: '2',
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     uid: '2',
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     title: '1'
-   },
-   {
-     title: '1'
-   }
- ]
+  const data = [
+    {
+      uid: '1',
+      title: '1',
+      content: 'Hello'
+    },
+    {
+      uid: '2',
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      uid: '2',
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      uid: '2',
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      uid: '2',
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      uid: '2',
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    },
+    {
+      title: '1'
+    }
+  ]
   return (
-    <div className="">
+    <div className="h-[94vh]">
       <div className="w-full mb-3 flex items-center justify-between rounded-[10px] pb-2">
         <ButtonC
           className="bg-blue-600 w-fit p-2 mr-[145px]"
@@ -108,12 +153,16 @@ const ContentAcc = () => {
           icon={<RiMenuAddFill size={20} className="mr-2" />}
         />{' '}
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between h-[93%]">
         <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-blue-400 relative">
           <h3 className="absolute top-[-15px] left-5 px-2 py-1 text-blue-600 rounded-xl z-10 ">
             {t('category_management')}
           </h3>
           <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
+          <div className="w-full px-2 mt-2">
+            <CheckboxField name="all" title={t('all')} classInputContainer="mb-1" />
+            <CheckboxField name="index" title={t('index')} />
+          </div>
         </div>
         <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-blue-500 rounded-xl relative">
           <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
@@ -143,7 +192,7 @@ const ContentAcc = () => {
             </div>
           </div>
 
-          <div className=" rounded-xl border-t  border-black w-[90%] m-auto shadow-[0_0_5px] shadow-[#9b9b9b] mb-5">
+          <div className=" rounded-xl w-[90%] m-auto shadow-[0_0_5px] shadow-[#9b9b9b] mb-5">
             <MantineTableCustom column={configTableAddIndex} data={data} />
           </div>
         </div>

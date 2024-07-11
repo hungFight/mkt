@@ -27,16 +27,15 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
     <div className={` ${classInputContainer ?? ''}`}>
       <div className="flex items-center">
         <input
-          className="form-checkbox h-5 w-5 text-blue-600"
+          className="form-checkbox h-5 w-5 text-blue-600 active:!shadow-[0_0_3px] shadow-blue-500"
           id={name}
           {...register?.(name)}
           type="checkbox"
-
           {...rest}
         />
         {title && (
           <label
-            className={`ml-2 mb-0 text-base whitespace-nowrap font-medium text-gray-900  ${classLabel}`}
+            className={`ml-2 mb-0 text-base whitespace-nowrap font-medium text-gray-900 cursor-pointer ${classLabel}`}
             htmlFor={name}
           >
             {t(title)}

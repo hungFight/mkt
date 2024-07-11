@@ -59,6 +59,7 @@
   "account_recovery": "Khôi phục tài khoản",
   "folder_recovery": "Khôi phục tài khoản theo thư mục",
   "home": "Trang chu",
+  "delete": "Xoá",
   "delete_all": "Xoá toàn bộ",
   "deleted_list": "Danh sách tài khoản đã xoá",
   "empty": "Không có dữ liệu",
@@ -86,5 +87,8 @@
   "title": "Tiêu đề",
   "width_image": "Kèm ảnh",
   "cancel": "Huỷ bỏ",
-  "keyword": "Từ khoá"
+  "keyword": "Từ khoá",
+  "all": "Tất cả",
+  "confirm_delete": "Bạn chắc chắn muốn xoá?",
+  "confirm": "Xác nhận"
 }

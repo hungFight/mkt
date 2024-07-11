@@ -7,12 +7,12 @@ import { useTranslation } from 'react-i18next'
 import ToolTips from '../Tooltips'
 import { CiCirclePlus } from 'react-icons/ci'
 import { RiQuillPenFill } from 'react-icons/ri'
-import { IoReloadCircleSharp } from 'react-icons/io5'
+import logo from '@renderer/assets/images/Table-Logo.png'
 import { GoTrash } from 'react-icons/go'
 import ButtonC from '../CustomField/ButtonC'
 import 'react-toastify/dist/ReactToastify.css'
 import ModalOneField from './ModalOneField'
-import ModalProgress from './ModalProgress'
+import NodalConfirm from './NodalConfirm'
 interface ModalAddAccountProps {
   isShow: boolean
   setIsShow?: Dispatch<SetStateAction<boolean>>
@@ -21,6 +21,7 @@ interface ModalAddAccountProps {
 const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
   const { t } = useTranslation()
   const [error, setError] = useState('')
+  const [isDelete, setIsDelete] = useState<number | null>(null)
   const [isShowModalUpdate, setShowModalUpdate] = useState<
     { id: number; value: string } | undefined
   >()
@@ -37,11 +38,7 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
       bg: 'bg-red-500 ',
       icon: <GoTrash />,
       onClick: (id) => {
-        const ok = confirm('Bạn có chắc muốn xoá không')
-        if (ok) {
-          toast.success('Xoá thành công!')
-          setData((pre) => pre.filter((r) => r.id !== id))
-        }
+        setIsDelete(id)
       }
     },
     {
@@ -52,6 +49,13 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
       onClick: (id, value) => setShowModalUpdate({ id, value })
     }
   ]
+  const handleDelete = (isDe: boolean) => {
+    if (isDe) {
+      toast.success('Xoá thành công!')
+      setData((pre) => pre.filter((r) => r.id !== isDelete))
+    }
+    setIsDelete(null)
+  }
   const [data, setData] = useState([
     {
       id: 1,
@@ -91,6 +95,186 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
     },
     {
       id: 3,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
+      indexName: 'Hello 3',
+      action: (
+        <div className="flex gap-2 w-full">
+          {actionIcon.map((r) => (
+            <ToolTips key={r.uid} content={r.title}>
+              <ButtonC
+                icon={r.icon}
+                title={r.title}
+                onClick={() => r.onClick(3, 'Hello 3')}
+                className={r.bg}
+              />
+            </ToolTips>
+          ))}
+        </div>
+      )
+    },
+    {
+      id: 4,
       indexName: 'Hello 3',
       action: (
         <div className="flex gap-2 w-full">
@@ -224,16 +408,19 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
       )}
       <div className="bg-[#f2f2f2] rounded-tr-[6px] rounded-tl-[6px]">
         <Modal.Header className="px-5 py-3 font-bold items-center">
-          {t('add_category')}
+          <div className="flex items-center  font-bold text-base">
+            <img src={logo} alt="MKT systems" className="w-8 h-8 mr-1" />
+            {t('add_category')}
+          </div>
         </Modal.Header>
       </div>
       <Modal.Body>
-        <div className="px-2 py-2   relative my-5 rounded-xl">
+        <div className="px-2 py-2   relative mb-5 rounded-xl">
           <div className="flex  w-full justify-between">
             <ButtonC
               title={t('add_new')}
               icon={<CiCirclePlus />}
-              className="bg-blue-500 p-1"
+              className="bg-blue-500 p-1 py-2"
               classNameIcon="text-[20px]"
               onClick={() => setShowModalAdd('')}
             />{' '}
@@ -242,10 +429,18 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
             <MantineTableCustom
               column={configTableAddInAddIndex}
               data={data}
-              clsTable="max-h-[60vh]"
+              clsTable="max-h-[70vh]"
             />
           </div>
         </div>
+        {isDelete && (
+          <NodalConfirm
+            title={t('confirm_delete')}
+            titleLeftB={t('delete')}
+            titleRightB={t('cancel')}
+            onClick={handleDelete}
+          />
+        )}
       </Modal.Body>{' '}
       <ToastContainer />
     </Modal>

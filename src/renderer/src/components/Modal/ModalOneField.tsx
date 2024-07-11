@@ -16,7 +16,6 @@ const ModalOneField: FC<{
   return (
     <div
       className="fixed top-0 left-0 z-50 w-full h-full bg-[rgb(0_0_0_/_66%)] flex items-center justify-center "
-      onClick={rootClick}
     >
       <div
         className="w-1/3  bg-white rounded-[10px] border border-blue-400"

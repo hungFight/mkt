@@ -1,3 +1,4 @@
+import logo from '@renderer/assets/images/Table-Logo.png'
 import { Button, Modal } from 'flowbite-react'
 import { Dispatch, FC, SetStateAction, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
@@ -5,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 import SelectField from '../CustomField/SelectField'
 import ButtonC from '../CustomField/ButtonC'
 import 'react-toastify/dist/ReactToastify.css'
-import logo from '@renderer/assets/images/Table-Logo.png'
 import { useForm } from 'react-hook-form'
 import TextAreaField from '../CustomField/TextAreaField'
 import { FaRobot } from 'react-icons/fa6'
@@ -43,10 +43,15 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
     <Modal
       show={isShow}
       onClose={handleClose}
-      className="modal-post modal max-h-full overflow-auto "
+      className="modal-progress modal max-h-full overflow-auto "
     >
-      <div className="bg-[#d6d6d6] rounded-tr-[6px] rounded-tl-[6px]">
-        <Modal.Header className="px-5 py-3 font-bold items-center">{t('add_post')}</Modal.Header>
+      <div className="bg-[#d6d6d6] rounded-tr-[6px] rounded-tl-[6px] ">
+        <Modal.Header className="px-5 py-2 items-center ">
+          <div className="flex items-center  font-bold text-base">
+            <img src={logo} alt="MKT systems" className="w-8 h-8 mr-1" />
+            {t('add_post')}
+          </div>
+        </Modal.Header>
       </div>
       <Modal.Body>
         <div className=" flex items-center justify-between overflow-auto relative ">
@@ -153,7 +158,7 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
                         <div className="w-full h-full flex items-center justify-center">
                           <p className="text-sm opacity-90 flex items-center">
                             {t('empty')}
-                            <img src={logo} className='w-[30px]'/>
+                            <img src={logo} className="w-[30px]" />
                           </p>
                         </div>
                       )}
