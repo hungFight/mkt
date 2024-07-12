@@ -121,7 +121,7 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
         // Overwrittes the different states of border
         color: '#495057',
         backgroundColor: 'transparent',
-        borderColor: borderColor ?? '#80bdff',
+        borderColor: borderColor ?? ' rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;',
         outline: 0,
         boxShadow: boxShadow ?? '0 0 0 0.2rem rgb(0 123 255 / 25%)'
       },

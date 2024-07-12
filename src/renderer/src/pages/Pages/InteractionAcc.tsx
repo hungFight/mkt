@@ -4,6 +4,7 @@ import ButtonC from '@renderer/components/CustomField/ButtonC'
 import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import SelectField from '@renderer/components/CustomField/SelectField'
+import ModalAddScript from '@renderer/components/Modal/ModalAddScript'
 import ModalProgress from '@renderer/components/Modal/ModalProgress'
 
 import { setPageTitle } from '@renderer/store/themeConfigSlice'
@@ -12,6 +13,7 @@ import { ChevronDown, CirclePlay, CircleX } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CiCirclePlus } from 'react-icons/ci'
+import { LiaHandPointer } from 'react-icons/lia'
 import { useDispatch } from 'react-redux'
 
 const InteractionAcc = () => {
@@ -23,6 +25,7 @@ const InteractionAcc = () => {
   const [inNumber, setInNumber] = useState<number>(1)
   const [isScriptDropdownVisible, setIsScriptDropdownVisible] = useState(false)
   const [isShowStart, setIsShowStart] = useState(false)
+  const [isShowSScript, setIsShowScript] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -34,7 +37,6 @@ const InteractionAcc = () => {
   const handleStart = (): void => {
     setIsShowStart(true)
   }
-
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
@@ -44,45 +46,46 @@ const InteractionAcc = () => {
 
   return (
     <>
-      <div className="flex gap-3 justify-center">
+      <div className="flex gap-3 justify-center ">
         <div className="w-full  px-2 pb-5 pt-0">
-          <div className="w-full flex items-center justify-between  p-2 px-4 rounded-[10px] ">
-            <div className="gap-2 flex h-fit items-center justify-between">
-              {/* <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" /> */}
-              <Button
-                className="bg-green-700 rounded-xl h-max btn-start"
-                size="sm"
-                onClick={handleStart}
-              >
-                <CirclePlay size={20} className="mr-2" />
-                Start
-              </Button>
-              <Button className="bg-red-700 rounded-xl h-max" size="sm">
-                <CircleX size={20} className="mr-2" />
-                Stop
-              </Button>
+          <div className="w-full flex items-center justify-between px-[2px] pl-1 rounded-[10px] ">
+            <div className="flex items-center">
+              {' '}
+              <SelectField
+                name="script"
+                placeholder={t('script')}
+                parenSelect="w-[300px] rounded-[5px] border border-[#979797]"
+                // boxShadow="0 0 2px black"
+              />
+              <ButtonC
+                icon={<CiCirclePlus />}
+                title={t('add_script')}
+                classNameIcon="text-[20px]"
+                className="bg-blue-500 py-[10px] ml-2"
+                onClick={() => setIsShowScript(true)}
+              />
             </div>
-            <div className="flex items-center gap-5">
-              <p className="text-base">
+            <div className="flex items-center gap-5 border shadow-[2px_2px_2px_#979797] py-2 px-4 rounded-[5px] bg-white">
+              <p className="text-sm font-thin">
                 Tổng: <span className="text-blue-700 text-base">0</span>
               </p>
-              <p className="text-base">
+              <p className="text-sm font-thin">
                 Live: <span className="text-green-700 text-base">0</span>
               </p>
-              <p className="text-base">
+              <p className="text-sm font-thin">
                 Die: <span className="text-red-500 text-base">0</span>
               </p>
             </div>
           </div>
           <div className="flex items-center justify-between mt-5   ">
-            <div className="w-[64%] h-[75vh] border border-blue-200 rounded-[10px] bg-[rgb(255_255_255)] relative">
+            <div className="w-[64%] h-[74vh] border border-[rgb(214_214_214)] rounded-[10px] bg-[rgb(255_255_255)] relative">
               {' '}
-              <h2 className="text-sm absolute top-[-15px] left-1 px-3 py-1 z-10">
+              <h2 className="text-sm absolute top-[-13px] left-2 px-3 py-1 z-10">
                 QUẢN LÝ TÀI KHOẢN
               </h2>
-              <div className="w-[150px] absolute top-[-1px] left-[10px] h-[1px] bg-white"></div>
-              <div className="mt-7 px-5">
-                <div className="flex items-center justify-between">
+              <div className="w-[160px] absolute top-[-1px] left-[10px] h-[1px] bg-white"></div>
+              <div className="mt-8 px-5">
+                <div className="flex items-center justify-start">
                   <SelectField
                     name="script"
                     placeholder="Chọn danh mục"
@@ -91,22 +94,30 @@ const InteractionAcc = () => {
                     boxShadow="0 0 1px"
                     height="30px"
                   />
-                  <ButtonC
-                    icon={<CiCirclePlus />}
-                    title={t('add_script')}
-                    classNameIcon="text-[20px]"
-                    className="bg-blue-500 py-2"
-                  />
-                  <SelectField name="script" placeholder={t('script')} />
+                  <div className="gap-2 flex h-fit items-center justify-between ml-2 ">
+                    {/* <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" /> */}
+                    <Button
+                      className="bg-green-700 rounded-xl h-max btn-start py-[3px]"
+                      size="sm"
+                      onClick={handleStart}
+                    >
+                      <CirclePlay size={20} className="mr-2" />
+                      Start
+                    </Button>
+                    <Button className="bg-red-700 rounded-xl h-max py-[3px]" size="sm">
+                      <CircleX size={20} className="mr-2" />
+                      Stop
+                    </Button>
+                  </div>
                 </div>{' '}
               </div>
             </div>
-            <div className="w-[35%] h-[75vh] border border-blue-200 rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
-              <h2 className="text-sm absolute top-[-15px] left-2 px-3 py-1 z-10">
+            <div className="w-[35%] h-[74vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
+              <h2 className="text-sm absolute top-[-13px] left-2 px-3 py-1 z-10">
                 CẤU HÌNH CHẠY TƯƠNG TÁC
               </h2>
               <div className="w-[210px] absolute top-[-1px] left-[15px] h-[1px] bg-white "></div>
-              <div className="w-full bg-white overflow-hidden pl-2 ">
+              <div className="w-full bg-white overflow-hidden pl-2 mt-2">
                 <div className="pb-2 border-b mb-3">
                   <InputNumberField
                     min={1}
@@ -119,7 +130,7 @@ const InteractionAcc = () => {
                     span="Luồng"
                     clsTitle="w-[58%]"
                     clsLabel="whitespace-pre-wrap"
-                    classInputContainer="w-full flex items-center justify-start  mb-2"
+                    classInputContainer="w-full flex items-center justify-start  mb-2 py-1"
                   />{' '}
                   <InputNumberField
                     min={1}
@@ -140,7 +151,7 @@ const InteractionAcc = () => {
                     name="thread"
                     title={t('auto_get_profile')}
                     classLabel="text-sm"
-                    classInputContainer="mb-2  pb-2 border-b"
+                    classInputContainer="mb-2  pb-3 border-b"
                   />{' '}
                   <div className="mb-2">
                     <CheckboxField name="thread" title={t('get_rerun')} classLabel="text-sm " />
@@ -172,20 +183,20 @@ const InteractionAcc = () => {
                     />
                   </div>
                 </div>
+                <div className="text-center flex items-center justify-center">
+                  <div className="rotate-[85deg] text-[20px] mr-1">
+                    <LiaHandPointer />
+                  </div>
+                  <a href="#" className="text-blue-500 font-thin hover:underline">
+                    Xem hướng dẫn tại đây
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        {/* <div className="2xl:w-[35%] w-[40%] px-2 py-5 pt-0 relative" ref={dropdownRef}>
-          <p
-            className="border border-[#dedede] whitespace-nowrap w-[30%] px-4 py-1 rounded-[5px] flex justify-between items-center hover:border-[#000] cursor-pointer"
-            onClick={toggleScriptDropdown}
-          >
-            Kịch bản <ChevronDown />
-          </p>
-        
-        </div> */}
         {isShowStart && <ModalProgress isShow={isShowStart} setIsShow={setIsShowStart} />}
+        {isShowSScript && <ModalAddScript isShow={isShowSScript} setIsShow={setIsShowScript} />}
       </div>
     </>
   )

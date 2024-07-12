@@ -12,7 +12,8 @@ import { GoTrash } from 'react-icons/go'
 import ButtonC from '../CustomField/ButtonC'
 import 'react-toastify/dist/ReactToastify.css'
 import ModalOneField from './ModalOneField'
-import NodalConfirm from './NodalConfirm'
+import NodalConfirm from './ModalConfirm'
+import { IoCloseCircleOutline } from 'react-icons/io5'
 interface ModalAddAccountProps {
   isShow: boolean
   setIsShow?: Dispatch<SetStateAction<boolean>>
@@ -49,11 +50,11 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
       onClick: (id, value) => setShowModalUpdate({ id, value })
     }
   ]
-  const handleDelete = (isDe: boolean) => {
-    if (isDe) {
-      toast.success(t('delete_success'))
-      setData((pre) => pre.filter((r) => r.id !== isDelete))
-    }
+  const handleDelete = (isDe) => {
+   if (isDe === true) {
+       toast.success(t('delete_success'))
+       setData((pre) => pre.filter((r) => r.id !== isDelete))
+     }
     setIsDelete(null)
   }
   const [data, setData] = useState([
@@ -439,6 +440,9 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
             titleLeftB={t('delete')}
             titleRightB={t('cancel')}
             onClick={handleDelete}
+            icon={
+                <IoCloseCircleOutline />
+            }
           />
         )}
       </Modal.Body>{' '}

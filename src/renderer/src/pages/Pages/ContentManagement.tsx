@@ -152,7 +152,7 @@ const ContentAcc = () => {
         />{' '}
       </div>
       <div className="flex justify-between h-[93%]">
-        <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-blue-400 relative">
+        <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-blue-200 relative">
           <h3 className="absolute top-[-15px] left-5 px-2 py-1 text-blue-600 rounded-xl z-10 ">
             {t('category_management')}
           </h3>
@@ -162,7 +162,7 @@ const ContentAcc = () => {
             <CheckboxField name="index" title={t('index')} />
           </div>
         </div>
-        <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-blue-500 rounded-xl relative">
+        <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-blue-200 rounded-xl relative">
           <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
           <h3 className="absolute top-[-15px] left-5 px-2 py-1 [rgb(255_255_255)] text-blue-600 rounded-xl z-10">
             {t('post_management')}
@@ -194,7 +194,6 @@ const ContentAcc = () => {
             <MantineTableCustom
               column={configTableAddIndex.map((r) => ({ ...r, title: t(r.accessor) }))}
               data={data}
-              // height={data.length > 7 ? 400 : undefined}
             />
           </div>
         </div>
