@@ -50,12 +50,10 @@ const InteractionAcc = () => {
         <div className="w-full  px-2 pb-5 pt-0">
           <div className="w-full flex items-center justify-between px-[2px] pl-1 rounded-[10px] ">
             <div className="flex items-center">
-              {' '}
               <SelectField
                 name="script"
                 placeholder={t('script')}
                 parenSelect="w-[300px] rounded-[5px] border border-[#979797]"
-                // boxShadow="0 0 2px black"
               />
               <ButtonC
                 icon={<CiCirclePlus />}
