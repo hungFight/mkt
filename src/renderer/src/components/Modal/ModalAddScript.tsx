@@ -59,12 +59,19 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                 onChange={(e) => setSwitchScript((pre) => ({ ...pre, add: e.target.checked }))}
               />
               <div
-                className={`flex items-center ${
+                className={`flex items-center mt-1 ${
                   !switchScript.add ? 'opacity-60 select-none pointer-events-none' : ''
                 }`}
               >
-                <InputField name="script" placeholder={t('name_script')} />
-                <ButtonC title={t('add_script')} className="bg-blue-500 p-[11px] ml-2" />
+                <InputField
+                  name="script"
+                  placeholder={t('name_script')}
+                  inputClassName="border-blue-500 border"
+                />
+                <ButtonC
+                  title={t('add_script')}
+                  className="bg-blue-500 p-[10px] ml-2 border-[#b1b1b1]"
+                />
               </div>
             </div>
             <div className={``}>
@@ -74,16 +81,16 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                 onChange={(e) => setSwitchScript((pre) => ({ ...pre, edit: e.target.checked }))}
               />
               <div
-                className={`flex items-center ${
+                className={`flex items-center mt-1 ${
                   !switchScript.edit ? 'opacity-60 select-none pointer-events-none' : ''
                 }`}
               >
                 <SelectField
                   name="script"
                   placeholder={t('script')}
-                  parenSelect="w-[200px] rounded-[5px] border border-[#b1b1b1]"
+                  parenSelect="w-[200px] rounded-[5px] border border-blue-500"
                 />
-                <ButtonC title={t('delete_script')} className="bg-red-500 p-[11px] ml-2" />
+                <ButtonC title={t('delete_script')} className="bg-red-500 p-[10px] ml-2" />
               </div>
             </div>
           </div>
