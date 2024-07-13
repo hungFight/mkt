@@ -4,6 +4,7 @@ import { Dispatch, FC, SetStateAction } from 'react'
 import { toast } from 'react-toastify'
 import ButtonFlowbite from '../ButtonFlowbite'
 import CheckboxField from '../CustomField/CheckboxField'
+import { useTranslation } from 'react-i18next'
 
 interface ModalHiddenRowProps {
   isShow: boolean
@@ -11,13 +12,14 @@ interface ModalHiddenRowProps {
 }
 
 const ModalHiddenRow: FC<ModalHiddenRowProps> = ({ isShow, setIsShow }) => {
+  const { t } = useTranslation()
   const handleClose = (): void => setIsShow && setIsShow(false)
   const handleSubmit = (): void => {
     toast.success('Hiển thị cột thành công')
   }
   return (
     <Modal show={isShow} onClose={handleClose} className="modal">
-      <Modal.Header className="px-5 py-3">Hiển thị cột</Modal.Header>
+      <Modal.Header className="px-5 py-3">{t('show_column')}</Modal.Header>
       <Modal.Body>
         <form
           className="space-y-3 flex items-center flex-wrap gap-y-[20px]"
@@ -26,9 +28,9 @@ const ModalHiddenRow: FC<ModalHiddenRowProps> = ({ isShow, setIsShow }) => {
           {configStatic.configHidden.map((field, index) => (
             <CheckboxField
               key={index}
-              title={field.title}
+              title={t(field.name)}
               name={field.name}
-              classInputContainer="w-1/4 !mt-0"
+              classInputContainer="w-1/4 !mt-0 mr-8"
             />
           ))}
         </form>

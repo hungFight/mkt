@@ -8,7 +8,7 @@ export const dataAccounts = [
     cookie: 'cookie1',
     token: 'token1',
     status: 'Die',
-    proxy: 'proxy1'
+    proxy: 'proxy1',
   },
   {
     uid: 'user2',

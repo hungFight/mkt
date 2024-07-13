@@ -62,7 +62,7 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
               name="option"
             />
             <ButtonC
-              title="Cấu hình Render AI"
+              title={t('render_ai')}
               icon={<FaRobot />}
               className="bg-blue-500 py-2"
               onClick={() => setIsShowAI(true)}
@@ -98,8 +98,8 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
               </div>
               <div className="flex items-center mb-3">
                 <CheckboxField
-                  name="Nội dung kèm ảnh"
-                  title={t('Nội dung kèm ảnh')}
+                  name={t('content_image')}
+                  title={t('content_image')}
                   onChange={(e: any) => setIsShowImage(e.target.checked)}
                 />
               </div>
@@ -109,7 +109,7 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
                     <InputNumberField
                       name="limit"
                       clsLabel="mr-1 "
-                      title={t('width_image')}
+                      title={t('with_image')}
                       classInput="h-[30px] "
                       classInputContainer="flex items-center mt-[-5px] mb-[4px]"
                       min={1}
@@ -222,7 +222,7 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           </div>
           <div className="absolute bottom-0 left-0 w-full flex justify-center items-center p-3 bg-white border-t">
             <Button className="bg-blue-500  " type="submit">
-              {t('Lưu nội dung')}{' '}
+              {t('save_content')}{' '}
             </Button>
           </div>
         </form>

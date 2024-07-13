@@ -12,7 +12,8 @@ import { GoTrash } from 'react-icons/go'
 import ButtonC from '../CustomField/ButtonC'
 import 'react-toastify/dist/ReactToastify.css'
 import ModalOneField from './ModalOneField'
-import NodalConfirm from './NodalConfirm'
+import NodalConfirm from './ModalConfirm'
+import { IoCloseCircleOutline } from 'react-icons/io5'
 interface ModalAddAccountProps {
   isShow: boolean
   setIsShow?: Dispatch<SetStateAction<boolean>>
@@ -34,7 +35,7 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
   const actionIcon = [
     {
       uid: 1,
-      title: 'Xoá',
+      title: t('delete'),
       bg: 'bg-red-500 ',
       icon: <GoTrash />,
       onClick: (id) => {
@@ -43,17 +44,17 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
     },
     {
       uid: 2,
-      title: 'Chỉnh sửa',
+      title: t('update'),
       bg: 'bg-blue-500',
       icon: <RiQuillPenFill />,
       onClick: (id, value) => setShowModalUpdate({ id, value })
     }
   ]
-  const handleDelete = (isDe: boolean) => {
-    if (isDe) {
-      toast.success('Xoá thành công!')
-      setData((pre) => pre.filter((r) => r.id !== isDelete))
-    }
+  const handleDelete = (isDe) => {
+   if (isDe === true) {
+       toast.success(t('delete_success'))
+       setData((pre) => pre.filter((r) => r.id !== isDelete))
+     }
     setIsDelete(null)
   }
   const [data, setData] = useState([
@@ -427,7 +428,7 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           </div>
           <div className="rounded-xl border mt-1 m">
             <MantineTableCustom
-              column={configTableAddInAddIndex}
+              column={configTableAddInAddIndex.map((r) => ({ ...r, title: t(r.accessor) }))}
               data={data}
               clsTable="max-h-[70vh]"
             />
@@ -439,6 +440,9 @@ const ModalAddIndex: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
             titleLeftB={t('delete')}
             titleRightB={t('cancel')}
             onClick={handleDelete}
+            icon={
+                <IoCloseCircleOutline />
+            }
           />
         )}
       </Modal.Body>{' '}

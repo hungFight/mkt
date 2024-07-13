@@ -9,8 +9,6 @@ import ModalAddPost from '@renderer/components/Modal/ModalAddPost'
 import ModalScript from '@renderer/components/Modal/ModalScript'
 import { configTableAddIndex } from '@renderer/config/configTable'
 import { setPageTitle } from '@renderer/store/themeConfigSlice'
-import { Button } from 'flowbite-react'
-import { CirclePlay } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CiCirclePlus } from 'react-icons/ci'
@@ -137,7 +135,7 @@ const ContentAcc = () => {
     }
   ]
   return (
-    <div className="h-[94vh]">
+    <div className="h-[80vh]">
       <div className="w-full mb-3 flex items-center justify-between rounded-[10px] pb-2">
         <ButtonC
           className="bg-blue-600 w-fit p-2 mr-[145px]"
@@ -154,7 +152,7 @@ const ContentAcc = () => {
         />{' '}
       </div>
       <div className="flex justify-between h-[93%]">
-        <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-blue-400 relative">
+        <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-blue-200 relative">
           <h3 className="absolute top-[-15px] left-5 px-2 py-1 text-blue-600 rounded-xl z-10 ">
             {t('category_management')}
           </h3>
@@ -164,7 +162,7 @@ const ContentAcc = () => {
             <CheckboxField name="index" title={t('index')} />
           </div>
         </div>
-        <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-blue-500 rounded-xl relative">
+        <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-blue-200 rounded-xl relative">
           <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
           <h3 className="absolute top-[-15px] left-5 px-2 py-1 [rgb(255_255_255)] text-blue-600 rounded-xl z-10">
             {t('post_management')}
@@ -193,7 +191,10 @@ const ContentAcc = () => {
           </div>
 
           <div className=" rounded-xl w-[90%] m-auto shadow-[0_0_5px] shadow-[#9b9b9b] mb-5">
-            <MantineTableCustom column={configTableAddIndex} data={data} />
+            <MantineTableCustom
+              column={configTableAddIndex.map((r) => ({ ...r, title: t(r.accessor) }))}
+              data={data}
+            />
           </div>
         </div>
       </div>

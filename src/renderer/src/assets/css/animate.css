@@ -3685,3 +3685,19 @@
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
 }
+@keyframes move_choiceList_left {
+  0%{
+    left: 110%;
+  }
+  100%{
+    left: 0;
+  }
+}
+@keyframes move_choiceList_right {
+  0%{
+    right: 110%;
+  }
+  100%{
+    right: 0;
+  }
+}

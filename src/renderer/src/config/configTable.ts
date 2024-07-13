@@ -63,21 +63,13 @@ export const configTableAddAccount: MantineTableCustomProps['column'] = [
   },
 
   {
-    accessor: 'password',
+    accessor: 'pass',
     title: 'Mật khẩu'
   },
 
   {
-    accessor: 'privateKey',
+    accessor: 'private',
     title: 'Private Key'
-  },
-  {
-    accessor: 'email',
-    title: 'Email'
-  },
-  {
-    accessor: 'recoveryEmail',
-    title: 'Mail khôi phục'
   },
   {
     accessor: 'cookie',
@@ -86,6 +78,22 @@ export const configTableAddAccount: MantineTableCustomProps['column'] = [
   {
     accessor: 'token',
     title: 'Token'
+  },
+  {
+    accessor: 'email',
+    title: 'Email'
+  },
+  {
+    accessor: 'email_password',
+    title: 'Mật khẩu email'
+  },
+  {
+    accessor: 'recovery_mail',
+    title: 'Mail khôi phục'
+  },
+  {
+    accessor: 'birthday',
+    title: 'Ngày sinh'
   },
   {
     accessor: 'proxy',
@@ -188,11 +196,11 @@ export const configTableAddIndex: MantineTableCustomProps['column'] = [
   },
 
   {
-    accessor: 'image',
+    accessor: 'with_image',
     title: 'Kèm ảnh'
   },
   {
-    accessor: 'type',
+    accessor: 'type_post',
     title: 'Kiểu bài'
   },
   {
