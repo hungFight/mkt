@@ -12,6 +12,7 @@ interface ToggleSwitchProps {
   name?: string
   clsLabel?: string
   value?: string
+  id?: string
 }
 
 const ToggleSwitch: FC<ToggleSwitchProps> = ({
@@ -24,12 +25,13 @@ const ToggleSwitch: FC<ToggleSwitchProps> = ({
   circle,
   name,
   clsLabel,
-  value
+  value,
+  id
 }) => {
   return (
     <label className={`inline-flex items-center cursor-pointer ${clsLabel}`}>
       {circle ? (
-        <Radio id="united-state" name={name} value={value} />
+        <Radio id={id} name={name} value={value} />
       ) : (
         <>
           <input

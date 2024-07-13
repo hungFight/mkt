@@ -774,10 +774,24 @@ a.link-hv:hover {
   .modal-acc > div > div {
     width: 60% !important;
   }
+    .modal-interactive>div>div {
+      width: 90%  !important;
+    }
+}
+@media only screen and (max-width: 1800px) {
+  .modal-interactive>div>div {
+    width: 85%  ;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .modal-interactive>div>div {
+    width: 70% !important;
+  }
 }
 .modal-acc > div > div {
-  width: 85% !important;
+  width: 85% ;
 }
+
 .modal-progress > div > div {
   width: 60% !important;
 }
@@ -831,4 +845,7 @@ button {
 
 .button_active:active .on_active {
   display: block !important;
+}
+.change_placeholder_inter::placeholder {
+  font-size: 13px;
 }
