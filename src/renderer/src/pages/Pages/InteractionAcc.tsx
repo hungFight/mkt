@@ -4,6 +4,7 @@ import ButtonC from '@renderer/components/CustomField/ButtonC'
 import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import SelectField from '@renderer/components/CustomField/SelectField'
+import FormInteraction from '@renderer/components/Form/FormInteraction'
 import ModalAddScript from '@renderer/components/Modal/ModalAddScript'
 import ModalProgress from '@renderer/components/Modal/ModalProgress'
 
@@ -65,13 +66,13 @@ const InteractionAcc = () => {
             </div>
             <div className="flex items-center gap-5 border shadow-[2px_2px_2px_#979797] py-2 px-4 rounded-[5px] bg-white">
               <p className="text-sm font-thin">
-                Tổng: <span className="text-blue-700 text-base">0</span>
+                {t('total')}: <span className="text-blue-700 text-base">0</span>
               </p>
               <p className="text-sm font-thin">
-                Live: <span className="text-green-700 text-base">0</span>
+                {t('live')}: <span className="text-green-700 text-base">0</span>
               </p>
               <p className="text-sm font-thin">
-                Die: <span className="text-red-500 text-base">0</span>
+                {t('die')}: <span className="text-red-500 text-base">0</span>
               </p>
             </div>
           </div>
@@ -112,20 +113,20 @@ const InteractionAcc = () => {
             </div>
             <div className="w-[35%] h-[74vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
               <h2 className="text-sm absolute top-[-13px] left-2 px-3 py-1 z-10">
-                CẤU HÌNH CHẠY TƯƠNG TÁC
+                {t('interactive_config')}
               </h2>
               <div className="w-[210px] absolute top-[-1px] left-[15px] h-[1px] bg-white "></div>
-              <div className="w-full bg-white overflow-hidden pl-2 mt-2">
+              <form className="w-full bg-white overflow-hidden pl-2 mt-2">
                 <div className="pb-2 border-b mb-3">
                   <InputNumberField
                     min={1}
                     name="stream"
                     max={100}
-                    title="Số luồng chạy đồng thời"
+                    title={t('stream_concurrency')}
                     onChange={(e: any) => setInNumber(e.target.value)}
                     value={inNumber}
                     classInput="ml-2 !w-[70px] !px-2 !py-1"
-                    span="Luồng"
+                    span={t('stream')}
                     clsTitle="w-[58%]"
                     clsLabel="whitespace-pre-wrap"
                     classInputContainer="w-full flex items-center justify-start  mb-2 py-1"
@@ -134,7 +135,7 @@ const InteractionAcc = () => {
                     min={1}
                     name="stream"
                     max={100}
-                    title="Chuyễn PageProfile nếu lỗi liên tiếp"
+                    title={t('next_profile_error')}
                     onChange={(e: any) => setInNumber(e.target.value)}
                     span="Lần"
                     value={inNumber}
@@ -186,10 +187,10 @@ const InteractionAcc = () => {
                     <LiaHandPointer />
                   </div>
                   <a href="#" className="text-blue-500 font-thin hover:underline">
-                    Xem hướng dẫn tại đây
+                    {t('see_guide_here')}
                   </a>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

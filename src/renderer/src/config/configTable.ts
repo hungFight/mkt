@@ -147,7 +147,7 @@ export const configTableAddInAddIndex: MantineTableCustomProps['column'] = [
     title: 'Tên danh mục'
   },
   {
-    accessor: 'action',
+    accessor: 'method',
     title: 'Phương thức'
   }
 ]

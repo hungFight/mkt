@@ -14,18 +14,60 @@ import ButtonC from '../CustomField/ButtonC'
 import InputNumberField from '../CustomField/InputNumberField'
 import CheckboxField from '../CustomField/CheckboxField'
 import { LiaHandPointer } from 'react-icons/lia'
+import FormInteractionIndividual from '../Form/FormInteractionIndividual'
 
 interface ModalTrashAccountProps {
   isShow: boolean
   setIsShow?: Dispatch<SetStateAction<boolean>>
 }
+export interface PropsSwitchScript {
+  add: boolean
+  edit: boolean
+}
+export interface PropsInNumber {
+  joinG: number
+  outG: {
+    one: number
+    two: number
+  }
+  outGW: {
+    one: number
+    two: number
+  }
+  answerPG: {
+    one: number
+    two: number
+  }
+  likePG: {
+    one: number
+    two: number
+  }
+  likeP: {
+    one: number
+    two: number
+  }
+  commentPG: number
+  friendG: {
+    one: number
+    two: number
+    three: number
+    four: number
+  }
+  inviteG: {
+    one: number
+    two: number
+    three: number
+    four: number
+  }
+}
 
 const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
   const { t } = useTranslation()
   const { register, handleSubmit } = useForm()
-  const [switchScript, setSwitchScript] = useState({ add: false, edit: false })
+  const [switchScript, setSwitchScript] = useState<PropsSwitchScript>({ add: false, edit: false }) // for group interaction
   const [choiceList, setChoiceList] = useState<number>(1)
   const [inNumber, setInNumber] = useState({
+    // for group interaction
     joinG: 1,
     outG: { one: 1, two: 1 },
     outGW: { one: 1, two: 1 },
@@ -42,9 +84,9 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
     // toast.success('Thêm tài khoản thành công')
   }
   const datList = [
-    { id: 1, name: 'Tương tác cá nhân' },
-    { id: 2, name: 'Tương tác bạn bè' },
-    { id: 3, name: 'Tương tác nhóm' },
+    { id: 1, name: t('personal_interaction') },
+    { id: 2, name: t('friend_interaction') },
+    { id: 3, name: t('group_interaction') }
   ]
   return (
     <Modal show={isShow} onClose={handleClose} className="modal-interactive modal">
@@ -66,7 +108,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                 <InputField
                   name="script"
                   placeholder={t('name_script')}
-                  inputClassName="border-blue-500 border"
+                  inputClassName="border-blue-500 border !py-2"
                 />
                 <ButtonC
                   title={t('add_script')}
@@ -100,11 +142,11 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                 min={1}
                 name="stream"
                 max={100}
-                title="Tổng số hành động thao tác"
+                title={t('total_act')}
                 // onChange={(e: any) => setInNumber(e.target.value)}
                 // value={inNumber}
                 classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span="Hành động"
+                span={t('action')}
                 clsTitle="w-[200px] "
                 clsLabel="whitespace-pre-wrap"
                 classInputContainer="w-full flex items-center justify-start mb-2"
@@ -115,7 +157,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                 min={1}
                 name="stream"
                 max={100}
-                title="Khoảng cách 2 lần tương tác"
+                title={t('interaction_2')}
                 // onChange={(e: any) => setInNumber(e.target.value)}
                 // value={inNumber}
                 classInput="ml-2 !w-[70px] !px-2 !py-1"
@@ -130,7 +172,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                 // onChange={(e: any) => setInNumber(e.target.value)}
                 // value={inNumber}
                 classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span="Giây"
+                span={t('second')}
                 clsLabel="whitespace-pre-wrap"
                 classInputContainer="w-full flex items-center justify-start mb-2"
               />{' '}
@@ -140,15 +182,11 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
             <div className=" w-fit">
               <CheckboxField
                 name="not_same"
-                title="Không tương tác trùng hành động"
+                title={t('no_same_action')}
                 classInputContainer="mb-2"
                 classLabel=" text-sm"
               />
-              <CheckboxField
-                name="not_same"
-                title="Chọn/Bỏ tất cả hành đồng"
-                classLabel=" text-sm"
-              />
+              <CheckboxField name="not_same" title={t('no_yes_action')} classLabel=" text-sm" />
             </div>{' '}
           </div>
           <div className="w-full">
@@ -167,466 +205,12 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
             </div>
             <div className="w-full p-2 px-3 rounded-[5px] bg-[rgb(249_249_249_/_34%)] border h-[400px] mt-4 overflow-hidden">
               {choiceList === 3 && (
-                <div
-                  className="relative left-0 "
-                  style={{ animation: 'move_choiceList_left 0.3s linear' }}
-                >
-                  <div className="flex items-start ">
-                    <h3 className="text-blue-500 font-medium mr-4">Lựa chọn tương tác theo nhóm</h3>
-                    <div className="flex items-center mt-[2px]">
-                      <fieldset className="">
-                        <ToggleSwitch
-                          id="group"
-                          spanText={t('Nhóm của tài khoản')}
-                          checked={switchScript.add}
-                          circle
-                          name="by_group"
-                          clsLabel="!m-0 !mr-4"
-                          onChange={(e) =>
-                            setSwitchScript((pre) => ({ ...pre, add: e.target.checked }))
-                          }
-                        />
-                        <ToggleSwitch
-                          id="id"
-                          spanText={t('Theo ID nhóm')}
-                          checked={switchScript.add}
-                          circle
-                          clsLabel="!m-0"
-                          name="by_group"
-                          onChange={(e) =>
-                            setSwitchScript((pre) => ({ ...pre, add: e.target.checked }))
-                          }
-                        />
-                      </fieldset>
-                    </div>
-                  </div>
-                  <a
-                    href="#"
-                    className="font-medium text-sm flex items-center mt-[7px] mb-3 text-blue-500 hover:underline"
-                  >
-                    <div className="rotate-[85deg] text-[20px] mr-1">
-                      <LiaHandPointer />
-                    </div>{' '}
-                    Vui lòng nhập ID tại đây
-                  </a>
-                  <div className="py-3 border-t flex items-center justify-between">
-                    <div className="w-fit">
-                      <div className="flex items-center">
-                        <CheckboxField
-                          name="not_same"
-                          title="Tham gia nhóm"
-                          classInputContainer="w-[280px]"
-                          classLabel=" text-sm"
-                        />
-                        <InputNumberField
-                          min={1}
-                          name="stream"
-                          max={100}
-                          onChange={(e: any) =>
-                            setInNumber((pre) => ({ ...pre, joinG: e.target.value }))
-                          }
-                          value={inNumber.joinG}
-                          classInput="ml-2 !w-[70px] !px-2 !py-1"
-                          span="Nhóm"
-                          clsLabel="whitespace-pre-wrap"
-                          classInputContainer=" flex items-center justify-start"
-                        />{' '}
-                      </div>
-                      <div className="flex items-center my-2">
-                        <CheckboxField
-                          name="not_same"
-                          title="Rời nhóm"
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outG: { ...pre.outG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outG: { ...pre.outG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Nhóm"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckboxField
-                          name="not_same"
-                          title="Rời các nhóm yêu cầu chờ duyệt"
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outGW: { ...pre.outGW, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outGW.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outGW: { ...pre.outGW, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outGW.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Nhóm"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>{' '}
-                    </div>
-                    <div className="w-[0.5px] border-r h-[145px]"></div>
-                    <div className="w-[50%] flex flex-wrap">
-                      <div className="flex items-center ">
-                        <CheckboxField
-                          name="not_same"
-                          title="Trả lời bình luân bài viết trong nhóm"
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                answerPG: { ...pre.answerPG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.answerPG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                answerPG: { ...pre.answerPG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.answerPG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Bài viết"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-center my-2">
-                        <CheckboxField
-                          name="not_same"
-                          title="Thích bình luận bài viết trong nhóm"
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likePG: { ...pre.likePG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likePG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likePG: { ...pre.likePG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likePG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Bài viết"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckboxField
-                          name="not_same"
-                          title="Thích bài viết trong nhóm"
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Nhóm"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>{' '}
-                  <div className="pt-5 border-t flex items-center justify-between">
-                    <div className="w-full">
-                      <div className="flex items-center">
-                        <CheckboxField
-                          name="not_same"
-                          title="Bình luận bài viết trong nhóm"
-                          classInputContainer="w-[280px]"
-                          classLabel=" text-sm"
-                        />
-                        <InputNumberField
-                          min={1}
-                          name="stream"
-                          max={100}
-                          onChange={(e: any) =>
-                            setInNumber((pre) => ({ ...pre, commentPG: e.target.value }))
-                          }
-                          value={inNumber.commentPG}
-                          classInput="ml-2 !w-[70px] !px-2 !py-1"
-                          span="Bài viết"
-                          clsLabel="whitespace-pre-wrap"
-                          classInputContainer=" flex items-center justify-start"
-                        />{' '}
-                        <a
-                          href=""
-                          className="font-medium text-sm flex items-center ml-3 text-blue-500 hover:underline"
-                        >
-                          <div className="rotate-[85deg] text-[20px] mr-1 text-red-500">
-                            <LiaHandPointer />
-                          </div>{' '}
-                          Vui lòng nhập nội dung bình luân nhóm tại đây. Mỗi nội dung 1
-                        </a>
-                      </div>
-                      <div className="flex items-center my-2">
-                        <CheckboxField
-                          name="not_same"
-                          title="Kết bạn với thành viên trong nhóm"
-                          classInputContainer="w-[280px]"
-                          classLabel="text-sm"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                friendG: { ...pre.friendG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.friendG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                friendG: { ...pre.friendG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.friendG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Nhóm"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                        <div className="flex items-center ml-5">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            title="Mỗi nhóm"
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                friendG: { ...pre.friendG, three: e.target.value }
-                              }))
-                            }
-                            value={inNumber.friendG.three}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel=""
-                            classInputContainer="w-fit   flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                friendG: { ...pre.friendG, four: e.target.value }
-                              }))
-                            }
-                            value={inNumber.friendG.four}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Thành viên"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-center  w-full">
-                        <CheckboxField
-                          name="not_same"
-                          title="Mời bạn bè vào trong nhóm"
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                inviteG: { ...pre.inviteG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.inviteG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                inviteG: { ...pre.inviteG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.inviteG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Nhóm"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                        <div className="flex items-center ml-5">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            title="Mỗi nhóm"
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                inviteG: { ...pre.inviteG, three: e.target.value }
-                              }))
-                            }
-                            value={inNumber.inviteG.three}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel=""
-                            classInputContainer="w-fit   flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                inviteG: { ...pre.inviteG, four: e.target.value }
-                              }))
-                            }
-                            value={inNumber.inviteG.four}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Bạn bè"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <FormInteractionIndividual
+                  inNumber={inNumber}
+                  setInNumber={setInNumber}
+                  switchScript={switchScript}
+                  setSwitchScript={setSwitchScript}
+                />
               )}
               {choiceList === 1 && (
                 <div
@@ -636,7 +220,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                   <div className="flex items-center border-b pb-3 pt-1">
                     <CheckboxField
                       name="not_same"
-                      title="Đọc thông báo"
+                      title={t('read_noti')}
                       classInputContainer="w-[280px]"
                       classLabel=" text-sm"
                     />
@@ -646,7 +230,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                         min={1}
                         name="stream"
                         max={100}
-                        title="Mỗi video xem"
+                        title={t('each_video_watch')}
                         onChange={(e: any) =>
                           setInNumber((pre) => ({
                             ...pre,
@@ -671,7 +255,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                         }
                         value={inNumber.outGW.two}
                         classInput="ml-2 !w-[70px] !px-2 !py-1"
-                        span="Giây"
+                        span={t('second')}
                         clsLabel="whitespace-pre-wrap"
                         classInputContainer="w-full flex items-center justify-start"
                       />
@@ -682,7 +266,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                       <div className="flex items-center ">
                         <CheckboxField
                           name="not_same"
-                          title="Lướt bảng tin"
+                          title={t('surf_blog')}
                           classLabel=" text-sm"
                           classInputContainer="w-[280px]"
                         />
@@ -714,7 +298,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                             }
                             value={inNumber.outG.two}
                             classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Giây"
+                            span={t('second')}
                             clsLabel="whitespace-pre-wrap"
                             classInputContainer="w-full flex items-center justify-start"
                           />
@@ -723,7 +307,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                       <div className="flex items-center my-2">
                         <CheckboxField
                           name="not_same"
-                          title="Lướt story"
+                          title={t('surf_story')}
                           classLabel=" text-sm"
                           classInputContainer="w-[280px]"
                         />
@@ -764,7 +348,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                       <div className="flex items-center ">
                         <CheckboxField
                           name="not_same"
-                          title="Thích bài viết bảng tin"
+                          title={t('like_post_news')}
                           classLabel=" text-sm"
                           classInputContainer="w-[280px]"
                         />
@@ -796,7 +380,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                             }
                             value={inNumber.answerPG.two}
                             classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Bài viết"
+                            span={t('post')}
                             clsLabel="whitespace-pre-wrap"
                             classInputContainer="w-full flex items-center justify-start"
                           />
@@ -808,7 +392,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                       <div className="flex items-center">
                         <CheckboxField
                           name="not_same"
-                          title="Chia sẻ bài viết ngẫu nhiên về tường"
+                          title={t('share_post_random_wall')}
                           classLabel=" text-sm"
                           classInputContainer="w-[280px]"
                         />
@@ -840,7 +424,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                             }
                             value={inNumber.likeP.two}
                             classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Bài viết"
+                            span={t('Bài viết')}
                             clsLabel="whitespace-pre-wrap"
                             classInputContainer="w-full flex items-center justify-start"
                           />
@@ -849,7 +433,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                       <div className="flex items-center my-2">
                         <CheckboxField
                           name="not_same"
-                          title="Lướt video trên Watch"
+                          title={t('surf_story_on_watch')}
                           classLabel=" text-sm"
                           classInputContainer="w-[280px]"
                         />
@@ -890,7 +474,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                       <div className="flex items-center">
                         <CheckboxField
                           name="not_same"
-                          title="Chia sẽ ngẫu nhiên về tường"
+                          title={t('share_random_wall')}
                           classLabel=" text-sm"
                           classInputContainer="w-[280px]"
                         />
@@ -935,7 +519,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                       <div className="flex items-center">
                         <CheckboxField
                           name="not_same"
-                          title="Bình luận bài viết bảng tin"
+                          title={t('comment_post_news')}
                           classLabel=" text-sm"
                           classInputContainer="w-[280px]"
                         />
@@ -967,7 +551,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                             }
                             value={inNumber.likePG.two}
                             classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Bài viết"
+                            span={t('post')}
                             clsLabel="whitespace-pre-wrap"
                             classInputContainer="w-full flex items-center justify-start"
                           />
@@ -979,20 +563,20 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                           <div className="rotate-[85deg] text-[20px] mr-1 text-red-500">
                             <LiaHandPointer />
                           </div>{' '}
-                          Vui lòng nhập nội dung bình luân nhóm tại đây. Mỗi nội dung 1
+                          {t('please_enter_content_each_line')}
                         </a>
                       </div>
                       <div className="flex items-center my-2">
                         <CheckboxField
                           name="not_same"
-                          title="Tìm video theo từ khoá"
+                          title={t('find_video_by_keyword')}
                           classInputContainer="w-[280px]"
                           classLabel="text-sm"
                         />
                         <div className="flex items-center">
                           <InputField
                             name="keyword_video"
-                            placeholder="Nhập từ khoá vào đây"
+                            placeholder={t('enter_keyword_into')}
                             classInputContainer="ml-[8px]"
                             inputClassName="!py-[5px] px-[10px] hover:shadow-[0_0_2px_#00a6ff] border border-[#00a6ff] change_placeholder_inter"
                           />
