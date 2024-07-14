@@ -14,6 +14,7 @@ import ButtonC from '../CustomField/ButtonC'
 import InputNumberField from '../CustomField/InputNumberField'
 import CheckboxField from '../CustomField/CheckboxField'
 import { LiaHandPointer } from 'react-icons/lia'
+import FormInteractionGroup from '../Form/FormInteractionGroup'
 import FormInteractionIndividual from '../Form/FormInteractionIndividual'
 
 interface ModalTrashAccountProps {
@@ -60,7 +61,40 @@ export interface PropsInNumber {
     four: number
   }
 }
-
+export interface PropsInNumberIndividual {
+  eachVideo: {
+    one: number
+    two: number
+  }
+  surfNews: {
+    one: number
+    two: number
+  }
+  surfStory: {
+    one: number
+    two: number
+  }
+  likeNews: {
+    one: number
+    two: number
+  }
+  shareRandomPost: {
+    one: number
+    two: number
+  }
+  surfVideoOnWatch: {
+    one: number
+    two: number
+  }
+  shareRandom: {
+    one: number
+    two: number
+  }
+  commentNews: {
+    one: number
+    two: number
+  }
+}
 const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
   const { t } = useTranslation()
   const { register, handleSubmit } = useForm()
@@ -77,6 +111,17 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
     commentPG: 1,
     friendG: { one: 1, two: 1, three: 1, four: 1 },
     inviteG: { one: 1, two: 1, three: 1, four: 1 }
+  })
+  const [inNumberIndividual, setInNumberIndividual] = useState({
+    // for group interaction
+    eachVideo: { one: 1, two: 1 },
+    surfNews: { one: 1, two: 1 },
+    surfStory: { one: 1, two: 1 },
+    likeNews: { one: 1, two: 1 },
+    shareRandomPost: { one: 1, two: 1 },
+    surfVideoOnWatch: { one: 1, two: 1 },
+    shareRandom: { one: 1, two: 1 },
+    commentNews: { one: 1, two: 1 }
   })
   const handleClose = (): void => setIsShow && setIsShow(false)
   const onSubmit = (data): void => {
@@ -205,7 +250,7 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
             </div>
             <div className="w-full p-2 px-3 rounded-[5px] bg-[rgb(249_249_249_/_34%)] border h-[400px] mt-4 overflow-hidden">
               {choiceList === 3 && (
-                <FormInteractionIndividual
+                <FormInteractionGroup
                   inNumber={inNumber}
                   setInNumber={setInNumber}
                   switchScript={switchScript}
@@ -213,378 +258,10 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
                 />
               )}
               {choiceList === 1 && (
-                <div
-                  className="relative right-0 "
-                  style={{ animation: 'move_choiceList_right 0.3s linear' }}
-                >
-                  <div className="flex items-center border-b pb-3 pt-1">
-                    <CheckboxField
-                      name="not_same"
-                      title={t('read_noti')}
-                      classInputContainer="w-[280px]"
-                      classLabel=" text-sm"
-                    />
-
-                    <div className="flex items-center">
-                      <InputNumberField
-                        min={1}
-                        name="stream"
-                        max={100}
-                        title={t('each_video_watch')}
-                        onChange={(e: any) =>
-                          setInNumber((pre) => ({
-                            ...pre,
-                            outGW: { ...pre.outGW, one: e.target.value }
-                          }))
-                        }
-                        value={inNumber.outGW.one}
-                        classInput="ml-2 !w-[70px] !px-2 !py-1"
-                        clsLabel="whitespace-pre-wrap"
-                        clsTitle="w-max"
-                        classInputContainer=" flex items-center justify-start ml-2"
-                      />{' '}
-                      <InputNumberField
-                        min={1}
-                        name="stream"
-                        max={100}
-                        onChange={(e: any) =>
-                          setInNumber((pre) => ({
-                            ...pre,
-                            outGW: { ...pre.outGW, two: e.target.value }
-                          }))
-                        }
-                        value={inNumber.outGW.two}
-                        classInput="ml-2 !w-[70px] !px-2 !py-1"
-                        span={t('second')}
-                        clsLabel="whitespace-pre-wrap"
-                        classInputContainer="w-full flex items-center justify-start"
-                      />
-                    </div>
-                  </div>
-                  <div className="py-3 flex items-center justify-between">
-                    <div className="w-fit">
-                      <div className="flex items-center ">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('surf_blog')}
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outG: { ...pre.outG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outG: { ...pre.outG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span={t('second')}
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>{' '}
-                      <div className="flex items-center my-2">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('surf_story')}
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outGW: { ...pre.outGW, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outGW.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                outGW: { ...pre.outGW, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.outGW.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Story"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-center ">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('like_post_news')}
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                answerPG: { ...pre.answerPG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.answerPG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                answerPG: { ...pre.answerPG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.answerPG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span={t('post')}
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-[0.5px] border-r h-[145px]"></div>
-                    <div className="w-[50%] flex flex-wrap">
-                      <div className="flex items-center">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('share_post_random_wall')}
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span={t('Bài viết')}
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-center my-2">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('surf_story_on_watch')}
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Video"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('share_random_wall')}
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likeP: { ...pre.likeP, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likeP.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span="Video"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>{' '}
-                  <div className="pt-5 border-t flex items-center justify-between">
-                    <div className="w-full">
-                      <div className="flex items-center">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('comment_post_news')}
-                          classLabel=" text-sm"
-                          classInputContainer="w-[280px]"
-                        />
-                        <div className="flex items-center">
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likePG: { ...pre.likePG, one: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likePG.one}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer=" flex items-center justify-start"
-                          />{' '}
-                          <InputNumberField
-                            min={1}
-                            name="stream"
-                            max={100}
-                            onChange={(e: any) =>
-                              setInNumber((pre) => ({
-                                ...pre,
-                                likePG: { ...pre.likePG, two: e.target.value }
-                              }))
-                            }
-                            value={inNumber.likePG.two}
-                            classInput="ml-2 !w-[70px] !px-2 !py-1"
-                            span={t('post')}
-                            clsLabel="whitespace-pre-wrap"
-                            classInputContainer="w-full flex items-center justify-start"
-                          />
-                        </div>
-                        <a
-                          href=""
-                          className="font-medium text-sm flex items-center ml-3 text-blue-500 hover:underline"
-                        >
-                          <div className="rotate-[85deg] text-[20px] mr-1 text-red-500">
-                            <LiaHandPointer />
-                          </div>{' '}
-                          {t('please_enter_content_each_line')}
-                        </a>
-                      </div>
-                      <div className="flex items-center my-2">
-                        <CheckboxField
-                          name="not_same"
-                          title={t('find_video_by_keyword')}
-                          classInputContainer="w-[280px]"
-                          classLabel="text-sm"
-                        />
-                        <div className="flex items-center">
-                          <InputField
-                            name="keyword_video"
-                            placeholder={t('enter_keyword_into')}
-                            classInputContainer="ml-[8px]"
-                            inputClassName="!py-[5px] px-[10px] hover:shadow-[0_0_2px_#00a6ff] border border-[#00a6ff] change_placeholder_inter"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <FormInteractionIndividual
+                  inNumber={inNumberIndividual}
+                  setInNumber={setInNumberIndividual}
+                />
               )}
             </div>
           </div>

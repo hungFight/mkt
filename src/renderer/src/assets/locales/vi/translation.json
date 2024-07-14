@@ -143,5 +143,21 @@
   "stream_concurrency": "Số luồng chạy đồng thời",
   "next_profile_error": "Chuyễn PageProfile nếu lỗi liên tiếp",
   "stream": "Luồng",
-  "see_guide_here": "Xem hướng dẫn tại đây"
+  "see_guide_here": "Xem hướng dẫn tại đây",
+  "choice_interaction_group": "Lựa chọn tương tác theo nhóm",
+  "group_of_account": "Nhóm của tài khoản",
+  "group_id": "Theo ID nhóm",
+  "please_enter_id_here": " Vui lòng nhập ID tại đây",
+  "Join_group": "Tham gia nhóm",
+  "out_group": "Rời nhóm",
+  "out_group_waiting": "Rời các nhóm yêu cầu chờ duyệt",
+  "answer_comment_in_group": "Trả lời bình luân bài viết trong nhóm",
+  "like_comments_in_group": "Thích bình luận bài viết trong nhóm",
+  "like_post_in_group": "Thích bài viết trong nhóm",
+  "comment_post_in_group": "Bình luận bài viết trong nhóm",
+  "make_friend_in_group": "Kết bạn với thành viên trong nhóm",
+  "each_group": "Mỗi nhóm",
+  "member": "Thành viên",
+  "invite_friend_into_group": "Mời bạn bè vào trong nhóm",
+  "please_enter_content_of_comment": " Vui lòng nhập nội dung bình luân nhóm tại đây. Mỗi nội dung 1"
 }
