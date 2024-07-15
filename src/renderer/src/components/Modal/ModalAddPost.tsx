@@ -227,7 +227,7 @@ const ModalAddPost: FC<ModalAddAccountProps> = ({ isShow, setIsShow }) => {
           </div>
         </form>
       </Modal.Body>{' '}
-      <ModalRenderAI isShow={isShowAI} setIsShow={setIsShowAI} />
+      <ModalRenderAI isShow={isShowAI} setIsShow={setIsShowAI} title={t('create_post')} moreBox />
       <ToastContainer />
     </Modal>
   )

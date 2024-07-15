@@ -6,7 +6,7 @@ export interface InputNumberFieldProps extends InputHTMLAttributes<HTMLElement> 
   title?: string
   name: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>
+  register?: UseFormRegister<any> | any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors?: any
   classInputContainer?: string
@@ -48,7 +48,7 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
           <input
             className="form-checkbox h-5 w-5 text-blue-600"
             id={name}
-            {...register?.(name)}
+            {...register}
             type="checkbox"
             {...rest}
           />
@@ -70,7 +70,7 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
           autoComplete="off"
           style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
           id={name}
-          {...register?.(name)}
+          {...register}
           type="number"
           value={value === undefined || value === null ? 0 : value}
           {...rest}

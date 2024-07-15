@@ -1,5 +1,5 @@
 import { default as FormConfigInteraction } from '@renderer/components/Form/FormConfigInteraction'
-import FormInteractionFriend from '@renderer/components/Form/FormInteractionFriend'
+import FormInteractionFriend from '@renderer/components/Form/FormInteractionPage'
 import FormInteractionIndividual from '@renderer/components/Form/FormInteractionIndividual'
 
 export const configInteraction = [

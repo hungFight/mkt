@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useState } from 'react'
 import ButtonC from '../CustomField/ButtonC'
 import { useTranslation } from 'react-i18next'
 
-const NodalConfirm: FC<{
+const ModalConfirm: FC<{
   title: string
   classRoot?: string
   classTitle?: string
@@ -19,7 +19,7 @@ const NodalConfirm: FC<{
       <div
         id="deleteModal"
         aria-hidden="true"
-        className="overflow-y-auto h-full overflow-x-hidden fixed bg-[rgb(0_0_0_/_60%)] top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-modal md:h-full"
+        className="overflow-y-auto h-full overflow-x-hidden !m-0 fixed bg-[rgb(0_0_0_/_60%)] top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-modal md:h-full"
       >
         <div className="relative p-4 w-full max-w-md ">
           {/* Modal content */}
@@ -44,7 +44,7 @@ const NodalConfirm: FC<{
               </svg>
               <span className="sr-only">Close modal</span>
             </button>
-            <div className='text-[50px] flex justify-center text-center mb-3 mt-1'> {icon}</div>
+            <div className="text-[50px] flex justify-center text-center mb-3 mt-1"> {icon}</div>
             <p className="mb-4 text-gray-500 dark:text-gray-300">{title}</p>
             <div className="flex justify-center items-center space-x-4">
               <button
@@ -52,14 +52,14 @@ const NodalConfirm: FC<{
                 onClick={() => onClick(false)}
                 className="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
               >
-                No, cancel
+                {t('no')}
               </button>
               <button
-                type="submit"
+                type="button"
                 onClick={() => onClick(true)}
                 className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
               >
-                Yes, I'm sure
+                {t('yes')}
               </button>
             </div>
           </div>
@@ -69,4 +69,4 @@ const NodalConfirm: FC<{
   )
 }
 
-export default NodalConfirm
+export default ModalConfirm

@@ -1,16 +1,22 @@
 import { FC, InputHTMLAttributes } from 'react'
-import { UseFormRegister } from 'react-hook-form'
+import {
+  FieldValues,
+  RegisterOptions,
+  UseFormRegister,
+  UseFormRegisterReturn
+} from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 export interface CheckboxFieldProps extends InputHTMLAttributes<HTMLElement> {
   title?: string
   name: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>
+  register?: UseFormRegisterReturn<any> | any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   classInputContainer?: string
   isRequire?: boolean
   classLabel?: string
+  classInput?: string
 }
 
 const CheckboxField: FC<CheckboxFieldProps> = ({
@@ -19,6 +25,7 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
   register,
   classInputContainer,
   classLabel,
+  classInput,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -27,9 +34,9 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
     <div className={` ${classInputContainer ?? ''}`}>
       <div className="flex items-center">
         <input
-          className="form-checkbox h-5 w-5 text-blue-600 active:!shadow-[0_0_3px] shadow-blue-500"
+          className={`form-checkbox h-5 w-5 text-blue-600 border border-[rgb(174_174_174)] active:!shadow-[0_0_3px] shadow-blue-500 ${classInput}`}
           id={name}
-          {...register?.(name)}
+          {...register}
           type="checkbox"
           {...rest}
         />

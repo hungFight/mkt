@@ -6,21 +6,34 @@ import InputNumberField from '../CustomField/InputNumberField'
 import ToggleSwitch from '../ToggleSwitch'
 import { LiaHandPointer } from 'react-icons/lia'
 import { Dispatch, FC, SetStateAction } from 'react'
-import { PropsInNumber, PropsSwitchScript } from '../Modal/ModalAddScript'
+import { PropsHandleTextarea, PropsInNumber, PropsSwitchScript } from '../Modal/ModalAddScript'
 import { useTranslation } from 'react-i18next'
+import TextAreaField from '../CustomField/TextAreaField'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 const FormInteractionGroup: FC<{
   inNumber: PropsInNumber
   setInNumber: Dispatch<SetStateAction<PropsInNumber>>
   switchScript: PropsSwitchScript
   setSwitchScript: Dispatch<SetStateAction<PropsSwitchScript>>
-}> = ({ inNumber, setInNumber, switchScript, setSwitchScript }): JSX.Element => {
+  register: UseFormRegister<FieldValues>
+  setHandleTextarea: Dispatch<SetStateAction<PropsHandleTextarea>>
+  isShowTextarea: boolean
+}> = ({
+  inNumber,
+  setInNumber,
+  switchScript,
+  setSwitchScript,
+  register,
+  setHandleTextarea,
+  isShowTextarea
+}): JSX.Element => {
   const { t } = useTranslation()
   const handleSubmit = (): void => {
     console.log(123)
   }
   return (
-    <form className="relative left-0 " style={{ animation: 'move_choiceList_left 0.3s linear' }}>
+    <div className=" " style={{ animation: 'move_choiceList_left 0.3s linear' }}>
       <div className="flex items-start ">
         <h3 className="text-blue-500 font-medium mr-4">{t('choice_interaction_group')}</h3>
         <div className="flex items-center mt-[2px]">
@@ -46,30 +59,38 @@ const FormInteractionGroup: FC<{
           </fieldset>
         </div>
       </div>
-      <a
-        href="#"
-        className="font-medium text-sm flex items-center mt-[7px] mb-3 text-blue-500 hover:underline"
-      >
-        <div className="rotate-[85deg] text-[20px] mr-1">
-          <LiaHandPointer />
-        </div>{' '}
-        {t('please_enter_id_here')}
-      </a>
-      <div className="py-3 border-t flex items-center justify-between">
-        <div className="w-fit">
+      <div className={`mt-2 w-1/2`}>
+        <TextAreaField
+          isRequire
+          title={t('please_enter_id_here')}
+          placeholder="..."
+          register={{ ...register('please_enter_id_here', { required: true }) }}
+          name="please_enter_id_here"
+          clsTextArea="text-[15px] p-5 "
+          clsTextLabel="!text-sm font-medium"
+        />
+        {/* {errors.ai_title && (
+                <p className="text-[13px] mt-[-3px] text-red-500 ">{t('require')}</p>
+              )} */}
+      </div>
+      <div className="pt-5 border-t flex items-center justify-between">
+        <div className="w-full">
           <div className="flex items-center">
             <CheckboxField
-              name="not_same"
-              title={t('join_group')}
+              name="join_group"
+              title={t('Join_group')}
+              register={{ ...register('join_group') }}
               classInputContainer="w-[280px]"
+              defaultChecked
               classLabel=" text-sm"
             />
             <InputNumberField
               min={1}
-              name="stream"
+              name="join_group_1"
               max={100}
               onChange={(e: any) => setInNumber((pre) => ({ ...pre, joinG: e.target.value }))}
               value={inNumber.joinG}
+              register={{ ...register('join_group_1') }}
               classInput="ml-2 !w-[70px] !px-2 !py-1"
               span={t('group')}
               clsLabel="whitespace-pre-wrap"
@@ -78,142 +99,19 @@ const FormInteractionGroup: FC<{
           </div>
           <div className="flex items-center my-2">
             <CheckboxField
-              name="not_same"
-              title={t('out_group')}
-              classLabel=" text-sm"
-              classInputContainer="w-[280px]"
-            />
-            <div className="flex items-center">
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    outG: { ...pre.outG, one: e.target.value }
-                  }))
-                }
-                value={inNumber.outG.one}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer=" flex items-center justify-start"
-              />{' '}
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    outG: { ...pre.outG, two: e.target.value }
-                  }))
-                }
-                value={inNumber.outG.two}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span="Nhóm"
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
-              />
-            </div>
-          </div>
-          <div className="flex items-center">
-            <CheckboxField
-              name="not_same"
-              title={t('out_group_waiting')}
-              classLabel=" text-sm"
-              classInputContainer="w-[280px]"
-            />
-            <div className="flex items-center">
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    outGW: { ...pre.outGW, one: e.target.value }
-                  }))
-                }
-                value={inNumber.outGW.one}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer=" flex items-center justify-start"
-              />{' '}
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    outGW: { ...pre.outGW, two: e.target.value }
-                  }))
-                }
-                value={inNumber.outGW.two}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span={t('group')}
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
-              />
-            </div>
-          </div>{' '}
-        </div>
-        <div className="w-[0.5px] border-r h-[145px]"></div>
-        <div className="w-[50%] flex flex-wrap">
-          <div className="flex items-center ">
-            <CheckboxField
-              name="not_same"
-              title={t('answer_comment_in_group')}
-              classLabel=" text-sm"
-              classInputContainer="w-[280px]"
-            />
-            <div className="flex items-center">
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    answerPG: { ...pre.answerPG, one: e.target.value }
-                  }))
-                }
-                value={inNumber.answerPG.one}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer=" flex items-center justify-start"
-              />{' '}
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    answerPG: { ...pre.answerPG, two: e.target.value }
-                  }))
-                }
-                value={inNumber.answerPG.two}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span={t('post')}
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
-              />
-            </div>
-          </div>
-          <div className="flex items-center my-2">
-            <CheckboxField
-              name="not_same"
+              name="like_comments_in_group"
               title={t('like_comments_in_group')}
               classLabel=" text-sm"
+              defaultChecked
+              register={{ ...register('like_comments_in_group') }}
               classInputContainer="w-[280px]"
             />
             <div className="flex items-center">
               <InputNumberField
                 min={1}
-                name="stream"
+                name="like_comments_in_group_1"
                 max={100}
+                register={{ ...register('like_comments_in_group_1') }}
                 onChange={(e: any) =>
                   setInNumber((pre) => ({
                     ...pre,
@@ -227,8 +125,9 @@ const FormInteractionGroup: FC<{
               />{' '}
               <InputNumberField
                 min={1}
-                name="stream"
+                name="like_comments_in_group_2"
                 max={100}
+                register={{ ...register('like_comments_in_group_2') }}
                 onChange={(e: any) =>
                   setInNumber((pre) => ({
                     ...pre,
@@ -243,232 +142,63 @@ const FormInteractionGroup: FC<{
               />
             </div>
           </div>
-          <div className="flex items-center">
-            <CheckboxField
-              name="not_same"
-              title={t('like_post_in_group')}
-              classLabel=" text-sm"
-              classInputContainer="w-[280px]"
-            />
-            <div className="flex items-center">
+          <div className=" ">
+            <div className="flex items-center ">
+              <CheckboxField
+                name="comment_post_in_group"
+                register={{ ...register('comment_post_in_group') }}
+                title={t('comment_post_in_group')}
+                classInputContainer="w-[280px]"
+                classLabel="text-sm"
+                defaultChecked
+                onChange={(e: any) =>
+                  setHandleTextarea((pre) => ({ ...pre, interaction_group: e.target.checked }))
+                }
+              />
               <InputNumberField
                 min={1}
-                name="stream"
+                name="comment_post_in_group_1"
+                register={{ ...register('comment_post_in_group_1') }}
                 max={100}
                 onChange={(e: any) =>
                   setInNumber((pre) => ({
                     ...pre,
-                    likeP: { ...pre.likeP, one: e.target.value }
+                    commentPG: { ...pre.commentPG, one: e.target.value }
                   }))
                 }
-                value={inNumber.likeP.one}
+                value={inNumber.commentPG.one}
                 classInput="ml-2 !w-[70px] !px-2 !py-1"
                 clsLabel="whitespace-pre-wrap"
                 classInputContainer=" flex items-center justify-start"
               />{' '}
               <InputNumberField
                 min={1}
-                name="stream"
+                name="comment_post_in_group_2"
+                register={{ ...register('comment_post_in_group_2') }}
                 max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    likeP: { ...pre.likeP, two: e.target.value }
-                  }))
-                }
-                value={inNumber.likeP.two}
+                onChange={(e: any) => setInNumber((pre) => ({ ...pre, commentPG: e.target.value }))}
+                value={inNumber.commentPG.two}
                 classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span={t('group')}
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
-              />
-            </div>
-          </div>
-        </div>
-      </div>{' '}
-      <div className="pt-5 border-t flex items-center justify-between">
-        <div className="w-full">
-          <div className="flex items-center">
-            <CheckboxField
-              name="not_same"
-              title={t('comment_post_in_group')}
-              classInputContainer="w-[280px]"
-              classLabel=" text-sm"
-            />
-            <InputNumberField
-              min={1}
-              name="stream"
-              max={100}
-              onChange={(e: any) => setInNumber((pre) => ({ ...pre, commentPG: e.target.value }))}
-              value={inNumber.commentPG}
-              classInput="ml-2 !w-[70px] !px-2 !py-1"
-              span={t('post')}
-              clsLabel="whitespace-pre-wrap"
-              classInputContainer=" flex items-center justify-start"
-            />{' '}
-            <a
-              href=""
-              className="font-medium text-sm flex items-center ml-3 text-blue-500 hover:underline"
-            >
-              <div className="rotate-[85deg] text-[20px] mr-1 text-red-500">
-                <LiaHandPointer />
-              </div>{' '}
-              {t('please_enter_content_of_comment')}
-            </a>
-          </div>
-          <div className="flex items-center my-2">
-            <CheckboxField
-              name="not_same"
-              title={t('make_friend_in_group')}
-              classInputContainer="w-[280px]"
-              classLabel="text-sm"
-            />
-            <div className="flex items-center">
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    friendG: { ...pre.friendG, one: e.target.value }
-                  }))
-                }
-                value={inNumber.friendG.one}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
+                span={t('post')}
                 clsLabel="whitespace-pre-wrap"
                 classInputContainer=" flex items-center justify-start"
               />{' '}
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    friendG: { ...pre.friendG, two: e.target.value }
-                  }))
-                }
-                value={inNumber.friendG.two}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span={t('group')}
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
-              />
             </div>
-            <div className="flex items-center ml-5">
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                title="Mỗi nhóm"
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    friendG: { ...pre.friendG, three: e.target.value }
-                  }))
-                }
-                value={inNumber.friendG.three}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                clsLabel=""
-                classInputContainer="w-fit   flex items-center justify-start"
-              />{' '}
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    friendG: { ...pre.friendG, four: e.target.value }
-                  }))
-                }
-                value={inNumber.friendG.four}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span={t('member')}
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
-              />
-            </div>
-          </div>
-          <div className="flex items-center  w-full">
-            <CheckboxField
-              name="not_same"
-              title={t('invite_friend_into_group')}
-              classLabel=" text-sm"
-              classInputContainer="w-[280px]"
-            />
-            <div className="flex items-center">
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    inviteG: { ...pre.inviteG, one: e.target.value }
-                  }))
-                }
-                value={inNumber.inviteG.one}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer=" flex items-center justify-start"
-              />{' '}
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    inviteG: { ...pre.inviteG, two: e.target.value }
-                  }))
-                }
-                value={inNumber.inviteG.two}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span={t('group')}
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
-              />
-            </div>
-            <div className="flex items-center ml-5">
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                title={t('each_group')}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    inviteG: { ...pre.inviteG, three: e.target.value }
-                  }))
-                }
-                value={inNumber.inviteG.three}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                clsLabel=""
-                classInputContainer="w-fit   flex items-center justify-start"
-              />{' '}
-              <InputNumberField
-                min={1}
-                name="stream"
-                max={100}
-                onChange={(e: any) =>
-                  setInNumber((pre) => ({
-                    ...pre,
-                    inviteG: { ...pre.inviteG, four: e.target.value }
-                  }))
-                }
-                value={inNumber.inviteG.four}
-                classInput="ml-2 !w-[70px] !px-2 !py-1"
-                span={t('friend')}
-                clsLabel="whitespace-pre-wrap"
-                classInputContainer="w-full flex items-center justify-start"
+            <div className={`mt-4 ${isShowTextarea ? '' : 'pointer-events-none opacity-60'}`}>
+              <TextAreaField
+                isRequire
+                title={t('please_enter_comment_post_here')}
+                placeholder="..."
+                register={{ ...register('please_enter_comment_post_here', { required: true }) }}
+                name="please_enter_comment_post_here"
+                clsTextArea="text-[15px] p-5  "
+                clsTextLabel="!text-sm font-medium"
               />
             </div>
           </div>
         </div>
       </div>
-    </form>
+    </div>
   )
 }
 

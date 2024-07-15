@@ -77,12 +77,12 @@ const InteractionAcc = () => {
             </div>
           </div>
           <div className="flex items-center justify-between mt-5   ">
-            <div className="w-[64%] h-[74vh] border border-[rgb(214_214_214)] rounded-[10px] bg-[rgb(255_255_255)] relative">
+            <div className="w-[63%] min-[1438px]:w-[64%] h-[74vh] border border-[rgb(214_214_214)] rounded-[10px] bg-[rgb(255_255_255)] relative">
               {' '}
-              <h2 className="text-sm absolute top-[-13px] left-2 px-3 py-1 z-10">
-                QUẢN LÝ TÀI KHOẢN
+              <h2 className="w-fit text-base relative top-[-16px] left-3 px-3 py-1 z-10">
+                <p className="z-10 relative">{t('account_management')}</p>
+                <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
               </h2>
-              <div className="w-[160px] absolute top-[-1px] left-[10px] h-[1px] bg-white"></div>
               <div className="mt-8 px-5">
                 <div className="flex items-center justify-start">
                   <SelectField
@@ -111,13 +111,13 @@ const InteractionAcc = () => {
                 </div>{' '}
               </div>
             </div>
-            <div className="w-[35%] h-[74vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
-              <h2 className="text-sm absolute top-[-13px] left-2 px-3 py-1 z-10">
-                {t('interactive_config')}
+            <div className="w-[36%] min-[1438px]:w-[35%] h-[74vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
+              <h2 className="w-fit text-base relative top-[-36px] left-3 px-3 py-1 z-10">
+                <p className="z-10 relative"> {t('interactive_config')}</p>
+                <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
               </h2>
-              <div className="w-[210px] absolute top-[-1px] left-[15px] h-[1px] bg-white "></div>
               <form className="w-full bg-white overflow-hidden pl-2 mt-2">
-                <div className="pb-2 border-b mb-3">
+                <div className="py-2 border-b border-t mb-3">
                   <InputNumberField
                     min={1}
                     name="stream"
@@ -129,7 +129,7 @@ const InteractionAcc = () => {
                     span={t('stream')}
                     clsTitle="w-[58%]"
                     clsLabel="whitespace-pre-wrap"
-                    classInputContainer="w-full flex items-center justify-start  mb-2 py-1"
+                    classInputContainer="w-full flex items-center justify-start  mb-1 py-1"
                   />{' '}
                   <InputNumberField
                     min={1}
