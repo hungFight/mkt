@@ -18,7 +18,7 @@ const FormInteractionUpdateInfo = (): JSX.Element => {
           name="get_all_info_page_profile"
           title={t('get_all_info_page_profile')}
           classInputContainer="w-[280px]"
-          classLabel=" text-sm"
+          classLabel=" text-sm "
         />
       </div>
     </div>

@@ -142,11 +142,14 @@ const ModalAddScript: FC<ModalTrashAccountProps> = ({ isShow, setIsShow }) => {
   }
   return (
     <Modal show={isShow} onClose={handleClose} className="modal-interactive modal relative">
+      <Modal.Header className="px-5 py-3 absolute top-0 left-0 w-full bg-white z-50">
+        {t('interactive_config')}
+      </Modal.Header>
       <form
+        className="overflow-auto mt-[56px]"
         onSubmit={handleSubmit(onSubmit)}
         onChange={(e: any) => console.log(e.target.checked, 'eeee')}
       >
-        <Modal.Header className="px-5 py-3 ">{t('interactive_config')}</Modal.Header>
         <Modal.Body>
           <div className="space-y-3 mb-3 overflow-auto h-full">
             <div className="flex items-center pb-4 border-b ">

@@ -96,14 +96,14 @@ const InteractionAcc = () => {
                   <div className="gap-2 flex h-fit items-center justify-between ml-2 ">
                     {/* <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" /> */}
                     <Button
-                      className="bg-green-700 rounded-xl h-max btn-start py-[3px]"
+                      className="bg-green-700 rounded-[10px] h-max btn-start py-[3px]"
                       size="sm"
                       onClick={handleStart}
                     >
                       <CirclePlay size={20} className="mr-2" />
                       Start
                     </Button>
-                    <Button className="bg-red-700 rounded-xl h-max py-[3px]" size="sm">
+                    <Button className="bg-red-700 rounded-[10px] h-max py-[3px]" size="sm">
                       <CircleX size={20} className="mr-2" />
                       Stop
                     </Button>

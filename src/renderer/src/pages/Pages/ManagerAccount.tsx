@@ -21,17 +21,23 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { BiDotsVerticalRounded } from 'react-icons/bi'
+import configStatic from '@renderer/config'
 const ManagerAccount = () => {
   const { t } = useTranslation()
+  const [hiddenArray, setHiddenArray] = useState<string[]>(
+    configStatic.configHidden.map((r) => r.name)
+  )
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(setPageTitle('account_management'))
   })
+  console.log(hiddenArray, 'hiddenArray')
+
   const [dataCheck, setDataCheck] = useState([
-    { id: 1, name: 'Danh mục 1', checked: false},
+    { id: 1, name: 'Danh mục', checked: false },
     { id: 2, name: 'Danh mục 2', checked: false }
   ])
-const [options, setOptions] = useState<number | null>(null)
+  const [options, setOptions] = useState<number | null>(null)
   const [confirmDel, setConfirmDel] = useState(false)
   const [isShowModal, setIsShowModal] = useState(false)
   const [isShowModalAccountTrash, setIsShowModalAccountTrash] = useState(false)
@@ -59,17 +65,17 @@ const [options, setOptions] = useState<number | null>(null)
     if (v === true) toast.success('delete_success')
     setConfirmDel(false)
   }
-    const divRef = useRef<any>(null)
+  const divRef = useRef<any>(null)
 
-    useEffect(() => {
-      const handleClickOutside = (event) => {
-       setOptions(null)
-      }
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside)
-      }
-    }, [])
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      setOptions(null)
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
   return (
     <>
       <div className="flex mb-2 justify-between">
@@ -130,7 +136,7 @@ const [options, setOptions] = useState<number | null>(null)
             {dataCheck.map((r) => (
               <div key={r.id} className="flex items-center gap-2 justify-between relative">
                 <CheckboxField
-                  name="category"
+                  name={r.name}
                   checked={r.checked}
                   onChange={(e: any) =>
                     setDataCheck((pre) =>
@@ -216,7 +222,7 @@ const [options, setOptions] = useState<number | null>(null)
             />
           </ContextMenu>
           <div className="table-account" id="wapper_menu_context">
-            <TableManagerAccount />
+            <TableManagerAccount hiddenArray={hiddenArray} />
           </div>
         </div>
         {isShowModal && <ModalAddCategory isShow={isShowModal} setIsShow={setIsShowModal} />}
@@ -253,7 +259,12 @@ const [options, setOptions] = useState<number | null>(null)
           <ModalAddAccount isShow={isShowModalAccount} setIsShow={setIsShowModalAccount} />
         )}
         {isShowModalHiddenRow && (
-          <ModalHiddenRow isShow={isShowModalHiddenRow} setIsShow={setIsShowModalHiddenRow} />
+          <ModalHiddenRow
+            isShow={isShowModalHiddenRow}
+            setIsShow={setIsShowModalHiddenRow}
+            setHiddenArray={setHiddenArray}
+            hiddenArray={hiddenArray}
+          />
         )}
       </div>
     </>

@@ -8,13 +8,13 @@ export const router = {
 }
 
 export const configHidden = [
-  { title: 'UID', name: 'UID' },
-  { title: 'Mật khẩu', name: 'pass' },
+  { title: 'UID', name: 'uid' },
+  { title: 'Mật khẩu', name: 'password' },
   { title: 'Danh mục', name: 'category' },
   { title: 'Private Key', name: 'private' },
-  { title: 'Email', name: 'Email' },
-  { title: 'Mail khôi phục', name: 'recovery_mail' },
-  { title: 'Cookies', name: 'Cookies' },
+  { title: 'Email', name: 'email' },
+  { title: 'Mail khôi phục', name: 'recoveryEmail' },
+  { title: 'Cookies', name: 'cookies' },
   { title: 'Token', name: 'Token' },
   { title: 'Trạng thái', name: 'status' },
   { title: 'Proxy', name: 'proxy' },

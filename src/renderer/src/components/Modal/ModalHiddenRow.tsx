@@ -9,9 +9,16 @@ import { useTranslation } from 'react-i18next'
 interface ModalHiddenRowProps {
   isShow: boolean
   setIsShow?: Dispatch<SetStateAction<boolean>>
+  setHiddenArray: Dispatch<SetStateAction<string[]>>
+  hiddenArray: string[]
 }
 
-const ModalHiddenRow: FC<ModalHiddenRowProps> = ({ isShow, setIsShow }) => {
+const ModalHiddenRow: FC<ModalHiddenRowProps> = ({
+  isShow,
+  setIsShow,
+  setHiddenArray,
+  hiddenArray
+}) => {
   const { t } = useTranslation()
   const handleClose = (): void => setIsShow && setIsShow(false)
   const handleSubmit = (): void => {
@@ -30,6 +37,17 @@ const ModalHiddenRow: FC<ModalHiddenRowProps> = ({ isShow, setIsShow }) => {
               key={index}
               title={t(field.name)}
               name={field.name}
+              defaultChecked={hiddenArray.includes(field.name)}
+              onChange={(e: any) =>
+                setHiddenArray((pre) => {
+                  if (pre.some((r) => r === field.name) && !e.target.checked) {
+                    pre = pre.filter((r) => r !== field.name)
+                  } else {
+                    return [...pre, field.name]
+                  }
+                  return pre
+                })
+              }
               classInputContainer="w-1/4 !mt-0 mr-8"
             />
           ))}

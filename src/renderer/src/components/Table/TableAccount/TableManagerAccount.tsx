@@ -4,15 +4,18 @@ import { dataAccounts } from '@renderer/pages/data/dataTable'
 import chromeIcon from '@renderer/assets/images/Google_Chrome_icon.png'
 import { ToastContainer, toast } from 'react-toastify'
 import { useTranslation } from 'react-i18next'
+import { FC } from 'react'
 
-const TableManagerAccount = (): JSX.Element => {
+const TableManagerAccount: FC<{ hiddenArray: string[] }> = ({ hiddenArray }): JSX.Element => {
   const { t } = useTranslation()
   return (
     <div className=" rounded-lg bg-white">
       <div className="md:flex md:space-x-4 md:items-center space-y-4 md:space-y-0 md:justify-between"></div>
       <div className="bg-white custom-shadow rounded-[20px] ">
         <MantineTableCustom
-          column={configTableManagerAccount}
+          column={configTableManagerAccount.filter((r) =>
+            hiddenArray.some((h) => h === r.accessor)
+          )}
           data={dataAccounts.map((account) => ({
             ...account,
             open: (

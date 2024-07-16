@@ -152,21 +152,21 @@ const ContentAcc = () => {
         />{' '}
       </div>
       <div className="flex justify-between h-[93%]">
-        <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-blue-200 relative">
-          <h3 className="absolute top-[-15px] left-5 px-2 py-1 rounded-xl z-10 ">
-            {t('category_management')}
-          </h3>
-          <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
+        <div className="w-[28%] p-2  bg-[rgb(255_255_255)] rounded-xl border border-[rgb(214_214_214)] relative">
+          <h2 className="w-fit text-base relative top-[-24px] left-3 px-3 py-1 z-10">
+            <p className="z-10 relative">{t('category_management')}</p>
+            <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
+          </h2>
           <div className="w-full px-2 mt-2">
             <CheckboxField name="all" title={t('all')} classInputContainer="mb-1" />
             <CheckboxField name="index" title={t('index')} />
           </div>
         </div>
-        <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-blue-200 rounded-xl relative">
-          <div className="w-[150px] absolute top-[-1px] left-[15px] h-[1px] bg-white"></div>
-          <h3 className="absolute top-[-15px] left-5 px-2 py-1 [rgb(255_255_255)]  rounded-xl z-10">
-            {t('post_management')}
-          </h3>
+        <div className="bg-[rgb(255_255_255)] w-[70%] h-full border border-[rgb(214_214_214)] rounded-xl relative">
+          <h2 className="w-fit text-base relative top-[-16px] left-3 px-3 py-1 z-10">
+            <p className="z-10 relative"> {t('post_management')}</p>
+            <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
+          </h2>
           <div className="flex items-center w-full justify-between p-5 relative">
             <SelectField
               placeholder={t('choice_account_index')}
