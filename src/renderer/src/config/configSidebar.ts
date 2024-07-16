@@ -4,13 +4,14 @@ import {
   MdAccountCircle,
   MdFactCheck,
   MdInsertPageBreak,
-  MdOutlineContentPaste
+  MdOutlineContentPaste,
+  MdOutlinePostAdd
 } from 'react-icons/md'
 import { IoIosMenu } from 'react-icons/io'
 import { FaAddressCard, FaPeopleGroup } from 'react-icons/fa6'
 import { BsFeather } from 'react-icons/bs'
 import { AiOutlineMenuFold } from 'react-icons/ai'
-import { RiAccountPinCircleFill, RiMenuAddFill, RiPagesFill } from 'react-icons/ri'
+import { RiAccountPinCircleFill, RiMenuAddFill, RiPagesFill, RiQrScan2Line } from 'react-icons/ri'
 import { SlNote } from 'react-icons/sl'
 import { CiCirclePlus } from 'react-icons/ci'
 import { LiaNotesMedicalSolid } from 'react-icons/lia'
@@ -34,19 +35,18 @@ export const configSidebar: configSidebarType[] = [
     icon: FaAddressCard
   },
   {
-    title: 'Quản lý nội dung',
+    title: 'content_management',
     icon: AiOutlineMenuFold,
     path: configStatic.router.contentManagement
   },
   {
-    title: 'Tương tác',
+    title: 'interaction',
     icon: MdOutlineContentPaste,
-    path: configStatic.router.InteractionAcc,
     children: [
       {
-        title: 'Tương tác bằng PageProfile',
+        title: 'interact_by_pageProfile',
         icon: SlNote,
-        path: configStatic.router.InteractionAcc
+        path: configStatic.router.interactionPageProfile
       }
     ]
   },
@@ -55,13 +55,14 @@ export const configSidebar: configSidebarType[] = [
     icon: FaPeopleGroup,
     children: [
       {
-        title: 'Share bài viết',
-        icon: BiSolidDashboard,
-        path: configStatic.router.ShareViralMarketing
+        title: 'scan_pageProfile',
+        icon: RiQrScan2Line,
+        path: configStatic.router.scanViralMarketing
       },
       {
-        title: 'Đồng ý - Hủy kết bạn',
-        icon: BiSolidDashboard
+        title: 'post_PageProfile',
+        icon: MdOutlinePostAdd,
+        path: configStatic.router.postViralMarketing
       },
       {
         title: 'Bình luận trang cá nhân',
@@ -108,46 +109,12 @@ export const configSidebar: configSidebarType[] = [
   {
     title: 'Cập nhật thông tin',
     icon: BsFeather,
-    path: configStatic.router.contentManagement,
-    children: [
-      {
-        title: 'Cập nhật thông tin tài khoản',
-        icon: MdAccountCircle,
-        path: configStatic.router.ShareViralMarketing
-      },
-      {
-        title: 'Cập nhật thông tin Page',
-        icon: MdInsertPageBreak,
-        path: configStatic.router.ShareViralMarketing
-      }
-    ]
+    path: 'ds'
   },
   {
     title: 'Quản Trị Page',
     icon: RiPagesFill,
-    path: configStatic.router.contentManagement,
-    children: [
-      {
-        title: 'Tạo Page Profile',
-        icon: LiaNotesMedicalSolid,
-        path: configStatic.router.ShareViralMarketing
-      },
-      {
-        title: 'Quản Trị Page Profile',
-        icon: PiNotebookFill,
-        path: configStatic.router.ShareViralMarketing
-      },
-      {
-        title: 'Chấp Nhận Lời Mời Quản Trị',
-        icon: MdFactCheck,
-        path: configStatic.router.ShareViralMarketing
-      },
-      {
-        title: 'Mời Người Theo Dõi',
-        icon: BiSolidDashboard,
-        path: configStatic.router.ShareViralMarketing
-      }
-    ]
+    path: 'aa'
   }
 ]
 

@@ -2,9 +2,10 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import configStatic from '@renderer/config'
 import Login from '@renderer/pages/auth/Login'
 import ContentManagement from '@renderer/pages/Pages/ContentManagement'
-import InteractionAcc from '@renderer/pages/Pages/InteractionAcc'
+import InteractionPageProfile from '@renderer/pages/Pages/InteractionPageProfile'
 import ManagerAccount from '@renderer/pages/Pages/ManagerAccount'
-import ShareViralMarketing from '@renderer/pages/Pages/ShareViralMarketing'
+import PostProfile from '@renderer/pages/Pages/ViralMarketing/PostProfile'
+import ScanProfile from '@renderer/pages/Pages/ViralMarketing/ScanProfile'
 import { IRootState, useAppSelector } from '@renderer/store'
 import { IndexRouteObject, Navigate, NonIndexRouteObject } from 'react-router-dom'
 
@@ -57,13 +58,18 @@ const routes: CustomRouteConfig[] = [
     layout: layoutType.blank
   },
   {
-    path: configStatic.router.ShareViralMarketing,
-    element: <ShareViralMarketing />,
+    path: configStatic.router.scanViralMarketing,
+    element: <ScanProfile />,
     layout: layoutType.blank
   },
   {
-    path: configStatic.router.InteractionAcc,
-    element: <InteractionAcc />,
+    path: configStatic.router.postViralMarketing,
+    element: <PostProfile />,
+    layout: layoutType.blank
+  },
+  {
+    path: configStatic.router.interactionPageProfile,
+    element: <InteractionPageProfile />,
     layout: layoutType.blank
   }
 ]

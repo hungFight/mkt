@@ -125,7 +125,7 @@ const Sidebar = (): JSX.Element => {
                         {!item?.children ? (
                           <NavLink
                             to={item?.path || ''}
-                            className="border-0 !py-0 !mb-1 flex items-center h-[36px] !justify-start"
+                            className="border-0 !py-0 !mb-1 flex items-center h-[36px] !justify-start "
                           >
                             {Icon ? (
                               <Icon className="group-hover:!text-primary shrink-0" size={20} />
@@ -189,7 +189,7 @@ const Sidebar = (): JSX.Element => {
                                 <li key={indexChild}>
                                   <NavLink
                                     to={child?.path ?? ''}
-                                    className="flex items-center !pl-[25px]"
+                                    className="flex items-center !pl-[25px] "
                                   >
                                     {child.icon && (
                                       <span className="mr-2 text-[20px]">

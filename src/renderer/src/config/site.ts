@@ -1,9 +1,10 @@
 export const router = {
   home: '/home',
   login: '/login',
-  InteractionAcc: '/interactionAcc',
+  interactionPageProfile: '/interactionPageProfile',
   contentManagement: '/contentManagement',
-  ShareViralMarketing: '/ShareViralMarketing',
+  scanViralMarketing: '/scanViralMarketing',
+  postViralMarketing: '/postViralMarketing',
   addIndex: '/addIndex'
 }
 

@@ -123,7 +123,7 @@
   }
   .sidebar ul.sub-menu li button.active,
   .sidebar ul.sub-menu li a.active {
-    @apply text-primary before:bg-primary;
+    @apply text-primary before:bg-primary bg-[#000]/[0.08];
   }
 
   .sidebar .nav-item a div:first-child svg,

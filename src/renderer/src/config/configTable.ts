@@ -151,6 +151,109 @@ export const configTableAddInAddIndex: MantineTableCustomProps['column'] = [
     title: 'Phương thức'
   }
 ]
+export const configTableInteractionAccountManagementOne: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+
+  {
+    accessor: 'firstLast',
+    title: 'Họ và Tên'
+  },
+
+  {
+    accessor: 'PageProfile',
+    title: 'PageProfile'
+  },
+
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'note',
+    title: 'Ghi chú'
+  }
+]
+export const configTableInteractionAccountManagementTwo: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+
+  {
+    accessor: 'Id Page',
+    title: 'Id Page'
+  },
+
+  {
+    accessor: 'pageName',
+    title: 'Tên Page'
+  },
+
+  {
+    accessor: 'groupNumber',
+    title: 'Số nhóm'
+  },
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+
+  {
+    accessor: 'progress',
+    title: 'Tiến trình'
+  }
+]
+export const configTableInteractionScanViralTwo: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+
+  {
+    accessor: 'pageId',
+    title: 'Id Page'
+  },
+
+  {
+    accessor: 'pageName',
+    title: 'Tên Page'
+  },
+
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  },
+
+  {
+    accessor: 'group',
+    title: 'Group'
+  }
+]
+export const configTableInteractionScanViralOne: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  }
+]
 export const configTableInteractionAccount: MantineTableCustomProps['column'] = [
   {
     accessor: 'uid',
