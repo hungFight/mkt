@@ -196,7 +196,12 @@
   "success": "Thành công",
   "pageId": "ID Page",
   "post_PageProfile": "Đăng bài Page Profile",
-  "limit_post_of_each_pageProfile": "Mỗi Profile tăng tối đa",
+  "limit_post_of_each_pageProfile": "Mỗi Profile đăng tối đa",
   "limit_post_of_each_account": "Mỗi tài khoản tăng tối đa",
-  "move_profile_if_error": "Chuyển pageProfile nếu đang lỗi"
+  "move_profile_if_error": "Chuyển pageProfile nếu đang lỗi",
+  "expand": "Mở rộng",
+  "stop_and_change_other_profiles": "Khi Profile thực hiện hành động bị lỗi quá sốl lần cho phép sẽ bị dừng hành động và chuyển qua PageProfile khác để tránh bị khoá tài khoản",
+  "post_random_post": "Đăng ngẫu nhiên bài đăng",
+  "space_2_times_consecutive": "Khoảng cách 2 lần đăng liên tiếp",
+  "times_waiting_for_images": "Thời gian chờ tải ảnh"
 }

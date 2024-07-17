@@ -213,7 +213,7 @@ const InteractionPageProfile = () => {
                     }))}
                     // data={data.map(r => ({...r,title: }))}
                     data={data}
-                    clsTable="!h-[31vh] mb-2  border  rounded-[15px]"
+                    clsTable="!h-[31vh] mb-2 border rounded-[15px]"
                   />{' '}
                   <MantineTableCustom
                     column={configTableInteractionAccountManagementTwo.map((r) => ({

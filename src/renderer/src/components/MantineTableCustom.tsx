@@ -147,7 +147,7 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
           selectedRecords={selectedRecords}
           onSelectedRecordsChange={setSelectedRecords}
           noRecordsIcon={<EmptyState />}
-        />
+        ></DataTable>
       </div>
     </div>
   )

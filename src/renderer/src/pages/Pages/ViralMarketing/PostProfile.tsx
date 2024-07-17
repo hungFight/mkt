@@ -1,7 +1,10 @@
+import ButtonC from '@renderer/components/CustomField/ButtonC'
 import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import SelectField from '@renderer/components/CustomField/SelectField'
 import MantineTableCustom from '@renderer/components/MantineTableCustom'
+import ToggleSwitch from '@renderer/components/ToggleSwitch'
+import ToolTips from '@renderer/components/Tooltips'
 import {
   configTableInteractionScanViralOne,
   configTableInteractionScanViralTwo
@@ -13,31 +16,7 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { BsFillQuestionOctagonFill } from 'react-icons/bs'
 import { LiaHandPointer } from 'react-icons/lia'
-import { FixedSizeList as List } from 'react-window'
-
-const generateData = (count) => {
-  return Array.from({ length: count }, (v, k) => ({
-    id: k,
-    name: `Name ${k}`,
-    age: 20 + (k % 30),
-    city: `City ${k % 10}`
-  }))
-}
-
-const dataFake = generateData(6000)
-
-const Row = ({ index, style }) => (
-  <div style={style}>
-    {dataFake[index]?.id} - {dataFake[index]?.name} - {dataFake[index]?.age} -{' '}
-    {dataFake[index]?.city}
-  </div>
-)
-
-const VirtualizedList = () => (
-  <List height={600} itemCount={data.length} itemSize={35} width={'100%'}>
-    {Row}
-  </List>
-)
+import { ToastContainer, toast } from 'react-toastify'
 
 const PostProfile = () => {
   const { t } = useTranslation()
@@ -108,7 +87,7 @@ const PostProfile = () => {
       <div className="w-full  px-2 pb-2 pt-0">
         <div className="w-full flex items-center justify-between px-[2px] pl-1 rounded-[10px] "></div>
         <div className="flex items-center justify-between mt-5   ">
-          <div className="w-[63%] min-[1438px]:w-[64%] h-[80vh] border border-[rgb(214_214_214)] rounded-[10px] bg-[rgb(255_255_255)] relative">
+          <div className="w-[62%] min-[1438px]:w-[64%] h-[80vh] border border-[rgb(214_214_214)] rounded-[10px] bg-[rgb(255_255_255)] relative">
             <h2 className="w-fit text-base relative top-[-16px] left-3 px-3 py-1 z-10">
               <p className="z-10 relative">{t('account_management')}</p>
               <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
@@ -141,7 +120,7 @@ const PostProfile = () => {
                 </div>
               </div>{' '}
               <div className="mt-2 overflow-auto">
-                {/* <MantineTableCustom
+                <MantineTableCustom
                   column={configTableInteractionScanViralOne.map((r) => ({
                     ...r,
                     title: t(r.accessor)
@@ -156,91 +135,171 @@ const PostProfile = () => {
                   }))}
                   data={dataTwo}
                   clsTable="!h-[33vh]  border  rounded-[15px]"
-                /> */}
-                {/* <VirtualizedTable data={dataFake} /> */}
-                <VirtualizedList />
+                />
               </div>
             </div>
           </div>
-          <div className="w-[36%] min-[1438px]:w-[35%] h-[80vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)] pt-5">
-            <h2 className="w-fit text-base relative top-[-36px] left-3 px-3 py-1 z-10">
+          <div className="w-[37%] min-[1438px]:w-[35%] h-[80vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)]">
+            <h2 className="w-fit text-base relative top-[-16px] left-3 px-3 py-1 z-10">
               <p className="z-10 relative"> {t('config_scan_pageProfile')}</p>
               <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
             </h2>
-            <div className="w-full bg-white overflow-hidden pl-2 mt-2">
-              <div className="py-2 border-b border-t mb-3">
-                <InputNumberField
-                  min={1}
-                  name="stream_concurrency"
-                  max={100}
-                  register={{ ...register('stream_concurrency') }}
-                  title={t('stream_concurrency')}
-                  classInput="ml-2 !w-[70px] !px-2 !py-1"
-                  span={t('stream')}
-                  clsTitle="w-[58%]"
-                  clsLabel="whitespace-pre-wrap"
-                  classInputContainer="w-full flex items-center justify-start  mb-1 py-1"
-                />{' '}
-                <InputNumberField
-                  min={1}
-                  register={{ ...register('limit_post_of_each_pageProfile') }}
-                  name="limit_post_of_each_pageProfile"
-                  title={t('limit_post_of_each_pageProfile')}
-                  clsTitle="w-[58%]"
-                  max={100}
-                  span={t('post')}
-                  classInput="ml-2 !w-[70px] !px-2 !py-1"
-                  clsLabel="whitespace-pre-wrap"
-                  classInputContainer="w-full flex items-center justify-start  mb-2 "
-                />
-                <InputNumberField
-                  min={1}
-                  title={t('limit_post_of_each_account')}
-                  register={{ ...register('limit_post_of_each_account') }}
-                  name="limit_post_of_each_account"
-                  clsTitle="w-[58%]"
-                  max={100}
-                  span={t('post')}
-                  classInput="ml-2 !w-[70px] !px-2 !py-1"
-                  clsLabel="whitespace-pre-wrap"
-                  classInputContainer="w-full flex items-center justify-start  mb-2 "
-                />{' '}
-                <div className="flex items-center w-full">
-                  <h2 className="w-[54%] text-sm font-medium">{t('move_profile_if_error')}</h2>
-                  <div>
-                    <BsFillQuestionOctagonFill />
-                  </div>
+            <div className="w-full bg-white overflow-hidden px-2 mt-2 relative top-[-20px]">
+              <div className="mb-2">
+                <div className="p-2 rounded-[5px] border border-[#bcbaba] bg-[#f9f9f95e] mb-2">
                   <InputNumberField
                     min={1}
-                    register={{ ...register('move_profile_if_error') }}
+                    name="stream_concurrency"
+                    max={100}
+                    register={{ ...register('stream_concurrency') }}
+                    title={t('stream_concurrency')}
+                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
+                    span={t('stream')}
+                    clsTitle="w-[58%]"
+                    clsLabel="whitespace-pre-wrap"
+                    classInputContainer="w-full flex items-center justify-start  mb-1 py-1"
+                  />{' '}
+                  <InputNumberField
+                    min={1}
+                    register={{ ...register('limit_post_of_each_pageProfile') }}
+                    name="limit_post_of_each_pageProfile"
+                    title={t('limit_post_of_each_pageProfile')}
+                    clsTitle="w-[58%]"
+                    max={100}
+                    span={t('post')}
+                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
+                    clsLabel="whitespace-pre-wrap"
+                    classInputContainer="w-full flex items-center justify-start  mb-2 "
+                  />
+                  <InputNumberField
+                    min={1}
+                    title={t('limit_post_of_each_account')}
+                    register={{ ...register('limit_post_of_each_account') }}
+                    name="limit_post_of_each_account"
+                    clsTitle="w-[58%]"
+                    span={t('post')}
+                    max={100}
+                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
+                    clsLabel="whitespace-pre-wrap"
+                    classInputContainer="w-full flex items-center justify-start  mb-2 "
+                  />{' '}
+                </div>
+                <div className="p-2 rounded-[5px] border border-[#bcbaba] bg-[#f9f9f95e]">
+                  <div className="mb-2">
+                    <div className="w-full flex items-center mb-1">
+                      <h2 className="text-sm font-medium mr-2 ">{t('move_profile_if_error')}</h2>
+                      <ToolTips content={t('stop_and_change_other_profiles')}>
+                        <BsFillQuestionOctagonFill className="text-[#f03365]" />
+                      </ToolTips>
+                    </div>
+                    <InputNumberField
+                      min={1}
+                      register={{ ...register('move_profile_if_error') }}
+                      name="move_profile_if_error"
+                      max={100}
+                      span={t('times')}
+                      classInput="!w-[70px] !px-2 !py-1 border"
+                      clsLabel="whitespace-pre-wrap"
+                      classInputContainer="w-fit flex items-center justify-start "
+                    />{' '}
+                  </div>
+                  <div className="w-full ">
+                    <div className="w-full flex items-center mb-1">
+                      <h2 className="text-sm font-medium mr-2">{t('space_2_times_consecutive')}</h2>
+                      <ToolTips
+                        content={t('stop_and_change_other_profiles')}
+                        className="text-[#f03365]"
+                      >
+                        <BsFillQuestionOctagonFill className="text-[#f03365]" />
+                      </ToolTips>
+                    </div>
+                    <InputNumberField
+                      min={1}
+                      register={{ ...register('space_2_times_consecutive_1') }}
+                      name="move_profile_if_error"
+                      max={100}
+                      span={t('second')}
+                      classInput="!w-[70px] !px-2 !py-1 "
+                      clsLabel="whitespace-pre-wrap"
+                      classInputContainer="w-fit flex items-center justify-start "
+                    />{' '}
+                  </div>
+                </div>
+              </div>
+              <div className="flex w-full items-center my-3 ">
+                <ToggleSwitch
+                  spanText={t('post_random_post')}
+                  circle
+                  name="random_post"
+                  clsLabel="mr-4 !mb-0"
+                />
+                <ToggleSwitch
+                  spanText="Đăng theo thứ tự"
+                  circle
+                  name="random_post"
+                  clsLabel=" !mb-0"
+                />
+              </div>
+              <div className="p-2 rounded-[5px] border border-[#bcbaba] bg-[#f9f9f95e]">
+                <div className="flex items-center mb-2">
+                  <CheckboxField
+                    name="thread"
+                    title={t('times_waiting_for_images')}
+                    register={{ ...register('times_waiting_for_images') }}
+                    classLabel="text-sm"
+                    classInputContainer="w-[58%]"
+                  />{' '}
+                  <InputNumberField
+                    min={1}
+                    register={{ ...register('space_2_times_consecutive_1') }}
                     name="move_profile_if_error"
                     max={100}
                     span={t('post')}
-                    classInput="ml-2 !w-[70px] !px-2 !py-1"
+                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
                     clsLabel="whitespace-pre-wrap"
                     classInputContainer="w-fit flex items-center justify-start "
-                  />{' '}
-                </div>
-              </div>
-
-              <div>
-                <CheckboxField
-                  name="thread"
-                  title={t('get_info_pageProfile')}
-                  register={{ ...register('get_info_pageProfile') }}
-                  classLabel="text-sm"
-                  classInputContainer="mb-2  pb-3 border-b"
-                />{' '}
-                <div className="mb-2 flex items-center">
-                  <CheckboxField
-                    name="get_groupList_pageProfile"
-                    title={t('get_groupList_pageProfile')}
-                    classLabel="text-sm "
-                    register={{ ...register('get_groupList_pageProfile') }}
                   />
                 </div>
+                <CheckboxField
+                  name="get_groupList_pageProfile"
+                  title={t('Cho phép đang bài trùng bài viết giữa các Page Profile')}
+                  classLabel="text-sm whitespace-break-spaces"
+                  register={{ ...register('get_groupList_pageProfile') }}
+                  classInputContainer="mb-2 flex items-center "
+                />{' '}
+                <div className="flex items-center w-full">
+                  <CheckboxField
+                    name="get_groupList_pageProfile"
+                    title={t('Quay vòng sau')}
+                    classLabel="text-sm whitespace-break-spaces"
+                    register={{ ...register('get_groupList_pageProfile') }}
+                    classInputContainer=" flex items-center w-[58%]"
+                  />
+                  <InputNumberField
+                    min={1}
+                    register={{ ...register('space_2_times_consecutive_1') }}
+                    name="move_profile_if_error"
+                    max={100}
+                    span={t('second')}
+                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
+                    clsLabel="whitespace-pre-wrap"
+                    classInputContainer="w-fit flex items-center justify-start "
+                  />
+                </div>
+                <InputNumberField
+                  min={1}
+                  register={{ ...register('space_2_times_consecutive_1') }}
+                  name="move_profile_if_error"
+                  max={100}
+                  title="Dừng quay vòng sau"
+                  span={t('times')}
+                  classInput="ml-2 !w-[70px] !px-2 !py-1 "
+                  clsLabel="whitespace-pre-wrap "
+                  clsTitle="w-[58%]"
+                  classInputContainer=" flex items-center justify-start mt-2 "
+                />
               </div>
-              <div className="text-center flex items-center justify-center mt-3 py-2 border-t">
+              <div className="text-center flex items-center justify-center mt-3 py-2 ">
                 <div className="rotate-[85deg] text-[20px] mr-1">
                   <LiaHandPointer />
                 </div>
@@ -255,6 +314,7 @@ const PostProfile = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </form>
   )
 }

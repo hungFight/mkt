@@ -46,7 +46,7 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
       <div className={`flex gap-2 items-center ${clsTitle}`}>
         {checkbox && (
           <input
-            className="form-checkbox h-5 w-5 text-blue-600"
+            className="form-checkbox h-5 w-5 text-blue-600 "
             id={name}
             {...register}
             type="checkbox"
@@ -64,7 +64,7 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
       </div>
       <div className="flex gap-2 items-center justify-center">
         <input
-          className={`border outline-none px-5 py-[8px] text-[#505050] ${
+          className={`border outline-none px-5 py-[8px] text-[#505050]  border-[#6a6a6aa1] ${
             round ? round : 'rounded-md'
           } ${classInput} w-full bg-transparent`}
           autoComplete="off"
