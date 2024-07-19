@@ -171,6 +171,7 @@ const ContentAcc = () => {
             <SelectField
               placeholder={t('choice_account_index')}
               name="index"
+              parenSelect="border rounded-[5px]"
               className="!shadow-none p-3"
             />
 

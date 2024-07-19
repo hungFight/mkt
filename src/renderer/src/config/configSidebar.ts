@@ -8,14 +8,14 @@ import {
   MdOutlinePostAdd
 } from 'react-icons/md'
 import { IoIosMenu } from 'react-icons/io'
-import { FaAddressCard, FaPeopleGroup } from 'react-icons/fa6'
+import { FaAddressCard, FaComments, FaPeopleGroup, FaRegComments } from 'react-icons/fa6'
 import { BsFeather } from 'react-icons/bs'
 import { AiOutlineMenuFold } from 'react-icons/ai'
 import { RiAccountPinCircleFill, RiMenuAddFill, RiPagesFill, RiQrScan2Line } from 'react-icons/ri'
 import { SlNote } from 'react-icons/sl'
 import { CiCirclePlus } from 'react-icons/ci'
 import { LiaNotesMedicalSolid } from 'react-icons/lia'
-import { PiNotebookFill } from 'react-icons/pi'
+import { PiFilmReelLight, PiNotebookFill } from 'react-icons/pi'
 export interface configItemSidebar {
   path?: string
   title?: string
@@ -65,12 +65,14 @@ export const configSidebar: configSidebarType[] = [
         path: configStatic.router.postViralMarketing
       },
       {
-        title: 'Bình luận trang cá nhân',
-        icon: BiSolidDashboard
+        title: 'comment_by_uid',
+        icon: FaRegComments,
+        path: configStatic.router.commentViralMarketing
       },
       {
-        title: 'Bình luận vào nhóm',
-        icon: BiSolidDashboard
+        title: 'post_reels_facebook',
+        icon: PiFilmReelLight,
+        path: configStatic.router.postReelsFViralMarketing
       },
       {
         title: 'Gửi tin nhắn cá nhân',

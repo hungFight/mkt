@@ -13239,3 +13239,88 @@ export const data = [
     content: 'Hello'
   }
 ]
+export const dataTwo = [
+  {
+    id: 1,
+    uid: '1',
+    status: 'firstLast',
+    pageId: 'Hello',
+    pageName: 'Hung',
+    group: '1'
+  },
+  {
+    id: 2,
+    uid: '1',
+    status: 'firstLast',
+    pageId: 'Hello',
+    pageName: 'Hung',
+    group: '1'
+  },
+  {
+    id: 3,
+    uid: '1',
+    status: 'firstLast',
+    pageId: 'Hello',
+    pageName: 'Hung',
+    group: '1'
+  },
+  {
+    id: 4,
+    uid: '1',
+    status: 'firstLast',
+    pageId: 'Hello',
+    pageName: 'Hung',
+    group: '1'
+  },
+  {
+    id: 5,
+    uid: '1',
+    status: 'firstLast',
+    pageId: 'Hello',
+    pageName: 'Hung',
+    group: '1'
+  },
+  {
+    id: 6,
+    uid: '1',
+    status: 'firstLast',
+    pageId: 'Hello',
+    pageName: 'Hung',
+    group: '1'
+  },
+  {
+    id: 7,
+    uid: '1',
+    status: 'firstLast',
+    pageId: 'Hello',
+    pageName: 'Hung',
+    group: '1'
+  }
+]
+export const dataVirtualModalConfigOne = [{ id: 1, category_name: 'Hello' }]
+export const dataVirtualModalConfigTwo = [
+  {
+    id: 1,
+    title: "It's me",
+    content: 'Hello',
+    url: 'https://locahost:3000',
+    type: 'Medium',
+    status: 'On'
+  },
+  {
+    id: 2,
+    title: "It's me",
+    content: 'Hello',
+    url: 'https://locahost:3000',
+    type: 'Medium',
+    status: 'On'
+  },
+  {
+    id: 3,
+    title: "It's me",
+    content: 'Hello',
+    url: 'https://locahost:3000',
+    type: 'Medium',
+    status: 'On'
+  }
+]

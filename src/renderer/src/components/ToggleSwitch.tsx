@@ -31,7 +31,7 @@ const ToggleSwitch: FC<ToggleSwitchProps> = ({
   return (
     <label className={`inline-flex items-center cursor-pointer ${clsLabel}`}>
       {circle ? (
-        <Radio id={id} name={name} value={value} />
+        <Radio id={id} name={name} value={value} defaultChecked={checked} />
       ) : (
         <>
           <input

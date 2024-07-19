@@ -150,7 +150,8 @@ const InteractionPageProfile = () => {
               <SelectField
                 name="script"
                 placeholder={t('script')}
-                parenSelect="w-[300px] rounded-[5px] border border-[#979797]"
+                borderColorFocus="#2795d8bf"
+                parenSelect="w-[300px] rounded-[5px] "
               />
               <ButtonC
                 icon={<CiCirclePlus />}
@@ -183,8 +184,8 @@ const InteractionPageProfile = () => {
                   <SelectField
                     name="script"
                     placeholder="Chọn danh mục"
-                    parenSelect="w-[200px]"
-                    borderColor="#91bff0"
+                    parenSelect="w-[200px] border rounded-[5px]"
+                    borderColorFocus="#2795d8bf"
                     boxShadow="0 0 1px"
                     height="30px"
                   />

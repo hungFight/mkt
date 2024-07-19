@@ -3,130 +3,113 @@ import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import SelectField from '@renderer/components/CustomField/SelectField'
 import MantineTableCustom from '@renderer/components/MantineTableCustom'
+import ModalConfigVirtual from '@renderer/components/Modal/ModalVirtualMKT/ModalConfigVirtual'
 import ToggleSwitch from '@renderer/components/ToggleSwitch'
 import ToolTips from '@renderer/components/Tooltips'
 import {
   configTableInteractionScanViralOne,
   configTableInteractionScanViralTwo
 } from '@renderer/config/configTable'
-import { data } from '@renderer/pages/data/postProfileData'
+import { data, dataTwo } from '@renderer/pages/data/postProfileData'
+import { setPageTitle } from '@renderer/store/themeConfigSlice'
 import { Button } from 'flowbite-react'
 import { CirclePlay, CircleX } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { BsFillQuestionOctagonFill } from 'react-icons/bs'
 import { LiaHandPointer } from 'react-icons/lia'
-import { ToastContainer, toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
 const PostProfile = () => {
   const { t } = useTranslation()
+  const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
-  const onSubmit = (data) => {}
+  const [toggled, setToggled] = useState<boolean>(false)
+  const [isShowModalConfig, setIsShowModalConfig] = useState<boolean>(false)
+  const [formDT, setFormDT] = useState<{
+    concurrent_stream: number
+    limit_profile: number
+    limit_account: number
+    move_profile_error: number
+    toggle: boolean
+    ordinal_two_times: number
+    times_load_image: { checked: boolean; number: number }
+    allow_post_duplicate: boolean
+    turn_back: { checked: boolean; from: number; to: number }
+  }>({
+    concurrent_stream: 1,
+    limit_profile: 5,
+    limit_account: 10,
+    move_profile_error: 1,
+    ordinal_two_times: 1,
+    toggle: true,
+    times_load_image: { checked: false, number: 1 },
+    allow_post_duplicate: false,
+    turn_back: { checked: false, from: 1, to: 10 }
+  })
 
-  const dataTwo = [
-    {
-      id: 1,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 2,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 3,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 4,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 5,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 6,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 7,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    }
-  ]
+  useEffect(() => {
+    dispatch(setPageTitle(t('post_PageProfile')))
+  })
+  const onSubmit = (data) => {}
 
   return (
     <form className="flex gap-3 justify-center " onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-full  px-2 pb-2 pt-0">
-        <div className="w-full flex items-center justify-between px-[2px] pl-1 rounded-[10px] "></div>
+      <div className="w-full  px-2 pb-2  pt-0">
+        <div className="w-full flex items-center justify-between px-[2px] pl-1 rounded-[10px] ">
+          <div className="flex items-center justify-start pb-2">
+            <SelectField
+              name="script"
+              placeholder="Chọn danh mục"
+              parenSelect="w-[200px] border rounded-[5px]"
+              borderColorFocus="#2795d8bf"
+              boxShadow="0 0 1px"
+              height="25px"
+            />
+            <div className="gap-2 flex h-fit items-center justify-between ml-2 ">
+              {/* <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" /> */}
+              <Button
+                className="bg-green-700 rounded-[10px] h-max btn-start py-[2px]"
+                size="sm"
+                // onClick={handleStart}
+                type="submit"
+              >
+                <CirclePlay size={20} className="mr-2" />
+                Start
+              </Button>
+              <Button className="bg-red-700 rounded-[10px] h-max py-[2px]" size="sm">
+                <CircleX size={20} className="mr-2" />
+                Stop
+              </Button>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <h2 className="mr-4">
+              Tổng số nội dung đăng cho tất cả Profile
+              <span className="text-sm rounded-[5px] border-b-[2px] border-red-500 px-3 ml-1">
+                5
+              </span>
+            </h2>
+            <ButtonC title="Đặt Lịch" className="bg-yellow-500 p-2" />
+          </div>
+        </div>
         <div className="flex items-center justify-between mt-5   ">
-          <div className="w-[62%] min-[1438px]:w-[64%] h-[80vh] border border-[rgb(214_214_214)] rounded-[10px] bg-[rgb(255_255_255)] relative">
+          <div className="w-[62%] min-[1438px]:w-[64%]  h-[77.5vh] border border-[rgb(214_214_214)] rounded-[10px] bg-[rgb(255_255_255)] relative">
             <h2 className="w-fit text-base relative top-[-16px] left-3 px-3 py-1 z-10">
               <p className="z-10 relative">{t('account_management')}</p>
               <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
             </h2>
             <div className=" px-2">
-              <div className="flex items-center justify-start pb-2">
-                <SelectField
-                  name="script"
-                  placeholder="Chọn danh mục"
-                  parenSelect="w-[200px]"
-                  borderColor="#91bff0"
-                  boxShadow="0 0 1px"
-                  height="25px"
-                />
-                <div className="gap-2 flex h-fit items-center justify-between ml-2 ">
-                  {/* <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" /> */}
-                  <Button
-                    className="bg-green-700 rounded-[10px] h-max btn-start py-[2px]"
-                    size="sm"
-                    // onClick={handleStart}
-                    type="submit"
-                  >
-                    <CirclePlay size={20} className="mr-2" />
-                    Start
-                  </Button>
-                  <Button className="bg-red-700 rounded-[10px] h-max py-[2px]" size="sm">
-                    <CircleX size={20} className="mr-2" />
-                    Stop
-                  </Button>
-                </div>
-              </div>{' '}
-              <div className="mt-2 overflow-auto">
+              <div className="mt-2 overflow-auto mt-[-2px]">
                 <MantineTableCustom
                   column={configTableInteractionScanViralOne.map((r) => ({
                     ...r,
                     title: t(r.accessor)
                   }))}
                   data={data}
-                  clsTable="!h-[33vh] mb-2  border  rounded-[15px]"
+                  clsTable="!h-[35vh] mb-2  border  rounded-[15px]"
                 />{' '}
                 <MantineTableCustom
                   column={configTableInteractionScanViralTwo.map((r) => ({
@@ -134,31 +117,42 @@ const PostProfile = () => {
                     title: t(r.accessor)
                   }))}
                   data={dataTwo}
-                  clsTable="!h-[33vh]  border  rounded-[15px]"
+                  clsTable="!h-[35vh]  border  rounded-[15px]"
                 />
               </div>
             </div>
           </div>
-          <div className="w-[37%] min-[1438px]:w-[35%] h-[80vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)]">
+          <div className="w-[37%] min-[1438px]:w-[35%]  h-[77.5vh] border border-[rgb(214_214_214)] rounded-[10px] relative bg-[rgb(255_255_255)]">
             <h2 className="w-fit text-base relative top-[-16px] left-3 px-3 py-1 z-10">
               <p className="z-10 relative"> {t('config_scan_pageProfile')}</p>
               <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
             </h2>
-            <div className="w-full bg-white overflow-hidden px-2 mt-2 relative top-[-20px]">
-              <div className="mb-2">
-                <div className="p-2 rounded-[5px] border border-[#bcbaba] bg-[#f9f9f95e] mb-2">
-                  <InputNumberField
-                    min={1}
-                    name="stream_concurrency"
-                    max={100}
-                    register={{ ...register('stream_concurrency') }}
-                    title={t('stream_concurrency')}
-                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
-                    span={t('stream')}
-                    clsTitle="w-[58%]"
-                    clsLabel="whitespace-pre-wrap"
-                    classInputContainer="w-full flex items-center justify-start  mb-1 py-1"
-                  />{' '}
+            <div className="w-full h-[94%] overflow-auto bg-white px-2 min-[1438px]:px-3 mt-2 relative top-[-20px]">
+              <div className="mb-2 mt-[9px]">
+                <div className=" border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px]">
+                  <div className="w-full flex items-center mb-1">
+                    <h2 className="text-sm font-medium  w-[58%] flex items-center relative">
+                      {t('stream_concurrency')}
+                      <ToolTips content={t('open_at_the_same')} className="absolute top-0 right-0">
+                        <BsFillQuestionOctagonFill className="text-[#f03365] ml-2" />
+                      </ToolTips>
+                    </h2>
+
+                    <InputNumberField
+                      min={1}
+                      name="stream_concurrency"
+                      max={100}
+                      register={{ ...register('stream_concurrency') }}
+                      classInput="ml-2 !w-[70px] !px-2 !py-1 "
+                      span={t('stream')}
+                      onChange={(e: any) =>
+                        setFormDT((pre) => ({ ...pre, concurrent_stream: e.target.value }))
+                      }
+                      value={formDT.concurrent_stream}
+                      clsLabel="whitespace-pre-wrap"
+                      classInputContainer=" flex items-center justify-start  py-1"
+                    />
+                  </div>{' '}
                   <InputNumberField
                     min={1}
                     register={{ ...register('limit_post_of_each_pageProfile') }}
@@ -170,6 +164,10 @@ const PostProfile = () => {
                     classInput="ml-2 !w-[70px] !px-2 !py-1 "
                     clsLabel="whitespace-pre-wrap"
                     classInputContainer="w-full flex items-center justify-start  mb-2 "
+                    onChange={(e: any) =>
+                      setFormDT((pre) => ({ ...pre, limit_profile: e.target.value }))
+                    }
+                    value={formDT.limit_profile}
                   />
                   <InputNumberField
                     min={1}
@@ -182,9 +180,13 @@ const PostProfile = () => {
                     classInput="ml-2 !w-[70px] !px-2 !py-1 "
                     clsLabel="whitespace-pre-wrap"
                     classInputContainer="w-full flex items-center justify-start  mb-2 "
+                    onChange={(e: any) =>
+                      setFormDT((pre) => ({ ...pre, limit_account: e.target.value }))
+                    }
+                    value={formDT.limit_account}
                   />{' '}
                 </div>
-                <div className="p-2 rounded-[5px] border border-[#bcbaba] bg-[#f9f9f95e]">
+                <div className=" border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px] my-2">
                   <div className="mb-2">
                     <div className="w-full flex items-center mb-1">
                       <h2 className="text-sm font-medium mr-2 ">{t('move_profile_if_error')}</h2>
@@ -201,13 +203,17 @@ const PostProfile = () => {
                       classInput="!w-[70px] !px-2 !py-1 border"
                       clsLabel="whitespace-pre-wrap"
                       classInputContainer="w-fit flex items-center justify-start "
+                      onChange={(e: any) =>
+                        setFormDT((pre) => ({ ...pre, move_profile_error: e.target.value }))
+                      }
+                      value={formDT.move_profile_error}
                     />{' '}
                   </div>
                   <div className="w-full ">
                     <div className="w-full flex items-center mb-1">
                       <h2 className="text-sm font-medium mr-2">{t('space_2_times_consecutive')}</h2>
                       <ToolTips
-                        content={t('stop_and_change_other_profiles')}
+                        content={t('times_waiting_for_next_step')}
                         className="text-[#f03365]"
                       >
                         <BsFillQuestionOctagonFill className="text-[#f03365]" />
@@ -216,12 +222,19 @@ const PostProfile = () => {
                     <InputNumberField
                       min={1}
                       register={{ ...register('space_2_times_consecutive_1') }}
-                      name="move_profile_if_error"
+                      name="space_2_times_consecutive_1"
                       max={100}
                       span={t('second')}
                       classInput="!w-[70px] !px-2 !py-1 "
                       clsLabel="whitespace-pre-wrap"
                       classInputContainer="w-fit flex items-center justify-start "
+                      value={formDT.ordinal_two_times}
+                      onChange={(e: any) =>
+                        setFormDT((pre) => ({
+                          ...pre,
+                          ordinal_two_times: e.target.value
+                        }))
+                      }
                     />{' '}
                   </div>
                 </div>
@@ -232,64 +245,89 @@ const PostProfile = () => {
                   circle
                   name="random_post"
                   clsLabel="mr-4 !mb-0"
+                  checked={formDT.toggle}
+                  onChange={(e: any) => setFormDT((pre) => ({ ...pre, toggle: e.target.checked }))}
                 />
                 <ToggleSwitch
-                  spanText="Đăng theo thứ tự"
+                  spanText={t('post_by_ordinal')}
                   circle
                   name="random_post"
                   clsLabel=" !mb-0"
+                  checked={!formDT.toggle}
+                  onChange={(e: any) => setFormDT((pre) => ({ ...pre, toggle: e.target.checked }))}
                 />
               </div>
-              <div className="p-2 rounded-[5px] border border-[#bcbaba] bg-[#f9f9f95e]">
+              <div className="mb-2 pb-2">
                 <div className="flex items-center mb-2">
                   <CheckboxField
-                    name="thread"
+                    name="times_waiting_for_images"
                     title={t('times_waiting_for_images')}
                     register={{ ...register('times_waiting_for_images') }}
                     classLabel="text-sm"
                     classInputContainer="w-[58%]"
+                    checked={formDT.times_load_image.checked}
+                    onChange={(e: any) =>
+                      setFormDT((pre) => ({
+                        ...pre,
+                        times_load_image: { ...pre.times_load_image, checked: e.target.checked }
+                      }))
+                    }
                   />{' '}
                   <InputNumberField
                     min={1}
-                    register={{ ...register('space_2_times_consecutive_1') }}
-                    name="move_profile_if_error"
-                    max={100}
-                    span={t('post')}
-                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
-                    clsLabel="whitespace-pre-wrap"
-                    classInputContainer="w-fit flex items-center justify-start "
-                  />
-                </div>
-                <CheckboxField
-                  name="get_groupList_pageProfile"
-                  title={t('Cho phép đang bài trùng bài viết giữa các Page Profile')}
-                  classLabel="text-sm whitespace-break-spaces"
-                  register={{ ...register('get_groupList_pageProfile') }}
-                  classInputContainer="mb-2 flex items-center "
-                />{' '}
-                <div className="flex items-center w-full">
-                  <CheckboxField
-                    name="get_groupList_pageProfile"
-                    title={t('Quay vòng sau')}
-                    classLabel="text-sm whitespace-break-spaces"
-                    register={{ ...register('get_groupList_pageProfile') }}
-                    classInputContainer=" flex items-center w-[58%]"
-                  />
-                  <InputNumberField
-                    min={1}
-                    register={{ ...register('space_2_times_consecutive_1') }}
-                    name="move_profile_if_error"
+                    register={{ ...register('times_waiting_for_images_1') }}
+                    name="times_waiting_for_images_1"
                     max={100}
                     span={t('second')}
                     classInput="ml-2 !w-[70px] !px-2 !py-1 "
                     clsLabel="whitespace-pre-wrap"
                     classInputContainer="w-fit flex items-center justify-start "
+                    value={formDT.times_load_image.number}
+                    onChange={(e: any) =>
+                      setFormDT((pre) => ({
+                        ...pre,
+                        times_load_image: { ...pre.times_load_image, number: e.target.value }
+                      }))
+                    }
+                  />
+                </div>
+                <div className="flex items-center w-full">
+                  <CheckboxField
+                    name="Quay vòng sau"
+                    title={t('Quay vòng sau')}
+                    classLabel="text-sm whitespace-break-spaces"
+                    register={{ ...register('get_groupList_pageProfile') }}
+                    classInputContainer=" flex items-center w-[58%]"
+                    checked={formDT.turn_back.checked}
+                    onChange={(e: any) =>
+                      setFormDT((pre) => ({
+                        ...pre,
+                        turn_back: { ...pre.turn_back, checked: e.target.checked }
+                      }))
+                    }
+                  />
+                  <InputNumberField
+                    min={1}
+                    register={{ ...register('Quay vòng sau_1') }}
+                    name="Quay vòng sau_1"
+                    max={100}
+                    span={t('second')}
+                    classInput="ml-2 !w-[70px] !px-2 !py-1 "
+                    clsLabel="whitespace-pre-wrap"
+                    classInputContainer="w-fit flex items-center justify-start "
+                    value={formDT.turn_back.from}
+                    onChange={(e: any) =>
+                      setFormDT((pre) => ({
+                        ...pre,
+                        turn_back: { ...pre.turn_back, from: e.target.value }
+                      }))
+                    }
                   />
                 </div>
                 <InputNumberField
                   min={1}
-                  register={{ ...register('space_2_times_consecutive_1') }}
-                  name="move_profile_if_error"
+                  register={{ ...register('Quay vòng sau_2') }}
+                  name="Quay vòng sau_2"
                   max={100}
                   title="Dừng quay vòng sau"
                   span={t('times')}
@@ -297,6 +335,42 @@ const PostProfile = () => {
                   clsLabel="whitespace-pre-wrap "
                   clsTitle="w-[58%]"
                   classInputContainer=" flex items-center justify-start mt-2 "
+                  value={formDT.turn_back.to}
+                  onChange={(e: any) =>
+                    setFormDT((pre) => ({
+                      ...pre,
+                      turn_back: { ...pre.turn_back, to: e.target.value }
+                    }))
+                  }
+                />
+                <CheckboxField
+                  name="Cho phép đang bài trùng bài viết giữa các Page Profile"
+                  title={t('Cho phép đang bài trùng bài viết giữa các Page Profile')}
+                  classLabel="text-sm whitespace-break-spaces"
+                  register={{
+                    ...register('Cho phép đang bài trùng bài viết giữa các Page Profile')
+                  }}
+                  classInputContainer="my-2 flex items-center border-y py-2"
+                  checked={formDT.allow_post_duplicate}
+                  onChange={(e: any) =>
+                    setFormDT((pre) => ({
+                      ...pre,
+                      allow_post_duplicate: e.target.checked
+                    }))
+                  }
+                />{' '}
+              </div>
+              <div className="mt-2 w-full ">
+                <ToggleSwitch
+                  spanText="Cấu hình đăng bài PageProfile"
+                  name="config_post_on_PageProfile"
+                  checked={toggled}
+                  onChange={(e: any) => setToggled(e.target.checked)}
+                />
+                <ButtonC
+                  title="Cấu hình chung"
+                  className={`bg-blue-500 ${toggled ? '' : 'pointer-events-none opacity-60'}`}
+                  onClick={() => toggled && setIsShowModalConfig(true)}
                 />
               </div>
               <div className="text-center flex items-center justify-center mt-3 py-2 ">
@@ -314,6 +388,9 @@ const PostProfile = () => {
           </div>
         </div>
       </div>
+      {isShowModalConfig && (
+        <ModalConfigVirtual isShow={isShowModalConfig} setIsShow={setIsShowModalConfig} />
+      )}
       <ToastContainer />
     </form>
   )

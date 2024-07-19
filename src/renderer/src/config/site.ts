@@ -5,6 +5,8 @@ export const router = {
   contentManagement: '/contentManagement',
   scanViralMarketing: '/scanViralMarketing',
   postViralMarketing: '/postViralMarketing',
+  commentViralMarketing: '/commentViralMarketing',
+  postReelsFViralMarketing: '/postReelsFViralMarketing',
   addIndex: '/addIndex'
 }
 

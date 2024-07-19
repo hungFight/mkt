@@ -66,7 +66,11 @@
   font-weight: 500;
   font-style: 'normal';
 }
-
+@font-face {
+  font-family: RalewayStraight;
+  src: url('../assets/fonts/Raleway-ThinItalic.ttf');
+  font-weight: 400;
+}
 @layer components {
   html {
     @apply scroll-smooth;
@@ -791,12 +795,15 @@ a.link-hv:hover {
 .modal-acc > div > div {
   width: 85% ;
 }
+.modal-virtual-config > div > div {
+  width: 90% !important;
+}
 
 .modal-progress > div > div {
   width: 60% !important;
 }
 .modal-AI>div>div {
-  width: 50% !important;
+  width: 60% !important;
 }
 .modal-post > div > div {
   width: 70% !important;

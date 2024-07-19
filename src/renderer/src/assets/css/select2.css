@@ -35,3 +35,10 @@
 .custom-select .css-wsp0cs-MultiValueGeneric {
   @apply !text-white;
 }
+.basic-single .css-9zb7ut-control:focus{
+  border-color: #2795d8bf !important;
+}
+.basic-single .css-1jqq78o-placeholder {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}

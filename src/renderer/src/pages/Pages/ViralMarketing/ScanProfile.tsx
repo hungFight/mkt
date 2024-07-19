@@ -3,22 +3,26 @@ import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import SelectField from '@renderer/components/CustomField/SelectField'
 import MantineTableCustom from '@renderer/components/MantineTableCustom'
 import {
-  configTableInteractionAccountManagementOne,
-  configTableInteractionAccountManagementTwo,
   configTableInteractionScanViralOne,
   configTableInteractionScanViralTwo
 } from '@renderer/config/configTable'
+import { setPageTitle } from '@renderer/store/themeConfigSlice'
 import { Button } from 'flowbite-react'
 import { CirclePlay, CircleX } from 'lucide-react'
-import React from 'react'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { LiaHandPointer } from 'react-icons/lia'
+import { useDispatch } from 'react-redux'
 
 const ScanProfile = () => {
   const { t } = useTranslation()
+  const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => {}
+  useEffect(() => {
+    dispatch(setPageTitle(t('scan_pageProfile')))
+  })
   const data = [
     {
       id: 1,
@@ -138,7 +142,7 @@ const ScanProfile = () => {
                   name="script"
                   placeholder="Chọn danh mục"
                   parenSelect="w-[200px]"
-                  borderColor="#91bff0"
+                  borderColorFocus="#2795d8bf"
                   boxShadow="0 0 1px"
                   height="25px"
                 />

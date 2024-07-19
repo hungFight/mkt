@@ -2,7 +2,7 @@ import { Button, Modal } from 'flowbite-react'
 import React, { Dispatch, FC, ReactElement, SetStateAction } from 'react'
 import { useTranslation } from 'react-i18next'
 import TextAreaField from '../CustomField/TextAreaField'
-import SelectField from '../CustomField/SelectField'
+import SelectField, { SelectDefault } from '../CustomField/SelectField'
 import ButtonC from '../CustomField/ButtonC'
 import { useForm } from 'react-hook-form'
 
@@ -12,7 +12,30 @@ const ModalRenderAI: FC<{
   title: string
   Tags?: ReactElement
   moreBox?: boolean
-}> = ({ isShow, setIsShow, title, moreBox, Tags }) => {
+  options?: SelectDefault[]
+}> = ({
+  isShow,
+  setIsShow,
+  title,
+  moreBox,
+  Tags,
+  options = [
+    { label: 'English', value: 'en' }, // English
+    { label: 'Español', value: 'es' }, // Spanish
+    { label: 'Français', value: 'fr' }, // French
+    { label: 'Deutsch', value: 'de' }, // German
+    { label: '中文', value: 'zh' }, // Chinese
+    { label: '日本語', value: 'ja' }, // Japanese
+    { label: '한국어', value: 'ko' }, // Korean
+    { label: 'Русский', value: 'ru' }, // Russian
+    { label: 'Português', value: 'pt' }, // Portuguese
+    { label: 'Italiano', value: 'it' }, // Italian
+    { label: 'العربية', value: 'ar' }, // Arabic
+    { label: 'हिन्दी', value: 'hi' }, // Hindi
+    { label: 'Türkçe', value: 'tr' }, // Turkish
+    { label: 'ไทย', value: 'th' } // Thai
+  ]
+}) => {
   const { t } = useTranslation()
   const {
     register,
@@ -76,29 +99,36 @@ const ModalRenderAI: FC<{
               </>
             )}
 
-            <div className="mt-5">
+            <div className="mt-5 flex flex-wrap items-baseline ">
               {' '}
-              <div className="flex mb-2 items-center">
-                <h2 className="mr-3 w-[150px] text-sm font-medium">Ngôn ngữ</h2>
-                <SelectField
-                  name="ai_language"
-                  options={[{ label: 'Tiếng Anh', value: 'en' }]}
-                  parenSelect="w-[200px] border rounded-[5px] border-blue-500"
-                />
-              </div>
-              <div className="flex mb-2 items-center">
-                <h2 className="mr-3 w-[150px] text-sm font-medium">Mức sáng tạo</h2>
-                <SelectField
-                  name="ai_language"
-                  parenSelect="w-[200px] border rounded-[5px] border-blue-500"
-                />
-              </div>
-              <div className="flex mb-2 items-center">
-                <h2 className="mr-3 w-[150px] text-sm font-medium">Giọng điệu</h2>
-                <SelectField
-                  name="ai_language"
-                  parenSelect="w-[200px] border rounded-[5px] border-blue-500"
-                />
+              <div className="mr-5">
+                <div className="flex mb-2 items-center">
+                  <h2 className="mr-3 w-[150px] text-sm font-medium">Ngôn ngữ</h2>
+                  <SelectField
+                    name="ai_language"
+                    options={options}
+                    borderColorFocus="#2795d8bf"
+                    parenSelect="w-[200px] border rounded-[5px] "
+                  />
+                </div>
+                <div className="flex mb-2 items-center">
+                  <h2 className="mr-3 w-[150px] text-sm font-medium">Mức sáng tạo</h2>
+                  <SelectField
+                    name="ai_language"
+                    options={options}
+                    parenSelect="w-[200px] border rounded-[5px] "
+                    borderColorFocus="#2795d8bf"
+                  />
+                </div>
+                <div className="flex mb-2 items-center">
+                  <h2 className="mr-3 w-[150px] text-sm font-medium">Giọng điệu</h2>
+                  <SelectField
+                    name="ai_language"
+                    options={options}
+                    parenSelect="w-[200px] border rounded-[5px] "
+                    borderColorFocus="#2795d8bf"
+                  />
+                </div>
               </div>
               {Tags}
             </div>

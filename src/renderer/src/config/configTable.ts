@@ -254,6 +254,33 @@ export const configTableInteractionScanViralOne: MantineTableCustomProps['column
     title: 'Thành công'
   }
 ]
+export const configTableVirtualModalConfigOne: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'category_name',
+    title: 'Tên danh mục'
+  }
+]
+export const configTableVirtualModalConfigTwo: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'title',
+    title: ''
+  },
+  {
+    accessor: 'content',
+    title: ''
+  },
+  {
+    accessor: 'url',
+    title: ''
+  },
+  {
+    accessor: 'type',
+    title: ''
+  },{
+    accessor: 'status',
+    title: ''
+  },
+]
 export const configTableInteractionAccount: MantineTableCustomProps['column'] = [
   {
     accessor: 'uid',

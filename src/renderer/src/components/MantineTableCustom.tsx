@@ -122,12 +122,14 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
           // highlightOnHover
           {...rest}
           records={paginatedData}
+        
           columns={
             isNoStt
               ? columnTranslation
               : [
                   {
                     accessor: 'index',
+                    ellipsis: true,
                     title: 'STT',
                     textAlignment: 'right',
                     width: 60,
@@ -139,6 +141,9 @@ const MantineTableCustom: FC<MantineTableCustomProps> = ({
           totalRecords={filteredData.length}
           recordsPerPage={pageSize}
           page={page}
+          
+          highlightOnHover
+          withColumnBorders
           onPageChange={(p): void => setPage(p)}
           recordsPerPageOptions={PAGE_SIZES}
           onRecordsPerPageChange={setPageSize}

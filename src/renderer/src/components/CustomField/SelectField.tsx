@@ -38,6 +38,9 @@ export interface SelectFieldProps {
   rest?: {
     [key: string]: number | string | SelectDefault[] | SelectDefault | []
   }
+  borderColorFocus?: string
+  borderColorHover?: string
+  boxShadowFocus?: string
   borderColor?: string
   boxShadow?: string
 }
@@ -76,11 +79,14 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
     placeholder,
     backgroundColor,
     maxLimit,
-    isShadow = true,
+    isShadow,
     styleControl,
     rest,
+    borderColorFocus,
+    boxShadowFocus,
     borderColor,
     boxShadow,
+    borderColorHover,
     className
   } = prop
   // const [valueSearch, setValueSearch] = useState("");
@@ -99,31 +105,30 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
 
   const customStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    control: (base: any) => ({
+    option: (style, _) => ({ ...style, fontSize: '14px',fontWeight: '400', cursor: 'pointer'}),
+    control: (base: any, mul) => ({
       ...base,
-      backgroundColor: backgroundColor ?? 'transparent',
+      backgroundColor: backgroundColor ?? '',
       // Overwrittes the different states of border
-      borderColor: 'rgb(226 232 240 / 1)',
+      borderColor: mul.isFocused ? borderColorFocus ?? '#a9a9a9bf' : borderColor,
       textAlign: 'left',
-
-      boxShadow: isShadow ? boxShadow ?? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '',
+      boxShadow: isShadow ? boxShadow ?? '0 0  1px rgba(54, 54, 54, 0.05)' : '',
 
       // // Removes weird border around container
       // boxShadow: state.isFocused ? null : null,
       height: height ?? '42px',
       '&:hover': {
         // Overwrittes the different states of border
-        borderColor: 'rgb(226 232 240 / 1)',
-
+        borderColor: borderColorHover ?? '',
         backgroundColor: 'transparent'
       },
       '&:focus': {
         // Overwrittes the different states of border
         color: '#495057',
         backgroundColor: 'transparent',
-        borderColor: borderColor ?? ' rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;',
+        borderColor: borderColorFocus ?? '',
         outline: 0,
-        boxShadow: boxShadow ?? '0 0 0 0.2rem rgb(0 123 255 / 25%)'
+        boxShadow: boxShadowFocus ?? '0 0 0 0.2rem rgb(0 123 255 / 25%)'
       },
       ...styleControl
     }),
@@ -202,12 +207,13 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
           {title} {isRequire && <span className="text-red-500">*</span>}
         </label>
       )}
+
       <Select
         id={name}
         name={name}
-        value={ValueSelectd && ValueSelectd?.length > 0 ? ValueSelectd : []}
         className="basic-single"
         classNamePrefix="select"
+        defaultValue={options ? options[0]: []}
         onChange={handleSelectedOptionChange}
         menuPortalTarget={document.body}
         filterOption={customFilter}

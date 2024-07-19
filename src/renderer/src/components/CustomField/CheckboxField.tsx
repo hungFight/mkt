@@ -42,7 +42,7 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
         />
         {title && (
           <label
-            className={`ml-2 mb-0 text-base whitespace-nowrap font-medium text-gray-900 cursor-pointer ${classLabel}`}
+            className={`ml-2 mb-0 text-sm whitespace-nowrap font-medium text-gray-900 cursor-pointer ${classLabel}`}
             htmlFor={name}
           >
             {t(title)}
