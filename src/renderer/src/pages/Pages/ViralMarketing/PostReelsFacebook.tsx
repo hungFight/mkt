@@ -1,8 +1,6 @@
 import ButtonC from '@renderer/components/CustomField/ButtonC'
-import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import FormPostReelsFB from '@renderer/components/Form/VirtualMarketing/FormPostReelsFB'
 import MantineTableCustom from '@renderer/components/MantineTableCustom'
-import ModalRenderAI from '@renderer/components/Modal/ModalRenderAI'
 import ModalConfigVirtual from '@renderer/components/Modal/ModalVirtualMKT/ModalConfigVirtual'
 import ModalConfig from '@renderer/components/Modal/ModalVirtualMKT/ModalConfigVirtual'
 import StartStopSelect from '@renderer/components/VirtualMarketing.tsx/StartStopSelect'
@@ -10,7 +8,6 @@ import {
   configTableInteractionScanViralOne,
   configTableInteractionScanViralTwo
 } from '@renderer/config/configTable'
-import { data, dataTwo } from '@renderer/pages/data/postProfileData'
 import { setPageTitle } from '@renderer/store/themeConfigSlice'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -39,7 +36,6 @@ const PostReelsFacebook = () => {
   const { register, handleSubmit } = useForm()
   const [isShowModalConfigVirtual, setIsShowModalConfigVirtual] = useState<boolean>(false)
   const [isShowModalConfig, setIsShowModalConfig] = useState<boolean>(false)
-  const [isShowModalRenderAI, setIsShowModalRenderAI] = useState<boolean>(false)
   const [files, setFiles] = useState<{ files: File[] }>({ files: [] })
   const [contentVideo, setContentVideo] = useState<string>('')
   const [formDT, setFormDT] = useState<PropsFormDT>({
