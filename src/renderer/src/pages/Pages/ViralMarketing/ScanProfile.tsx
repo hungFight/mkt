@@ -9,7 +9,7 @@ import {
 import { setPageTitle } from '@renderer/store/themeConfigSlice'
 import { Button } from 'flowbite-react'
 import { CirclePlay, CircleX } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { LiaHandPointer } from 'react-icons/lia'
@@ -19,112 +19,11 @@ const ScanProfile = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
+  const [formDT, setFormDT] = useState<{}>()
   const onSubmit = (data) => {}
   useEffect(() => {
     dispatch(setPageTitle(t('scan_pageProfile')))
   })
-  const data = [
-    {
-      id: 1,
-      uid: 1,
-      status: 'firstLast',
-      content: 'Hello'
-    },
-    {
-      id: 2,
-      uid: 2,
-      status: 'firstLast',
-      content: 'Hello'
-    },
-    {
-      id: 3,
-      uid: 3,
-      status: 'firstLast',
-      content: 'Hello'
-    },
-    {
-      id: 4,
-      uid: 4,
-      status: 'firstLast',
-      content: 'Hello'
-    },
-    {
-      id: 5,
-      uid: 5,
-      status: 'firstLast',
-      content: 'Hello'
-    },
-    {
-      id: 6,
-      uid: 6,
-      status: 'firstLast',
-      content: 'Hello'
-    },
-    {
-      id: 7,
-      uid: 7,
-      status: 'firstLast',
-      content: 'Hello'
-    }
-  ]
-  const dataTwo = [
-    {
-      id: 1,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 2,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 3,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 4,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 5,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 6,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    },
-    {
-      id: 7,
-      uid: '1',
-      status: 'firstLast',
-      pageId: 'Hello',
-      pageName: 'Hung',
-      group: '1'
-    }
-  ]
 
   return (
     <form className="flex gap-3 justify-center " onSubmit={handleSubmit(onSubmit)}>
@@ -140,9 +39,10 @@ const ScanProfile = () => {
               <div className="flex items-center justify-start pb-2">
                 <SelectField
                   name="script"
-                  placeholder="Chọn danh mục"
+                  placeholder={t('choice_index')}
                   parenSelect="w-[200px]"
                   borderColorFocus="#2795d8bf"
+                  options={[{ label: 'Viet Nam', value: 'vi' }]}
                   boxShadow="0 0 1px"
                   height="25px"
                 />
@@ -155,11 +55,11 @@ const ScanProfile = () => {
                     type="submit"
                   >
                     <CirclePlay size={20} className="mr-2" />
-                    Start
+                    {t('start')}
                   </Button>
                   <Button className="bg-red-700 rounded-[10px] h-max py-[2px]" size="sm">
                     <CircleX size={20} className="mr-2" />
-                    Stop
+                    {t('stop')}
                   </Button>
                 </div>
               </div>{' '}
@@ -169,7 +69,7 @@ const ScanProfile = () => {
                     ...r,
                     title: t(r.accessor)
                   }))}
-                  data={data}
+                  data={[]}
                   clsTable="!h-[33vh] mb-2  border  rounded-[15px]"
                 />{' '}
                 <MantineTableCustom
@@ -177,7 +77,7 @@ const ScanProfile = () => {
                     ...r,
                     title: t(r.accessor)
                   }))}
-                  data={dataTwo}
+                  data={[]}
                   clsTable="!h-[33vh]  border  rounded-[15px]"
                 />
               </div>

@@ -68,7 +68,7 @@ const CommentUID = () => {
             <div className="gap-2 flex h-fit items-center justify-between ">
               <SelectField
                 name="script"
-                placeholder="Chọn danh mục"
+                placeholder={t('choice_index')}
                 parenSelect="w-[200px]"
                 borderColorFocus="#2795d8bf"
                 boxShadow="0 0 1px"
@@ -81,22 +81,22 @@ const CommentUID = () => {
                 type="submit"
               >
                 <CirclePlay size={20} className="mr-2" />
-                Start
+                {t('start')}
               </Button>
               <Button className="bg-red-700 rounded-[10px] h-max py-[2px]" size="sm">
                 <CircleX size={20} className="mr-2" />
-                Stop
+                {t('stop')}
               </Button>
             </div>
             <div className="flex items-center">
               <h2 className="mr-4">
-                Tổng số nội dung chọn để bình luận{' '}
+                {t('total_content_to_comment')}
                 <span className="text-sm rounded-[5px] border-b-[2px] border-red-500 px-3 ml-1">
                   5
                 </span>
               </h2>
               <ButtonC
-                title="Chọn nội dung"
+                title={t('choice_index')}
                 className="bg-blue-500 p-2"
                 onClick={() => setIsShowModalConfigVirtual(true)}
               />
@@ -137,7 +137,7 @@ const CommentUID = () => {
               <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
             </h2>
             <p className="w-full text-sm font-medium text-red-500 p-2  mt-[-13px]">
-              Lưu ý: Nội dung bình luận sẽ chọn ngẫu nhiên 1 hình ảnh trong
+              {t('note_comment_random_one_image')}
             </p>
             <div className="w-full bg-white h-[80%] overflow-auto px-2 mt-2 relative ">
               <div className="mb-2">
@@ -146,7 +146,7 @@ const CommentUID = () => {
                     <h2 className="text-sm font-medium mr-2  w-[56%] flex items-center">
                       {t('stream_concurrency')}
                       <ToolTips content={t('open_at_the_same')}>
-                        <BsFillQuestionOctagonFill className="text-[#f03365] ml-2" />
+                        <BsFillQuestionOctagonFill className="text-[#434343] ml-2" />
                       </ToolTips>
                     </h2>
                     <InputNumberField
@@ -168,7 +168,7 @@ const CommentUID = () => {
                     <div className="w-full flex items-center mb-1">
                       <h2 className="text-sm font-medium mr-2 ">{t('move_profile_if_error')}</h2>
                       <ToolTips content={t('stop_and_change_other_profiles')}>
-                        <BsFillQuestionOctagonFill className="text-[#f03365]" />
+                        <BsFillQuestionOctagonFill className="text-[#434343]" />
                       </ToolTips>
                     </div>
                     <InputNumberField
@@ -187,13 +187,13 @@ const CommentUID = () => {
                     />{' '}
                   </div>
                   <div className="w-full border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px] my-2">
-                    <h2 className="text-sm font-medium mb-1">Mỗi Page Profile hình</h2>
+                    <h2 className="text-sm font-medium mb-1">{t('each_pageProfile_image')}</h2>
                     <div className="flex items-center  justify-start">
                       {' '}
                       <InputNumberField
                         min={1}
-                        register={{ ...register('Mỗi Page Profile hình') }}
-                        name="Mỗi Page Profile hình"
+                        register={{ ...register('each_pageProfile_image') }}
+                        name="each_pageProfile_image"
                         max={100}
                         classInput="!w-[70px] !px-2 !py-1 "
                         clsLabel="whitespace-pre-wrap"
@@ -204,8 +204,8 @@ const CommentUID = () => {
                       />
                       <InputNumberField
                         min={1}
-                        register={{ ...register('Mỗi Page Profile hình') }}
-                        name="Mỗi Page Profile hình"
+                        register={{ ...register('each_pageProfile_image_1') }}
+                        name="each_pageProfile_image_2"
                         span={t('UID')}
                         max={100}
                         classInput="ml-2 !w-[70px] !px-2 !py-1 "
@@ -219,12 +219,12 @@ const CommentUID = () => {
                     </div>
                   </div>
                   <div className=" w-full border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px]">
-                    <h2 className="text-sm font-medium  mb-1">Mỗi UID bình luận tối thiểu</h2>
+                    <h2 className="text-sm font-medium  mb-1">{t('every_uid_limited_comment')}</h2>
                     <div className="flex items-center">
                       <InputNumberField
                         min={1}
-                        register={{ ...register('Mỗi UID bình luận tối thiểu') }}
-                        name="Mỗi UID bình luận tối thiểu"
+                        register={{ ...register('every_uid_limited_comment_1') }}
+                        name="every_uid_limited_comment_1"
                         max={100}
                         classInput="!w-[70px] !px-2 !py-1 "
                         clsLabel="whitespace-pre-wrap"
@@ -235,8 +235,8 @@ const CommentUID = () => {
                       />
                       <InputNumberField
                         min={1}
-                        register={{ ...register('Mỗi UID bình luận tối thiểu') }}
-                        name="Mỗi UID bình luận tối thiểu"
+                        register={{ ...register('every_uid_limited_comment_2') }}
+                        name="every_uid_limited_comment_2"
                         span={t('post')}
                         max={100}
                         classInput="ml-2 !w-[70px] !px-2 !py-1 "
@@ -250,13 +250,12 @@ const CommentUID = () => {
                     </div>
                   </div>{' '}
                   <div className=" w-full border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px] my-2">
-                    <h2 className="text-sm font-medium mb-1">Khoảng cách 2 lần đăng bài</h2>
+                    <h2 className="text-sm font-medium mb-1">{t('space_two_times_post')}</h2>
                     <div className="flex items-center">
-                      {' '}
                       <InputNumberField
                         min={1}
-                        register={{ ...register('Mỗi UID bình luận tối thiểu') }}
-                        name="Mỗi UID bình luận tối thiểu"
+                        register={{ ...register('space_two_times_post_1') }}
+                        name="space_two_times_post_1"
                         max={100}
                         classInput=" !w-[70px] !px-2 !py-1 "
                         clsLabel="whitespace-pre-wrap"
@@ -267,8 +266,8 @@ const CommentUID = () => {
                       />
                       <InputNumberField
                         min={1}
-                        register={{ ...register('Mỗi UID bình luận tối thiểu') }}
-                        name="Mỗi UID bình luận tối thiểu"
+                        register={{ ...register('space_two_times_post_2') }}
+                        name="space_two_times_post_2"
                         span={t('second')}
                         max={100}
                         classInput="ml-2 !w-[70px] !px-2 !py-1 "
@@ -283,9 +282,9 @@ const CommentUID = () => {
                   <div className=" w-full border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px] my-2">
                     <div className="flex w-full items-center justify-center py-1 pb-2 border-b border-[#c1c1c1]">
                       <ToggleSwitch
-                        spanText={t('Chọn ngẫu nhiên')}
+                        spanText={t('choice_random')}
                         circle
-                        name="random_post"
+                        name="choice_random"
                         clsLabel="mr-4 !mb-0"
                         checked={formDT.toggle}
                         onChange={(e: any) =>
@@ -293,9 +292,9 @@ const CommentUID = () => {
                         }
                       />
                       <ToggleSwitch
-                        spanText={t('Theo thứ tự')}
+                        spanText={t('ordinal')}
                         circle
-                        name="random_post"
+                        name="ordinal"
                         clsLabel=" !mb-0"
                         checked={!formDT.toggle}
                         onChange={(e: any) =>
@@ -332,12 +331,12 @@ const CommentUID = () => {
                         onChange={(e: any) => setToggled(e.target.checked)}
                       />
                       <p className="text-[13px] text-blue-500 mt-[-3px] font-medium pl-8">
-                        ( Tự động xoá UID đã bình luận trong file trên! )
+                        ( {t('auto_delete_uid_commented')}! )
                       </p>
                     </div>
                     <CheckboxField
-                      title={t('Cho phép lấy lại nội dung đã bình luận')}
-                      name={t('Cho phép lấy lại nội dung đã bình luận')}
+                      title={t('allow_get_content_commented')}
+                      name={t('allow_get_content_commented')}
                       checked={toggled}
                       onChange={(e: any) => setToggled(e.target.checked)}
                       classInputContainer="my-1"

@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from 'react'
+import { ChangeEvent, FC, InputHTMLAttributes } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -15,6 +15,7 @@ export interface TextAreaFieldPops extends InputHTMLAttributes<HTMLElement> {
   round?: string
   clsTextArea?: string
   clsTextLabel?: string
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 const TextAreaField: FC<TextAreaFieldPops> = ({
@@ -28,6 +29,7 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
   round,
   clsTextArea,
   clsTextLabel,
+  onChange,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -43,12 +45,13 @@ const TextAreaField: FC<TextAreaFieldPops> = ({
         </label>
       )}
       <textarea
-        className={`border outline-none  overflow-hidden   px-5 py-[10px] text-[#505050] ${
+        className={`border outline-none  overflow-hidden placeholder:font-medium placeholder:text-sm  px-5 py-[10px] text-[#505050] ${
           round ? round : 'rounded-md'
         } ${clsTextArea} w-full bg-transparent border  border-[#367ff5] focus:!shadow-[0_0_3px_#367ff5] `}
         autoComplete="off"
         style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
         id={name}
+        onChange={onChange}
         {...register}
         type="text"
         {...rest}

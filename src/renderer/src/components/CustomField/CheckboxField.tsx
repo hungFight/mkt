@@ -1,10 +1,5 @@
-import { FC, InputHTMLAttributes } from 'react'
-import {
-  FieldValues,
-  RegisterOptions,
-  UseFormRegister,
-  UseFormRegisterReturn
-} from 'react-hook-form'
+import { ChangeEvent, FC, InputHTMLAttributes } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 export interface CheckboxFieldProps extends InputHTMLAttributes<HTMLElement> {
@@ -17,6 +12,7 @@ export interface CheckboxFieldProps extends InputHTMLAttributes<HTMLElement> {
   isRequire?: boolean
   classLabel?: string
   classInput?: string
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const CheckboxField: FC<CheckboxFieldProps> = ({
@@ -26,6 +22,7 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
   classInputContainer,
   classLabel,
   classInput,
+  onChange,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -37,6 +34,7 @@ const CheckboxField: FC<CheckboxFieldProps> = ({
           className={`form-checkbox h-5 w-5 text-blue-600 border border-[rgb(174_174_174)] active:!shadow-[0_0_3px] shadow-blue-500 ${classInput}`}
           id={name}
           {...register}
+          onChange={onChange}
           type="checkbox"
           {...rest}
         />

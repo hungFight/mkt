@@ -44,7 +44,7 @@ interface UploadFileFieldProps {
   clsLabelRoot?: string
   clsLabel?: string
   clsButtons?: string
-  setError: Dispatch<SetStateAction<boolean>>
+  setError?: Dispatch<SetStateAction<boolean>>
 }
 
 const UploadFileField: FC<UploadFileFieldProps> = ({
@@ -74,7 +74,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const files = event.target.files
     if (files) {
-      setError(false)
+      setError && setError(false)
       const newFilePaths = Array.from(files).map((file) => file.webkitRelativePath || file.name)
       setFilePaths(newFilePaths)
       if (changeFile) changeFile({ files: Array.from(files) })

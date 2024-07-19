@@ -1,9 +1,9 @@
 import { Radio } from 'flowbite-react'
-import { FC } from 'react'
+import { ChangeEvent, FC } from 'react'
 
 interface ToggleSwitchProps {
   checked?: boolean
-  onChange?: (e: any) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   spanText?: string
   focusRingColor?: string
   darkFocusRingColor?: string

@@ -6,6 +6,7 @@ import MantineTableCustom from '@renderer/components/MantineTableCustom'
 import ModalConfigVirtual from '@renderer/components/Modal/ModalVirtualMKT/ModalConfigVirtual'
 import ToggleSwitch from '@renderer/components/ToggleSwitch'
 import ToolTips from '@renderer/components/Tooltips'
+import StartStopSelect from '@renderer/components/VirtualMarketing.tsx/StartStopSelect'
 import {
   configTableInteractionScanViralOne,
   configTableInteractionScanViralTwo
@@ -59,32 +60,7 @@ const PostProfile = () => {
     <form className="flex gap-3 justify-center " onSubmit={handleSubmit(onSubmit)}>
       <div className="w-full  px-2 pb-2  pt-0">
         <div className="w-full flex items-center justify-between px-[2px] pl-1 rounded-[10px] ">
-          <div className="flex items-center justify-start pb-2">
-            <SelectField
-              name="script"
-              placeholder="Chọn danh mục"
-              parenSelect="w-[200px] border rounded-[5px]"
-              borderColorFocus="#2795d8bf"
-              boxShadow="0 0 1px"
-              height="25px"
-            />
-            <div className="gap-2 flex h-fit items-center justify-between ml-2 ">
-              {/* <SelectField name="group" placeholder="Danh mục" className="w-[50%] py-0" /> */}
-              <Button
-                className="bg-green-700 rounded-[10px] h-max btn-start py-[2px]"
-                size="sm"
-                // onClick={handleStart}
-                type="submit"
-              >
-                <CirclePlay size={20} className="mr-2" />
-                Start
-              </Button>
-              <Button className="bg-red-700 rounded-[10px] h-max py-[2px]" size="sm">
-                <CircleX size={20} className="mr-2" />
-                Stop
-              </Button>
-            </div>
-          </div>
+          <StartStopSelect />
           <div className="flex items-center">
             <h2 className="mr-4">
               Tổng số nội dung đăng cho tất cả Profile
@@ -102,7 +78,7 @@ const PostProfile = () => {
               <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
             </h2>
             <div className=" px-2">
-              <div className="mt-2 overflow-auto mt-[-2px]">
+              <div className="overflow-auto mt-[-2px]">
                 <MantineTableCustom
                   column={configTableInteractionScanViralOne.map((r) => ({
                     ...r,
@@ -134,7 +110,7 @@ const PostProfile = () => {
                     <h2 className="text-sm font-medium  w-[58%] flex items-center relative">
                       {t('stream_concurrency')}
                       <ToolTips content={t('open_at_the_same')} className="absolute top-0 right-0">
-                        <BsFillQuestionOctagonFill className="text-[#f03365] ml-2" />
+                        <BsFillQuestionOctagonFill className="text-[#434343] ml-2" />
                       </ToolTips>
                     </h2>
 
@@ -191,7 +167,7 @@ const PostProfile = () => {
                     <div className="w-full flex items-center mb-1">
                       <h2 className="text-sm font-medium mr-2 ">{t('move_profile_if_error')}</h2>
                       <ToolTips content={t('stop_and_change_other_profiles')}>
-                        <BsFillQuestionOctagonFill className="text-[#f03365]" />
+                        <BsFillQuestionOctagonFill className="text-[#434343]" />
                       </ToolTips>
                     </div>
                     <InputNumberField
@@ -216,7 +192,7 @@ const PostProfile = () => {
                         content={t('times_waiting_for_next_step')}
                         className="text-[#f03365]"
                       >
-                        <BsFillQuestionOctagonFill className="text-[#f03365]" />
+                        <BsFillQuestionOctagonFill className="text-[#434343]" />
                       </ToolTips>
                     </div>
                     <InputNumberField
@@ -293,8 +269,8 @@ const PostProfile = () => {
                 </div>
                 <div className="flex items-center w-full">
                   <CheckboxField
-                    name="Quay vòng sau"
-                    title={t('Quay vòng sau')}
+                    name={t('turn_back')}
+                    title={t('turn_back')}
                     classLabel="text-sm whitespace-break-spaces"
                     register={{ ...register('get_groupList_pageProfile') }}
                     classInputContainer=" flex items-center w-[58%]"
@@ -308,8 +284,8 @@ const PostProfile = () => {
                   />
                   <InputNumberField
                     min={1}
-                    register={{ ...register('Quay vòng sau_1') }}
-                    name="Quay vòng sau_1"
+                    register={{ ...register('turn_back_1') }}
+                    name="turn_back_1"
                     max={100}
                     span={t('second')}
                     classInput="ml-2 !w-[70px] !px-2 !py-1 "
@@ -326,10 +302,10 @@ const PostProfile = () => {
                 </div>
                 <InputNumberField
                   min={1}
-                  register={{ ...register('Quay vòng sau_2') }}
-                  name="Quay vòng sau_2"
+                  register={{ ...register('stop_turning_back') }}
+                  name="stop_turning_back"
                   max={100}
-                  title="Dừng quay vòng sau"
+                  title={t('stop_turning_back')}
                   span={t('times')}
                   classInput="ml-2 !w-[70px] !px-2 !py-1 "
                   clsLabel="whitespace-pre-wrap "
@@ -344,11 +320,11 @@ const PostProfile = () => {
                   }
                 />
                 <CheckboxField
-                  name="Cho phép đang bài trùng bài viết giữa các Page Profile"
-                  title={t('Cho phép đang bài trùng bài viết giữa các Page Profile')}
+                  name={t('allow_post_duplicate_between_pageProfile')}
+                  title={t('allow_post_duplicate_between_pageProfile')}
                   classLabel="text-sm whitespace-break-spaces"
                   register={{
-                    ...register('Cho phép đang bài trùng bài viết giữa các Page Profile')
+                    ...register('allow_post_duplicate_between_pageProfile')
                   }}
                   classInputContainer="my-2 flex items-center border-y py-2"
                   checked={formDT.allow_post_duplicate}
@@ -362,13 +338,13 @@ const PostProfile = () => {
               </div>
               <div className="mt-2 w-full ">
                 <ToggleSwitch
-                  spanText="Cấu hình đăng bài PageProfile"
-                  name="config_post_on_PageProfile"
+                  spanText={t('config_post_pageProfile')}
+                  name="config_post_pageProfile"
                   checked={toggled}
                   onChange={(e: any) => setToggled(e.target.checked)}
                 />
                 <ButtonC
-                  title="Cấu hình chung"
+                  title={t('middle_config')}
                   className={`bg-blue-500 ${toggled ? '' : 'pointer-events-none opacity-60'}`}
                   onClick={() => toggled && setIsShowModalConfig(true)}
                 />
