@@ -14,8 +14,8 @@ import { AiOutlineMenuFold } from 'react-icons/ai'
 import { RiAccountPinCircleFill, RiMenuAddFill, RiPagesFill, RiQrScan2Line } from 'react-icons/ri'
 import { SlNote } from 'react-icons/sl'
 import { CiCirclePlus } from 'react-icons/ci'
-import { LiaNotesMedicalSolid } from 'react-icons/lia'
-import { PiFilmReelLight, PiNotebookFill } from 'react-icons/pi'
+import { LiaNotesMedicalSolid, LiaPagerSolid } from 'react-icons/lia'
+import { PiFilmReelLight, PiNotebookFill, PiVideoLight } from 'react-icons/pi'
 export interface configItemSidebar {
   path?: string
   title?: string
@@ -75,12 +75,14 @@ export const configSidebar: configSidebarType[] = [
         path: configStatic.router.postReelsFViralMarketing
       },
       {
-        title: 'Gửi tin nhắn cá nhân',
-        icon: BiSolidDashboard
+        title: 'post_video_pageProfile',
+        icon: PiVideoLight,
+        path: configStatic.router.postVideoPageProfile
       },
       {
-        title: 'Tham gia nhóm',
-        icon: BiSolidDashboard
+        title: 'post_by_pageId',
+        icon: LiaPagerSolid,
+        path: configStatic.router.postByPageId
       },
       {
         title: 'Đăng bài cá nhân',

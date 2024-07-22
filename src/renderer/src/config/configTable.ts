@@ -208,6 +208,7 @@ export const configTableInteractionAccountManagementTwo: MantineTableCustomProps
     title: 'Tiến trình'
   }
 ]
+//
 export const configTableInteractionScanViralTwo: MantineTableCustomProps['column'] = [
   {
     accessor: 'uid',
@@ -254,6 +255,159 @@ export const configTableInteractionScanViralOne: MantineTableCustomProps['column
     title: 'Thành công'
   }
 ]
+//
+export const configTableInteractionPostByPageIDTwo: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+
+  {
+    accessor: 'pageId',
+    title: 'Id Page'
+  },
+
+  {
+    accessor: 'pageName',
+    title: 'Tên Page'
+  },
+
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  }
+]
+export const configTableInteractionPostByPageIDOne: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+  {
+    accessor: 'id_page_get_post',
+    title: 'Id page lấy bài'
+  },
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  }
+]
+//
+export const configTableInteractionPostVideoTwo: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+
+  {
+    accessor: 'pageId',
+    title: 'Id Page'
+  },
+
+  {
+    accessor: 'pageName',
+    title: 'Tên Page'
+  },
+
+  {
+    accessor: 'status_t',
+    title: 'Tình trạng'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  },
+
+  {
+    accessor: 'group',
+    title: 'Group'
+  }
+]
+//
+
+export const configTableInteractionPostPageProfileTwo: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+
+  {
+    accessor: 'pageId',
+    title: 'Id Page'
+  },
+
+  {
+    accessor: 'pageName',
+    title: 'Tên Page'
+  },
+
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  }
+]
+//
+export const configTableInteractionPostReelsFBOne: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  }
+]
+export const configTableInteractionPostReelsFBTwo: MantineTableCustomProps['column'] = [
+  {
+    accessor: 'uid',
+    title: 'UID',
+    sortable: true
+  },
+
+  {
+    accessor: 'pageId',
+    title: 'Id Page'
+  },
+
+  {
+    accessor: 'pageName',
+    title: 'Tên Page'
+  },
+
+  {
+    accessor: 'status',
+    title: 'Trạng thái'
+  },
+  {
+    accessor: 'status_t',
+    title: 'Tình trạng'
+  },
+  {
+    accessor: 'success',
+    title: 'Thành công'
+  }
+]
+//
 export const configTableVirtualModalConfigOne: MantineTableCustomProps['column'] = [
   {
     accessor: 'category_name',
@@ -276,10 +430,11 @@ export const configTableVirtualModalConfigTwo: MantineTableCustomProps['column']
   {
     accessor: 'type',
     title: ''
-  },{
+  },
+  {
     accessor: 'status',
     title: ''
-  },
+  }
 ]
 export const configTableInteractionAccount: MantineTableCustomProps['column'] = [
   {

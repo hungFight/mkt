@@ -205,7 +205,7 @@
   "success": "Thành công",
   "pageId": "ID Page",
   "post_PageProfile": "Đăng bài Page Profile",
-  "limit_post_of_each_pageProfile": "Mỗi Profile đăng tối đa",
+  "limit_post_of_each_pageProfile": "Mỗi PageProfile đăng tối đa",
   "limit_post_of_each_account": "Mỗi tài khoản tăng tối đa",
   "move_profile_if_error": "Chuyển PageProfile nếu lỗi",
   "expand": "Mở rộng",
@@ -225,6 +225,7 @@
   "allow_post_video_duplicate": "Cho phép đăng trùng video giữa Page Profile",
   "create_comment_for_post": "Tạo bình luận cho bài viết",
   "post_reels_facebook": "Đăng Reels Facebook",
+  "post_vide_pageProfile": "Đăng video PageProfile",
   "turn_back": "Quay vòng sau",
   "stop_turning_back": "Dừng quay vòng sau",
   "stop_turning_around": "Dừng quay vòng",
@@ -249,5 +250,13 @@
   "comment_video_reels_post_success": "Bình luận video Reels khi đăng thành công",
   "totall_video_to_increase_reels": "Tổng số video để tăng Reels Pro",
   "choice_content": "Chọn nội dung",
-  "time_wait_load": "Thời gian chờ tải"
+  "time_wait_load": "Thời gian chờ tải",
+  "post_video_pageProfile": "Đăng video PageProfle",
+  "config_post_video_pageProfile": "Cấu hình đăng video PageProfile",
+  "time_wait_for_next_step": "Thời gian dừng chờ lượt hành động tiếp theo",
+  "when_pageProfile_act_limit_error": "Khi PageProfile thực hiện hành động bị lỗi quá số lần cho phép sẽ bị dừng hành động chuyển sang PageProfile khác để tránh bị kháo tài khoản",
+  "select_video": "Chọn video",
+  "post_by_pageId": "Đăng bài theo Page ID",
+  "status_t": "Tình trạng",
+  "id_page_get_post": "Id page lấy bài"
 }

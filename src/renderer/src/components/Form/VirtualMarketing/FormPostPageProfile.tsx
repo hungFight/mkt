@@ -20,7 +20,7 @@ const FormPostPageProfile: FC<{
   const { t } = useTranslation()
   return (
     <>
-      <div className="mb-2 mt-[9px]">
+      <div className="mb-2 ">
         <div className=" border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px]">
           <div className="w-full flex items-center mb-1">
             <h2 className="text-sm font-medium  w-[58%] flex items-center relative">
@@ -32,9 +32,9 @@ const FormPostPageProfile: FC<{
 
             <InputNumberField
               min={1}
-              name="stream_concurrency"
+              name="concurrent_stream"
               max={100}
-              register={{ ...register('stream_concurrency') }}
+              register={{ ...register('concurrent_stream') }}
               classInput="ml-2 !w-[70px] !px-2 !py-1 "
               span={t('stream')}
               onChange={(e: any) =>

@@ -7,7 +7,7 @@ import ModalConfig from '@renderer/components/Modal/ModalVirtualMKT/ModalConfigV
 import StartStopSelect from '@renderer/components/VirtualMarketing.tsx/StartStopSelect'
 import {
   configTableInteractionScanViralOne,
-  configTableInteractionScanViralTwo
+  configTableInteractionPostReelsFBTwo
 } from '@renderer/config/configTable'
 import { setPageTitle } from '@renderer/store/themeConfigSlice'
 import { useEffect, useState } from 'react'
@@ -62,7 +62,6 @@ const PostReelsFacebook = () => {
     console.table(checkBoxData)
     console.log(files.files, 'files')
     console.log(contentVideo, 'contentVideo')
-
     console.log(data, 'data')
   }
 
@@ -73,25 +72,10 @@ const PostReelsFacebook = () => {
         titleRight={t('config_comment_pageProfile_by_uid')}
         handleSubmit={handleSubmit(onSubmit)}
         childrenHeader={
-          <div className="flex items-center justify-between pb-2">
-            <StartStopSelect
-              options={[{ label: 'Hung', value: 'h' }]}
-              changeSelected={(v) => console.log(v, 'new')}
-            />
-            <div className="flex items-center">
-              <h2 className="mr-4">
-                {t('total_content_to_comment')}{' '}
-                <span className="text-sm rounded-[5px] border-b-[2px] border-red-500 px-3 ml-1">
-                  5
-                </span>
-              </h2>
-              <ButtonC
-                title={t('choice_content')}
-                className="bg-blue-500 p-2"
-                onClick={() => setIsShowModalConfigVirtual(true)}
-              />
-            </div>
-          </div>
+          <StartStopSelect
+            options={[{ label: 'Hung', value: 'h' }]}
+            changeSelected={(v) => console.log(v, 'new')}
+          />
         }
         childrenLeft={
           <div className=" overflow-auto px-2">
@@ -101,30 +85,28 @@ const PostReelsFacebook = () => {
                 title: t(r.accessor)
               }))}
               data={[]}
-              clsTable="!h-[34.5vh] mb-2  border  rounded-[15px]"
+              clsTable="!h-[34.5vh] mb-2  border rounded-[15px]"
             />{' '}
             <MantineTableCustom
-              column={configTableInteractionScanViralTwo.map((r) => ({
+              column={configTableInteractionPostReelsFBTwo.map((r) => ({
                 ...r,
                 title: t(r.accessor)
               }))}
               data={[]}
-              clsTable="!h-[34.5vh]  border  rounded-[15px]"
+              clsTable="!h-[34.5vh]  border rounded-[15px]"
             />
           </div>
         }
         childrenRight={
-          <div className="w-full bg-white h-[85%] overflow-auto overflow-x-hidden px-2 mt-[-15px] relative ">
-            <FormPostReelsFB
-              register={register}
-              files={files}
-              setFiles={setFiles}
-              formDT={formDT}
-              setFormDT={setFormDT}
-              checkBoxData={checkBoxData}
-              setCheckBoxData={setCheckBoxData}
-            />
-          </div>
+          <FormPostReelsFB
+            register={register}
+            files={files}
+            setFiles={setFiles}
+            formDT={formDT}
+            setFormDT={setFormDT}
+            checkBoxData={checkBoxData}
+            setCheckBoxData={setCheckBoxData}
+          />
         }
       />
 

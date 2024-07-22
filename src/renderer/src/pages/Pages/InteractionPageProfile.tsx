@@ -22,6 +22,7 @@ import { useTranslation } from 'react-i18next'
 import { CiCirclePlus } from 'react-icons/ci'
 import { LiaHandPointer } from 'react-icons/lia'
 import { useDispatch } from 'react-redux'
+import { data } from '../data/postProfileData'
 
 const InteractionPageProfile = () => {
   const { register, handleSubmit } = useForm()
@@ -66,7 +67,7 @@ const InteractionPageProfile = () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
-  const data = [
+  const datadd = [
     {
       uid: '1',
       title: 'firstLast',

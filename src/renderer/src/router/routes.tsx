@@ -5,8 +5,10 @@ import ContentManagement from '@renderer/pages/Pages/ContentManagement'
 import InteractionPageProfile from '@renderer/pages/Pages/InteractionPageProfile'
 import ManagerAccount from '@renderer/pages/Pages/ManagerAccount'
 import CommentUID from '@renderer/pages/Pages/ViralMarketing/CommentUID'
+import PostByPageId from '@renderer/pages/Pages/ViralMarketing/PostByPageId'
 import PostProfile from '@renderer/pages/Pages/ViralMarketing/PostProfile'
 import PostReelsFacebook from '@renderer/pages/Pages/ViralMarketing/PostReelsFacebook'
+import PostVideoPageProfile from '@renderer/pages/Pages/ViralMarketing/PostVideoPageProfile'
 import ScanProfile from '@renderer/pages/Pages/ViralMarketing/ScanProfile'
 import { IRootState, useAppSelector } from '@renderer/store'
 import { IndexRouteObject, Navigate, NonIndexRouteObject } from 'react-router-dom'
@@ -77,6 +79,16 @@ const routes: CustomRouteConfig[] = [
   {
     path: configStatic.router.postReelsFViralMarketing,
     element: <PostReelsFacebook />,
+    layout: layoutType.blank
+  },
+  {
+    path: configStatic.router.postVideoPageProfile,
+    element: <PostVideoPageProfile />,
+    layout: layoutType.blank
+  },
+  {
+    path: configStatic.router.postByPageId,
+    element: <PostByPageId />,
     layout: layoutType.blank
   },
   {

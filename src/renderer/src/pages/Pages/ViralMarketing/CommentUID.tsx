@@ -22,13 +22,12 @@ import { CirclePlay, CircleX } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { BsFillQuestionOctagonFill } from 'react-icons/bs'
 import { LiaHandPointer } from 'react-icons/lia'
 import { useDispatch } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 export interface PropsFormDTCommentUID {
   concurrent_stream: number
-  each_profile: { from: number; to: number }
+  each_pageProfile: { from: number; to: number }
   turn_around: { from: number; to: number }
   time_wait_load: number
   move_profile_error: number
@@ -45,7 +44,7 @@ const CommentUID = () => {
   const [isShowModalRenderAI, setIsShowModalRenderAI] = useState<boolean>(false)
   const [formDT, setFormDT] = useState<PropsFormDTCommentUID>({
     concurrent_stream: 1,
-    each_profile: { from: 1, to: 1 },
+    each_pageProfile: { from: 1, to: 1 },
     turn_around: { from: 1, to: 1 },
     every_uid_limited_comment: { from: 1, to: 1 },
     space_two_times_post: { from: 1, to: 1 },
@@ -130,29 +129,27 @@ const CommentUID = () => {
         childrenRight={
           <>
             {' '}
-            <p className="w-full text-sm font-medium text-red-500 p-2  mt-[-13px]">
+            <p className="w-full text-sm font-medium text-red-500 p-2  ">
               {t('note_comment_random_one_image')}
             </p>
-            <div className="w-full bg-white h-[80%] overflow-auto px-2 mt-2 relative ">
-              <FormCommentUID
-                formDT={formDT}
-                setFormDT={setFormDT}
-                onClickRenderAI={() => setIsShowModalRenderAI(true)}
-                register={register}
-                setToggled={setToggled}
-                toggled={toggled}
-              />
-              <div className="text-center flex items-center justify-center mt-3 py-2 ">
-                <div className="rotate-[85deg] text-[20px] mr-1">
-                  <LiaHandPointer />
-                </div>
-                <a
-                  onClick={() => window.open('https://phanmemmkt.vn/', '_blank')}
-                  className="text-blue-500 font-thin hover:underline"
-                >
-                  {t('see_guide_here')}
-                </a>
+            <FormCommentUID
+              formDT={formDT}
+              setFormDT={setFormDT}
+              onClickRenderAI={() => setIsShowModalRenderAI(true)}
+              register={register}
+              setToggled={setToggled}
+              toggled={toggled}
+            />
+            <div className="text-center flex items-center justify-center mt-3 py-2 ">
+              <div className="rotate-[85deg] text-[20px] mr-1">
+                <LiaHandPointer />
               </div>
+              <a
+                onClick={() => window.open('https://phanmemmkt.vn/', '_blank')}
+                className="text-blue-500 font-thin hover:underline"
+              >
+                {t('see_guide_here')}
+              </a>
             </div>
           </>
         }

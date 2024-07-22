@@ -45,6 +45,7 @@ interface UploadFileFieldProps {
   clsLabel?: string
   clsButtons?: string
   setError?: Dispatch<SetStateAction<boolean>>
+  titleButtonLeft?: string
 }
 
 const UploadFileField: FC<UploadFileFieldProps> = ({
@@ -64,7 +65,8 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
   clsLabel,
   clsButtons,
   isShowImage,
-  setError
+  setError,
+  titleButtonLeft = 'add_image'
 }): JSX.Element => {
   const { t } = useTranslation()
   const idInput = useId()
@@ -112,7 +114,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
           <label htmlFor={isShowImage ? idInput : ''} className={clsLabel}>
             <ButtonC
               className={`text-sm font-light  bg-blue-500 text-nowrap mr-1 p-2 ${clsButtons}`}
-              title={t('add_image')}
+              title={t(titleButtonLeft)}
             />
           </label>
 

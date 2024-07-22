@@ -1,7 +1,6 @@
 import CheckboxField from '@renderer/components/CustomField/CheckboxField'
 import TextAreaField from '@renderer/components/CustomField/TextAreaField'
 import UploadFileField from '@renderer/components/CustomField/UploadFileField'
-import ToggleSwitch from '@renderer/components/ToggleSwitch'
 import ToolTips from '@renderer/components/Tooltips'
 import { RenderInputNumber } from '@renderer/components/VirtualMarketing.tsx/RenderInputNumber'
 import { PropCheckBoxDT, PropsFormDT } from '@renderer/pages/Pages/ViralMarketing/PostReelsFacebook'
@@ -10,14 +9,11 @@ import React, { FC, useState } from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { BsFillQuestionOctagonFill } from 'react-icons/bs'
-import { LiaHandPointer } from 'react-icons/lia'
 
-const FormPostReelsFB: FC<{
+const FormPostVideoPageProfile: FC<{
   register: UseFormRegister<FieldValues>
   setFormDT: React.Dispatch<React.SetStateAction<PropsFormDT>>
   formDT: PropsFormDT
-  checkBoxData: PropCheckBoxDT
-  setCheckBoxData: React.Dispatch<React.SetStateAction<PropCheckBoxDT>>
   files: {
     files: File[]
   }
@@ -26,7 +22,7 @@ const FormPostReelsFB: FC<{
       files: File[]
     }>
   >
-}> = ({ register, formDT, setFormDT, checkBoxData, setCheckBoxData, files, setFiles }) => {
+}> = ({ register, formDT, setFormDT, files, setFiles }) => {
   const { t } = useTranslation()
   const [toggled, setToggled] = useState<boolean>(false)
 
@@ -36,8 +32,8 @@ const FormPostReelsFB: FC<{
         {renderBoxInputReelsAndVideo.map((r) => (
           <div
             key={r.id}
-            className="w-full mb-2 min-[1640px]:flex border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-2 
-                 items-center
+            className="w-full mb-2 border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-2 
+                min-[1640px]:flex items-center
               "
           >
             <h2 className="text-sm font-medium mr-2 min-[1640px]:w-[56%] w-full flex items-center">
@@ -71,7 +67,6 @@ const FormPostReelsFB: FC<{
             </div>
           </div>
         ))}
-
         <CheckboxField
           title={t('allow_post_video_duplicate')}
           name={t('allow_post_video_duplicate')}
@@ -84,7 +79,7 @@ const FormPostReelsFB: FC<{
             isRequire
             placeholder={t('please_enter_video_describe')}
             register={{
-              ...register('please_enter_uid_here', { required: true })
+              ...register('please_enter_video_describe', { required: true })
             }}
             name="please_enter_video_describe"
             clsTextArea="text-[15px] p-5  "
@@ -96,7 +91,7 @@ const FormPostReelsFB: FC<{
           <span className="border rounded-[5px] flex w-[20px]  items-center justify-center ml-2">
             {files.files.length}
           </span>
-        </p>
+        </p>{' '}
         <TextAreaField
           register={{ ...register('video', { required: files.files.length ? false : true }) }}
           name="video"
@@ -111,50 +106,12 @@ const FormPostReelsFB: FC<{
           isShowImage
           clsContainer=""
           buttonText="get file"
-          titleButtonLeft="select_video"
           accept=""
+          titleButtonLeft="select_video"
           changeFile={setFiles}
           clsInput="hidden"
           clsLabel="w-fit !mb-0"
           clsLabelRoot={`w-fit`}
-        />
-      </div>
-      <ToggleSwitch
-        name="seedingReels"
-        spanText={t('seeding_reels_after_posting')}
-        clsLabel="mt-3"
-        checked={toggled}
-        onChange={(e) => setToggled(e.target.checked)}
-      />
-      <div
-        className={`p-2 rounded-[5px] border bg-[#f9f9f95c] border-[#c1c1c1] ${
-          toggled ? '' : 'opacity-60 pointer-events-none'
-        }`}
-      >
-        <CheckboxField
-          title={t('like_video_reels_post_success')}
-          name={t('like_video_reels_post_success')}
-          classLabel="whitespace-pre-wrap"
-          checked={checkBoxData.like}
-          onChange={(e) => setCheckBoxData((pre) => ({ ...pre, like: e.target.checked }))}
-        />{' '}
-        <CheckboxField
-          title={t('comment_video_reels_post_success')}
-          name={t('comment_video_reels_post_success')}
-          classLabel="whitespace-pre-wrap"
-          checked={checkBoxData.comment}
-          onChange={(e) => setCheckBoxData((pre) => ({ ...pre, comment: e.target.checked }))}
-          classInputContainer="my-2"
-        />
-        <TextAreaField
-          isRequire
-          placeholder={t('enter_comments_into_here')}
-          register={{
-            ...register('enter_comments_into_here', { required: toggled })
-          }}
-          name="please_enter_uid_here"
-          clsTextArea="text-[15px] p-5 "
-          clsTextLabel="!text-sm font-medium "
         />
       </div>
       <div className="border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px] my-2">
@@ -165,8 +122,6 @@ const FormPostReelsFB: FC<{
             classLabel="text-sm whitespace-break-spaces"
             register={{ ...register('get_groupList_pageProfile') }}
             classInputContainer=" flex items-center w-[58%]"
-            checked={checkBoxData.turn_back}
-            onChange={(e) => setCheckBoxData((pre) => ({ ...pre, turn_back: e.target.checked }))}
           />
           {RenderInputNumber({
             register,
@@ -191,4 +146,4 @@ const FormPostReelsFB: FC<{
   )
 }
 
-export default FormPostReelsFB
+export default FormPostVideoPageProfile

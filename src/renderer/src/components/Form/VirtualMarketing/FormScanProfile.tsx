@@ -1,6 +1,5 @@
 import CheckboxField from '@renderer/components/CustomField/CheckboxField'
-import InputNumberField from '@renderer/components/CustomField/InputNumberField'
-import { RenderInputNumberSanProfile } from '@renderer/components/VirtualMarketing.tsx/RenderInputNumber'
+import { RenderInputNumber } from '@renderer/components/VirtualMarketing.tsx/RenderInputNumber'
 import { PropsScanProfile } from '@renderer/pages/Pages/ViralMarketing/ScanProfile'
 import React, { Dispatch, FC, SetStateAction, useState } from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
@@ -13,43 +12,41 @@ const FormScanProfile: FC<{
 }> = ({ register, setFormDT, formDT }) => {
   const { t } = useTranslation()
   const generalClass =
-    'w-full my-2 border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-2 flex items-center '
+    'w-full mb-2 border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-2 flex items-center '
   return (
     <>
-      <div className="py-2  ">
-        <div className={generalClass}>
-          {RenderInputNumberSanProfile({
+      <div className={generalClass}>
+        {RenderInputNumber({
+          register,
+          setFormDT,
+          formDT,
+          name: 'concurrent_stream',
+          key: 'concurrent_stream',
+          span: t('stream'),
+          title: t('concurrent_stream')
+        })}
+      </div>
+      <div className={generalClass}>
+        <p className="text-sm font-medium mr-2 w-[56%] flex items-center">{t('space_stop')}</p>
+        <div className="w-fit flex items-center">
+          {RenderInputNumber({
             register,
             setFormDT,
             formDT,
-            name: 'concurrent_stream',
-            key: 'concurrent_stream',
-            span: t('stream'),
-            title: t('concurrent_stream')
+            name: 'space_stop',
+            key: 'space_stop',
+            type: 'from'
           })}
-        </div>
-        <div className={generalClass}>
-          <p className="text-sm font-medium mr-2 w-[56%] flex items-center">{t('space_stop')}</p>
-          <div className="w-fit flex items-center">
-            {RenderInputNumberSanProfile({
-              register,
-              setFormDT,
-              formDT,
-              name: 'space_stop',
-              key: 'space_stop',
-              type: 'from'
-            })}
-            {RenderInputNumberSanProfile({
-              register,
-              setFormDT,
-              formDT,
-              name: 'space_stop',
-              key: 'space_stop',
-              type: 'to',
-              span: t('times'),
-              classInputContainer: '!w-fit'
-            })}
-          </div>
+          {RenderInputNumber({
+            register,
+            setFormDT,
+            formDT,
+            name: 'space_stop',
+            key: 'space_stop',
+            type: 'to',
+            span: t('times'),
+            classInputContainer: '!w-fit'
+          })}
         </div>
       </div>
       <div>

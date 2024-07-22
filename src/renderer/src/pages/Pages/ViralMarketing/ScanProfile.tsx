@@ -47,7 +47,7 @@ const ScanProfile = () => {
                 title: t(r.accessor)
               }))}
               data={[]}
-              clsTable="!h-[33vh] mb-2  border  rounded-[15px]"
+              clsTable="!h-[34.5vh] mb-2  border  rounded-[15px]"
             />{' '}
             <MantineTableCustom
               column={configTableInteractionScanViralTwo.map((r) => ({
@@ -55,12 +55,12 @@ const ScanProfile = () => {
                 title: t(r.accessor)
               }))}
               data={[]}
-              clsTable="!h-[33vh]  border  rounded-[15px]"
+              clsTable="!h-[34.5vh]  border  rounded-[15px]"
             />
           </div>
         }
         childrenRight={
-          <div className="w-full bg-white overflow-hidden px-2 ">
+          <>
             <FormScanProfile setFormDT={setFormDT} formDT={formDT} register={register} />
             <div className="text-center flex items-center justify-center mt-3 py-2 border-t">
               <div className="rotate-[85deg] text-[20px] mr-1">
@@ -73,7 +73,7 @@ const ScanProfile = () => {
                 {t('see_guide_here')}
               </a>
             </div>
-          </div>
+          </>
         }
         handleSubmit={handleSubmit(onSubmit)}
       />

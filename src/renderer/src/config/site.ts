@@ -7,6 +7,8 @@ export const router = {
   postViralMarketing: '/postViralMarketing',
   commentViralMarketing: '/commentViralMarketing',
   postReelsFViralMarketing: '/postReelsFViralMarketing',
+  postVideoPageProfile: '/postVideoPageProfile',
+  postByPageId: '/postByPageId',
   addIndex: '/addIndex'
 }
 
