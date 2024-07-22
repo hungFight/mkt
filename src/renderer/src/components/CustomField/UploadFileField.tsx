@@ -73,7 +73,7 @@ const UploadFileField: FC<UploadFileFieldProps> = ({
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const files = event.target.files
-    if (files) {
+    if (files?.length) {
       setError && setError(false)
       const newFilePaths = Array.from(files).map((file) => file.webkitRelativePath || file.name)
       setFilePaths(newFilePaths)

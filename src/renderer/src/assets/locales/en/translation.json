@@ -148,7 +148,7 @@
   "find_video_by_keyword": "Find Video by Keyword",
   "enter_keyword_into": "Enter Keyword Here",
   "please_enter_content_each_line": "Please enter group comment content here. Each content in a separate line.",
-  "stream_concurrency": "Concurrent Stream Count",
+  "concurrent_stream": "Concurrent Stream Count",
   "next_profile_error": "Switch PageProfile if Consecutive Errors",
   "stream": "Stream",
   "see_guide_here": "See Guide Here",

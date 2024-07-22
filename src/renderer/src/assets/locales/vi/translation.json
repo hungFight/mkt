@@ -148,7 +148,7 @@
   "find_video_by_keyword": "Tìm video theo từ khoá",
   "enter_keyword_into": "Nhập từ khoá vào đây",
   "please_enter_content_each_line": " Vui lòng nhập nội dung bình luân nhóm tại đây. Mỗi nội dung 1",
-  "stream_concurrency": "Số luồng chạy đồng thời",
+  "concurrent_stream": "Số luồng chạy đồng thời",
   "next_profile_error": "Chuyễn PageProfile nếu lỗi liên tiếp",
   "stream": "Luồng",
   "see_guide_here": "Xem hướng dẫn tại đây",
@@ -227,11 +227,13 @@
   "post_reels_facebook": "Đăng Reels Facebook",
   "turn_back": "Quay vòng sau",
   "stop_turning_back": "Dừng quay vòng sau",
+  "stop_turning_around": "Dừng quay vòng",
+  "turn_around": "Quay vòng",
   "allow_post_duplicate_between_pageProfile": "Cho phép đang bài trùng bài viết giữa các Page Profile",
   "config_post_pageProfile": "Cấu hình đăng bài PageProfile",
   "total_content_to_comment": "Tổng số nội dung chọn để bình luận",
   "note_comment_random_one_image": "Lưu ý: Nội dung bình luận sẽ chọn ngẫu nhiên 1 hình ảnh trong",
-  "each_pageProfile_image": "Mỗi Page Profile hình",
+  "each_pageProfile": "Mỗi Page Profile hình",
   "every_uid_limited_comment": "Mỗi UID bình luận tối thiểu",
   "choice_random": "Chọn ngẫu nhiên",
   "space_two_times_post": "Khoảng cách 2 lần đăng bài",
@@ -246,5 +248,6 @@
   "like_video_reels_post_success": "Like video Reels khi đăng thành công",
   "comment_video_reels_post_success": "Bình luận video Reels khi đăng thành công",
   "totall_video_to_increase_reels": "Tổng số video để tăng Reels Pro",
-  "choice_content": "Chọn nội dung"
+  "choice_content": "Chọn nội dung",
+  "time_wait_load": "Thời gian chờ tải"
 }

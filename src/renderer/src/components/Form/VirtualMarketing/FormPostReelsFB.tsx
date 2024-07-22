@@ -1,12 +1,12 @@
 import CheckboxField from '@renderer/components/CustomField/CheckboxField'
-import InputNumberField from '@renderer/components/CustomField/InputNumberField'
 import TextAreaField from '@renderer/components/CustomField/TextAreaField'
 import UploadFileField from '@renderer/components/CustomField/UploadFileField'
 import ToggleSwitch from '@renderer/components/ToggleSwitch'
 import ToolTips from '@renderer/components/Tooltips'
+import { RenderInputNumber } from '@renderer/components/VirtualMarketing.tsx/RenderInputNumber'
 import { PropCheckBoxDT, PropsFormDT } from '@renderer/pages/Pages/ViralMarketing/PostReelsFacebook'
 import { renderBoxInput } from '@renderer/pages/data/dataContentFormPostReels'
-import React, { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { BsFillQuestionOctagonFill } from 'react-icons/bs'
@@ -30,28 +30,6 @@ const FormPostReelsFB: FC<{
   const { t } = useTranslation()
   const [toggled, setToggled] = useState<boolean>(false)
 
-  const renderInput = (name: string, key: string, span?: string, type?: string, title?: string) => (
-    <InputNumberField
-      min={1}
-      name={name}
-      title={title}
-      clsTitle={title ? 'w-[58%]' : ''}
-      register={{ ...register(name) }}
-      classInput={`!w-[70px] !px-2 !py-1 ${type && span ? 'ml-2' : ''}`}
-      span={span}
-      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-        setFormDT((pre) =>
-          pre[key]?.from && type
-            ? { ...pre, [key]: { ...pre[key], [type]: Number(e.target.value) } }
-            : { ...pre, [key]: Number(e.target.value) }
-        )
-      }
-      value={type && formDT[key]?.[type] ? formDT[key]?.[type] : formDT[key]}
-      clsLabel="whitespace-pre-wrap"
-      classInputContainer=" flex items-center justify-start  "
-    />
-  )
-
   return (
     <>
       <div className="mb-2">
@@ -59,9 +37,9 @@ const FormPostReelsFB: FC<{
           {renderBoxInput.map((r) => (
             <div
               key={r.id}
-              className={`w-full my-2 border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-2 ${
-                r.isTwo ? 'flex items-center' : 'flex items-center '
-              }`}
+              className="w-full my-2 border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-2 
+                flex items-center
+              "
             >
               <h2 className="text-sm font-medium mr-2 w-[56%] flex items-center">
                 {t(r.name)}
@@ -72,8 +50,25 @@ const FormPostReelsFB: FC<{
                 )}
               </h2>
               <div className={`min-w-[200px] ${r.isTwo ? 'flex items-center ' : ' '}`}>
-                {renderInput(r.name, r.name, r.isTwo ? '' : t(r.span), r.isTwo ? 'from' : '')}
-                {r.isTwo && renderInput(r.name + '_1', r.name, t(r.span), 'to')}
+                {RenderInputNumber(
+                  register,
+                  setFormDT,
+                  formDT,
+                  r.name,
+                  r.name,
+                  r.isTwo ? '' : t(r.span),
+                  r.isTwo ? 'from' : ''
+                )}
+                {r.isTwo &&
+                  RenderInputNumber(
+                    register,
+                    setFormDT,
+                    formDT,
+                    r.name + '_1',
+                    r.name,
+                    t(r.span),
+                    'to'
+                  )}
               </div>
             </div>
           ))}
@@ -104,7 +99,7 @@ const FormPostReelsFB: FC<{
             </span>
           </p>
           <TextAreaField
-            register={{ ...register('video', { required: true }) }}
+            register={{ ...register('video', { required: files.files.length ? false : true }) }}
             name="video"
             value={files.files.map((f) => f.path).join(', ')}
             placeholder={t('list_video')}
@@ -173,9 +168,19 @@ const FormPostReelsFB: FC<{
               checked={checkBoxData.turn_back}
               onChange={(e) => setCheckBoxData((pre) => ({ ...pre, turn_back: e.target.checked }))}
             />
-            {renderInput(t('turn_back'), 'turn_back', t('second'))}
+            {RenderInputNumber(
+              register,
+              setFormDT,
+              formDT,
+              t('turn_back'),
+              'turn_back',
+              t('second')
+            )}
           </div>
-          {renderInput(
+          {RenderInputNumber(
+            register,
+            setFormDT,
+            formDT,
             t('stop_turning_back'),
             'stop_turning_back',
             t('times'),
