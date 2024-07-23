@@ -269,5 +269,9 @@
   "add_into": "Thêm vào",
   "content_post": "Bài viết nội dung",
   "top": "Đầu",
-  "last": "Cuối"
+  "last": "Cuối",
+  "enter_structure_spin": "Nhập cấu trúc spin { nd1 | nd2 | ... }",
+  "delete_content_keepImage_and_content": "Xoá nội dung. Giử hình ảnh + nội dung",
+  "delete_preHashTag": "Xoá HashTag cũ",
+  "add_newHashTag": "Thêm HashTag mới"
 }

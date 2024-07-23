@@ -105,7 +105,7 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
 
   const customStyles = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    option: (style, _) => ({ ...style, fontSize: '14px',fontWeight: '400', cursor: 'pointer'}),
+    option: (style, _) => ({ ...style, fontSize: '13px', fontWeight: '400', cursor: 'pointer' }),
     control: (base: any, mul) => ({
       ...base,
       backgroundColor: backgroundColor ?? '',
@@ -213,7 +213,7 @@ const SelectField: FC<SelectFieldProps> = (prop) => {
         name={name}
         className="basic-single"
         classNamePrefix="select"
-        defaultValue={options ? options[0]: []}
+        defaultValue={options ? options[0] : []}
         onChange={handleSelectedOptionChange}
         menuPortalTarget={document.body}
         filterOption={customFilter}

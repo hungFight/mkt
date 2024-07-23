@@ -25,7 +25,7 @@ const VirtualMKTFrame: FC<{
               <p className="z-10 relative"> {titleRight}</p>
               <div className="w-full absolute top-[15px] left-[1px] h-[1px] bg-white "></div>
             </h2>
-            <div className="w-full bg-white px-2 h-[90%] overflow-auto overflow-x-hidden  relative mt-7">
+            <div className="w-full bg-white px-2 h-[93%] overflow-auto   relative mt-7">
               {childrenRight}
             </div>
           </div>
