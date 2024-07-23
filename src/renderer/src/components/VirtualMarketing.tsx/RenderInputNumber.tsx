@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, ReactElement } from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 import InputNumberField from '../CustomField/InputNumberField'
 import { PropsFormDT } from '@renderer/pages/Pages/ViralMarketing/PostReelsFacebook'
@@ -14,16 +14,38 @@ export const RenderInputNumber = (data: {
   type?: string // type represent for {from or to} like {[type]: value}
   title?: string
   classInputContainer?: string
+  classTitle?: string
+  inputClassName?: string
+  classInputParent?: string
+  clsLabel?: string
+  childrenLabelLeft?: ReactElement
+  childrenLabelRight?: ReactElement
 }) => {
-  const { register, formDT, setFormDT, name, key, span, type, title, classInputContainer } = data
+  const {
+    register,
+    formDT,
+    setFormDT,
+    name,
+    key,
+    span,
+    type,
+    title,
+    classInputContainer,
+    classTitle,
+    inputClassName,
+    classInputParent,
+    childrenLabelLeft,
+    childrenLabelRight,
+    clsLabel
+  } = data
   return (
     <InputNumberField
       min={1}
       name={name}
       title={title}
-      clsTitle={title ? 'w-[58%]' : ''}
+      clsTitle={title ? 'w-[58%] ' : '' + classTitle}
       register={{ ...register(name) }}
-      classInput={`!w-[70px] !px-2 !py-1 ${type && span ? 'ml-2' : ''}`}
+      classInput={`!w-[70px] !px-2 !py-1 ${type && span ? 'ml-2' : ''} ` + inputClassName}
       span={span}
       onChange={(e: ChangeEvent<HTMLInputElement>) =>
         setFormDT((pre) =>
@@ -32,8 +54,11 @@ export const RenderInputNumber = (data: {
             : { ...pre, [key]: Number(e.target.value) }
         )
       }
+      classInputParent={classInputParent}
       value={type && formDT[key]?.[type] ? formDT[key]?.[type] : formDT[key]}
-      clsLabel="whitespace-pre-wrap"
+      clsLabel={clsLabel}
+      childrenLabelLeft={childrenLabelLeft}
+      childrenLabelRight={childrenLabelRight}
       classInputContainer={` flex items-center justify-start ${classInputContainer}`}
     />
   )

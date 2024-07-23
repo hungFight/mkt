@@ -16,6 +16,9 @@ const FormScanProfile: FC<{
   return (
     <>
       <div className={generalClass}>
+        <h2 className="text-sm font-medium mr-2 min-[1640px]:w-1/2 w-full flex items-center">
+          {t('concurrent_stream')}
+        </h2>
         {RenderInputNumber({
           register,
           setFormDT,
@@ -23,12 +26,12 @@ const FormScanProfile: FC<{
           name: 'concurrent_stream',
           key: 'concurrent_stream',
           span: t('stream'),
-          title: t('concurrent_stream')
+          classInputContainer: 'min-[1640px]:w-1/2'
         })}
       </div>
-      <div className={generalClass}>
-        <p className="text-sm font-medium mr-2 w-[56%] flex items-center">{t('space_stop')}</p>
-        <div className="w-fit flex items-center">
+      <div className={generalClass + 'min-[1428px]:!flex !block'}>
+        <p className="text-sm font-medium mr-2 w-1/2 flex items-center">{t('space_stop')}</p>
+        <div className="w-fit flex items-center min-[1640px]:w-1/2">
           {RenderInputNumber({
             register,
             setFormDT,

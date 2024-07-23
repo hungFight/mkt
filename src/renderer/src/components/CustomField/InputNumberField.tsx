@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from 'react'
+import { FC, InputHTMLAttributes, ReactElement } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -19,6 +19,9 @@ export interface InputNumberFieldProps extends InputHTMLAttributes<HTMLElement> 
   clsTitle?: string
   clsLabel?: string
   checkbox?: boolean
+  childrenLabelLeft?: ReactElement
+  childrenLabelRight?: ReactElement
+  classInputParent?: string
 }
 
 const InputNumberField: FC<InputNumberFieldProps> = ({
@@ -37,6 +40,9 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
   clsTitle,
   value,
   clsLabel,
+  classInputParent,
+  childrenLabelLeft,
+  childrenLabelRight,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -55,14 +61,15 @@ const InputNumberField: FC<InputNumberFieldProps> = ({
         )}
         {title && (
           <label
-            className={`block mb-0 text-sm font-medium text-gray-900 whitespace-nowrap ${clsLabel}`}
+            className={`block mb-0 text-sm font-medium text-gray-900  ${clsLabel}`}
             htmlFor={name}
           >
-            {t(title)} {isRequire && <span className="text-red-500">*</span>}
+            {childrenLabelLeft} {t(title)} {isRequire && <span className="text-red-500">*</span>}{' '}
+            {childrenLabelRight}
           </label>
         )}
       </div>
-      <div className="flex gap-2 items-center justify-center">
+      <div className={`flex gap-2 items-center justify-center ${classInputParent}`}>
         <input
           className={`border outline-none px-5 py-[8px] text-[#505050]  border-[#6a6a6aa1] ${
             round ? round : 'rounded-md'

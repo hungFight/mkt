@@ -40,7 +40,7 @@ const InputField: FC<InputFieldPops> = ({
       <input
         className={`border outline-none  px-5 py-[8px] text-[#505050] ${
           round ? round : 'rounded-md'
-        } ${inputClassName} w-full bg-transparent`}
+        } ${inputClassName} w-full bg-transparent placeholder:font-medium placeholder:text-[13px]`}
         autoComplete="off"
         style={{ boxShadow: isShadow ? '0 0 5px 1px rgba(23, 23, 58, 0.05)' : '' }}
         id={name}

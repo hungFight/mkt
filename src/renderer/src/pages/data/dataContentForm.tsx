@@ -50,6 +50,7 @@ export const renderBoxInputPostPageId = [
     id: 5,
     note: 'time_wait_for_next_step',
     name: 'space_two_times_post',
-    spanTwo: 'second'
+    spanTwo: 'second',
+    classTitle: 'min-[1640px]:w-1/2 w-full'
   }
 ]

@@ -24,7 +24,7 @@ const FormPostPageProfile: FC<{
         <div className=" border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px]">
           <div className="w-full flex items-center mb-1">
             <h2 className="text-sm font-medium  w-[58%] flex items-center relative">
-              {t('stream_concurrency')}
+              {t('concurrent_stream')}
               <ToolTips content={t('open_at_the_same')} className="absolute top-0 right-0">
                 <BsFillQuestionOctagonFill className="text-[#434343] ml-2" />
               </ToolTips>
@@ -35,7 +35,7 @@ const FormPostPageProfile: FC<{
               name="concurrent_stream"
               max={100}
               register={{ ...register('concurrent_stream') }}
-              classInput="ml-2 !w-[70px] !px-2 !py-1 "
+              classInput="!w-[70px] !px-2 !py-1 "
               span={t('stream')}
               onChange={(e: any) =>
                 setFormDT((pre) => ({ ...pre, concurrent_stream: e.target.value }))
@@ -53,7 +53,7 @@ const FormPostPageProfile: FC<{
             clsTitle="w-[58%]"
             max={100}
             span={t('post')}
-            classInput="ml-2 !w-[70px] !px-2 !py-1 "
+            classInput=" !w-[70px] !px-2 !py-1 "
             clsLabel="whitespace-pre-wrap"
             classInputContainer="w-full flex items-center justify-start  mb-2 "
             onChange={(e: any) => setFormDT((pre) => ({ ...pre, limit_profile: e.target.value }))}
@@ -67,7 +67,7 @@ const FormPostPageProfile: FC<{
             clsTitle="w-[58%]"
             span={t('post')}
             max={100}
-            classInput="ml-2 !w-[70px] !px-2 !py-1 "
+            classInput="!w-[70px] !px-2 !py-1 "
             clsLabel="whitespace-pre-wrap"
             classInputContainer="w-full flex items-center justify-start  mb-2 "
             onChange={(e: any) => setFormDT((pre) => ({ ...pre, limit_account: e.target.value }))}
@@ -75,9 +75,9 @@ const FormPostPageProfile: FC<{
           />{' '}
         </div>
         <div className=" border bg-[#f9f9f95c] rounded-[5px] border-[#c1c1c1] p-[7px] my-2">
-          <div className="mb-2">
-            <div className="w-full flex items-center mb-1">
-              <h2 className="text-sm font-medium mr-2 ">{t('move_profile_if_error')}</h2>
+          <div className="mb-2 min-[1628px]:flex items-center">
+            <div className="flex items-center mb-1  min-[1628px]:w-[58%]">
+              <h2 className="text-sm font-medium mr-2  ">{t('move_profile_if_error')}</h2>
               <ToolTips content={t('stop_and_change_other_profiles')}>
                 <BsFillQuestionOctagonFill className="text-[#434343]" />
               </ToolTips>
@@ -97,8 +97,8 @@ const FormPostPageProfile: FC<{
               value={formDT.move_profile_error}
             />{' '}
           </div>
-          <div className="w-full ">
-            <div className="w-full flex items-center mb-1">
+          <div className="min-[1628px]:flex items-center ">
+            <div className=" min-[1628px]:w-[58%] flex items-center mb-1">
               <h2 className="text-sm font-medium mr-2">{t('space_2_times_consecutive')}</h2>
               <ToolTips content={t('times_waiting_for_next_step')} className="text-[#f03365]">
                 <BsFillQuestionOctagonFill className="text-[#434343]" />

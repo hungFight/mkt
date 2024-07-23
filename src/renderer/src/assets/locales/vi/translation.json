@@ -258,5 +258,16 @@
   "select_video": "Chọn video",
   "post_by_pageId": "Đăng bài theo Page ID",
   "status_t": "Tình trạng",
-  "id_page_get_post": "Id page lấy bài"
+  "id_page_get_post": "Id page lấy bài",
+  "deny_post_duplicate_between_page_in_account": "Không cho phép đăng bài viết giửa các Page trong tài khoản",
+  "config_scan_post": "Cấu hình quét bài viết",
+  "enter_pageId_get_pageList": "Nhập ID Page để lấy danh sách Page",
+  "enter_pageId_here_eachId": "Nhập PageId tại đây. Mỗi Id cách",
+  "newest_post": "Bài viết mới nhất",
+  "each_pageId_scan_out": "Mỗi ID Page quét ra",
+  "config_edit_post": "Cấu hình chỉnh bài viết",
+  "add_into": "Thêm vào",
+  "content_post": "Bài viết nội dung",
+  "top": "Đầu",
+  "last": "Cuối"
 }
